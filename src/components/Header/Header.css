@@ -1,0 +1,15 @@
+.header {
+    display: flex;
+    align-items: baseline;
+    justify-content: left;
+    column-gap: 20px;
+    background-color: #f7f7f7;
+}
+
+.header>a {
+    color: #424242
+}
+
+.header>h3 {
+    margin-left: 20px;
+}
