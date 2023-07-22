@@ -43,7 +43,7 @@ function SurveyForm(props) {
                 onChange={(event) =>
                   setResponses((oldResponses) => ({
                     ...oldResponses,
-                    questionObject: event.target.value,
+                    [question]: event.target.value,
                   }))
                 }
               >
@@ -56,7 +56,18 @@ function SurveyForm(props) {
           questionsArray.push(
             <div className="question-container" key={questionObject["id"]}>
               <label className="question-label">{question}</label>
-              <input type="number" step="1" className="form-control" required />
+              <input
+                type="number"
+                step="1"
+                className="form-control"
+                onChange={(event) =>
+                  setResponses((oldResponses) => ({
+                    ...oldResponses,
+                    [question]: event.target.value,
+                  }))
+                }
+                required
+              />
             </div>
           );
           break;
@@ -70,6 +81,12 @@ function SurveyForm(props) {
                 step="0.1"
                 className="form-control"
                 required
+                onChange={(event) =>
+                  setResponses((oldResponses) => ({
+                    ...oldResponses,
+                    [question]: event.target.value,
+                  }))
+                }
               />
             </div>
           );
