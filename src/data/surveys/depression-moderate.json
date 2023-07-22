@@ -1,4 +1,39 @@
 {
   "title": "Depression Anxiety Stress Scales (DASS) prediction",
-  "description": "This applet computes an individual's likelihood of moderate anxiety. Based on 6 questions, this app uses a machine learning model to compute the likelihood of anxiety."
+  "description": "This applet computes an individual's likelihood of moderate anxiety. Based on 6 questions, this app uses a machine learning model to compute the likelihood of anxiety.",
+  "questions": {
+    "Gender:": {
+      "selectionType": "dropdown",
+      "selections": ["Male", "Female"]
+    },
+    "Region": {
+      "selectionType": "dropdown",
+      "selections": ["East", "West", "Other"]
+    },
+    "Age": { "selectionType": "integer" },
+    "I couldn't seem to experience any positive feeling at all": {
+      "selectionType": "dropdown",
+      "selections": "AppliedSelections"
+    },
+    "I felt sad and depressed": {
+      "selectionType": "dropdown",
+      "selections": "AppliedSelections"
+    },
+    "I felt that I had lost interest in just about everything": {
+      "selectionType": "dropdown",
+      "selections": "AppliedSelections"
+    },
+    "I found it hard to wind down": {
+      "selectionType": "dropdown",
+      "selections": "AppliedSelections"
+    },
+    "I couldn't seem to get any enjoyment out of the things I did": {
+      "selectionType": "dropdown",
+      "selections": "AppliedSelections"
+    },
+    "I felt I was pretty worthless": {
+      "selectionType": "dropdown",
+      "selections": "AppliedSelections"
+    }
+  }
 }
