@@ -22,10 +22,9 @@ function ProgressBar(props) {
   return (
     <div className="progress-container">
       <p>Progress</p>
+      <div className="progress-label">{`${props.questionsFilled}/${props.totalQuestions}`}</div>
       <div className="progress-bar">
-        <div className="filled-progress" style={progressStyle}>
-          {`${props.questionsFilled}/${props.totalQuestions}`}
-        </div>
+        <div className="filled-progress" style={progressStyle}></div>
       </div>
     </div>
   );
