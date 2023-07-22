@@ -73,12 +73,20 @@ function SurveyForm(props) {
                 type="number"
                 step="1"
                 className="form-control"
-                onChange={(event) =>
-                  setResponses((oldResponses) => ({
-                    ...oldResponses,
-                    [question]: event.target.value,
-                  }))
-                }
+                onChange={(event) => {
+                  if (event.target.value === "") {
+                    setResponses((oldResponses) => {
+                      const newData = { ...oldResponses };
+                      delete newData[question];
+                      return newData;
+                    });
+                  } else {
+                    setResponses((oldResponses) => ({
+                      ...oldResponses,
+                      [question]: event.target.value,
+                    }));
+                  }
+                }}
                 required
               />
             </div>
@@ -94,12 +102,20 @@ function SurveyForm(props) {
                 step="0.1"
                 className="form-control"
                 required
-                onChange={(event) =>
-                  setResponses((oldResponses) => ({
-                    ...oldResponses,
-                    [question]: event.target.value,
-                  }))
-                }
+                onChange={(event) => {
+                  if (event.target.value === "") {
+                    setResponses((oldResponses) => {
+                      const newData = { ...oldResponses };
+                      delete newData[question];
+                      return newData;
+                    });
+                  } else {
+                    setResponses((oldResponses) => ({
+                      ...oldResponses,
+                      [question]: event.target.value,
+                    }));
+                  }
+                }}
               />
             </div>
           );
