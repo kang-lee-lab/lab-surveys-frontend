@@ -12,7 +12,10 @@
       "selectionType": "dropdown",
       "selections": ["East", "West", "Other"]
     },
-    "Age": { "id": 3, "selectionType": "integer" },
+    "Age": {
+      "id": 3,
+      "selectionType": "integer"
+    },
     "I tended to over-react to situations": {
       "id": 4,
       "selectionType": "dropdown",

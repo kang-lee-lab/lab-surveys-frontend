@@ -7,7 +7,10 @@
       "selectionType": "dropdown",
       "selections": ["Male", "Female"]
     },
-    "Age": { "id": 2, "selectionType": "integer" },
+    "Age": {
+      "id": 2,
+      "selectionType": "integer"
+    },
     "I have a good appetite.": {
       "id": 3,
       "selectionType": "dropdown",

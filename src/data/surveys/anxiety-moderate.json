@@ -12,7 +12,10 @@
       "selectionType": "dropdown",
       "selections": ["East", "West", "Other"]
     },
-    "Age": { "id": 3, "selectionType": "integer" },
+    "Age": {
+      "id": 3,
+      "selectionType": "integer"
+    },
     "I found myself in situations that made me so anxious I was most relieved when they ended": {
       "id": 4,
       "selectionType": "dropdown",
