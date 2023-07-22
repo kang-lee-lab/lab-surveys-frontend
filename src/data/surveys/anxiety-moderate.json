@@ -3,35 +3,43 @@
   "description": "This applet computes an individual's likelihood of moderate anxiety. Based on 6 questions, this app uses a machine learning model to compute the likelihood of anxiety.",
   "questions": {
     "Gender:": {
+      "id": 1,
       "selectionType": "dropdown",
       "selections": ["Male", "Female"]
     },
     "Region": {
+      "id": 2,
       "selectionType": "dropdown",
       "selections": ["East", "West", "Other"]
     },
-    "Age": { "selectionType": "integer" },
+    "Age": { "id": 3, "selectionType": "integer" },
     "I found myself in situations that made me so anxious I was most relieved when they ended": {
+      "id": 4,
       "selectionType": "dropdown",
       "selections": "AppliedSelections"
     },
     "I found myself getting upset rather easily": {
+      "id": 5,
       "selectionType": "dropdown",
       "selections": "AppliedSelections"
     },
     "I felt scared without any good reason": {
+      "id": 6,
       "selectionType": "dropdown",
       "selections": "AppliedSelections"
     },
     "I feared that I would be 'thrown' by some trivial but unfamiliar task": {
+      "id": 7,
       "selectionType": "dropdown",
       "selections": "AppliedSelections"
     },
     "I felt terrified": {
+      "id": 8,
       "selectionType": "dropdown",
       "selections": "AppliedSelections"
     },
     "I was worried about situations in which I might panic and make a fool of myself": {
+      "id": 9,
       "selectionType": "dropdown",
       "selections": "AppliedSelections"
     }

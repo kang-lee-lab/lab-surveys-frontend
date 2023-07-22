@@ -3,403 +3,503 @@
   "description": "This applet computes an individuals likelihood of MMPI. Based on 100 questions, this app uses a machine learning model to compute the likelihood of MMP.<br>Minnesota Multiphasic Personality Inventory (MMPI) is the most widely used psychometric test in the world. This study aimed to investigate the feasibility of using a reduced number of questions to predict the status in each conditions accurately.<br>We obtained a dataset of MMPI-2 responses from the Beijing Anding Hospital. The original dataset contains anonymized information on the participants including their demographics (age, sex, etc.), the raw scores and T-scores to each of the conditions, and the answers to each of the questions from the MMPI-2 test from each participant. The information of the participants includes their serial number, age, and their lname. The responses to the questions are “Yes”, “No”, or “Maybe”.<br>We identified the top 100 questions for predicting the ten MMPI conditions, which achieved at least 85% area under curve (AUC ROC) for predicting each of the conditions.<br>Our findings suggest that machine learning models using reduced number of questions are capable of making accurate assessment for MMPI.",
   "questions": {
     "Gender:": {
+      "id": 1,
       "selectionType": "dropdown",
       "selections": ["Male", "Female"]
     },
-    "Age": { "selectionType": "integer" },
+    "Age": { "id": 2, "selectionType": "integer" },
     "I have a good appetite.": {
+      "id": 3,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "When I wake up in the morning, I often feel rested and clear-headed.": {
+      "id": 4,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I like to read news on crimes.": {
+      "id": 5,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "My hands and feet are usually warm.": {
+      "id": 6,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "My daily life is full of things that are interesting to me.": {
+      "id": 7,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "My ability in work (study) is the same as before.": {
+      "id": 8,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I like detective or mystery novels.": {
+      "id": 9,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I rarely have constipation issues.": {
+      "id": 10,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "Sometimes I want to leave home.": {
+      "id": 11,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "Sometimes I cry and laugh uncontrollably.": {
+      "id": 12,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I am troubled with nausea and vomiting problems.": {
+      "id": 13,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "It seems like nobody understands me.": {
+      "id": 14,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "Sometimes I feel like I am being possessed.": {
+      "id": 15,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I find it hard to focus on one job.": {
+      "id": 16,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I would have achieved a lot more if it wasn’t because I was impeded by someone.": {
+      "id": 17,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I have never had problems with my sexual activities.": {
+      "id": 18,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I did petty theft when I was young.": {
+      "id": 19,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "My family is unsatisfied with my chosen job (or upcoming job).": {
+      "id": 20,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I am as healthy as most of my friends.": {
+      "id": 21,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I become familiar with others as soon as I meet them.": {
+      "id": 22,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I defecate normally and controllably.": {
+      "id": 23,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "Sometimes I do something non-stop until it annoys someone.": {
+      "id": 24,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I hope I can be happy like others.": {
+      "id": 25,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I have never had pain in the back of my neck.": {
+      "id": 26,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I believe many people exaggerate their misfortunes to gain sympathy and help from others.": {
+      "id": 27,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I get angry sometimes.": {
+      "id": 28,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I believe I would enjoy being a forest ranger (or a similar job)": {
+      "id": 29,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "Everyone can succeed if they have the ability and desire to do the job.": {
+      "id": 30,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "Sometimes I delay things I am supposed to do today to the next day.": {
+      "id": 31,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I want to be a nurse.": {
+      "id": 32,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I believe most people will lie to make gains.": {
+      "id": 33,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I rarely quarrel with my family.": {
+      "id": 34,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I believe women should enjoy the same rights as men when it comes to sex life.": {
+      "id": 35,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I believe I am the hardest to control.": {
+      "id": 36,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I lose my temper when my body is in discomfort.": {
+      "id": 37,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I always feel like I have done something wrong or committed some crime.": {
+      "id": 38,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "Some people are so bossy that I have to go against them, even when I know they are right.": {
+      "id": 39,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I like games or competitions that I have wagered in more.": {
+      "id": 40,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "When I was in school, sometimes I was called out by the leader for making a fuss.": {
+      "id": 41,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I always speak at a pace that is neither fast nor slow, and I am neither ambiguous nor hoarse.": {
+      "id": 42,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I believe someone is plotting against me.": {
+      "id": 43,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I seem to be as capable as the people around me.": {
+      "id": 44,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I believe someone is stalking me.": {
+      "id": 45,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I enjoy theatrical works.": {
+      "id": 46,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I know who is causing me trouble.": {
+      "id": 47,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I have never indulged myself in any unusual sexual behavior.": {
+      "id": 48,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I enjoy cooking.": {
+      "id": 49,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I like to be a soldier.": {
+      "id": 50,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "Someone has been wanting to kill me with poison.": {
+      "id": 51,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I have never had a twitching problem.": {
+      "id": 52,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "There was a time when I didn't remember anything I did.": {
+      "id": 53,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I hate it when people trick me, forcing me to admit defeat.": {
+      "id": 54,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I hardly get tired.": {
+      "id": 55,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I am afraid of looking down from high places.": {
+      "id": 56,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I don’t get nervous, even when someone in my family breaks the law.": {
+      "id": 57,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I am not afraid to manage money.": {
+      "id": 58,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I have never fainted before.": {
+      "id": 59,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I am not afraid of snakes.": {
+      "id": 60,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "My mother is a good person.": {
+      "id": 61,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "My memory seems to be good.": {
+      "id": 62,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I feel like I don’t know what to say when I encounter strangers.": {
+      "id": 63,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I often find my hands trembling when I need to do something.": {
+      "id": 64,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "Sometimes, I sweat a lot when I am embarrassed. This troubles me.": {
+      "id": 65,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "Someone wants to steal my thoughts and plans.": {
+      "id": 66,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I wish I am not as shy as I am now.": {
+      "id": 67,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I think I'd like a job as a construction contractor.": {
+      "id": 68,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I like to hunt.": {
+      "id": 69,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "Sometimes I feel it is easy to make a decision.": {
+      "id": 70,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I like joining several groups at once.": {
+      "id": 71,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I never felt short of breath.": {
+      "id": 72,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "Sometimes I prevent others from doing certain things, not because of the potential impact, but because I feel I am morally obligated.": {
+      "id": 73,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "Almost all my relatives sympathize with me.": {
+      "id": 74,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "My methods are often misunderstood.": {
+      "id": 75,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I get excited at least once or twice a week.": {
+      "id": 76,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I don’t know what to say when there are a lot of people.": {
+      "id": 77,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I don’t blame someone who bullies a person who has brought it upon themselves.": {
+      "id": 78,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "Sometimes I admire a con man's wit so much that I even hope they get away with it.": {
+      "id": 79,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I often feel that some strangers are staring at me critically.": {
+      "id": 80,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "Most people make friends because friends are useful to them.": {
+      "id": 81,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "Problems with nausea and vomiting bother me.": {
+      "id": 82,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "At least once or twice in my life, I felt someone hint at me to do something.": {
+      "id": 83,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I like reading novels like Dream of the Red Chamber.": {
+      "id": 84,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I wish I wasn't bothered by sexual thoughts anymore.": {
+      "id": 85,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I have never liked dolls in my entire life.": {
+      "id": 86,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "Occasionally I think of things that are too evil to be said aloud.": {
+      "id": 87,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I deeply believe that life is cruel to me.": {
+      "id": 88,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I am more sensitive than most people.": {
+      "id": 89,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I have a lot of dreams about sex.": {
+      "id": 90,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I have had very special or strange experiences.": {
+      "id": 91,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I worry about more things than I should.": {
+      "id": 92,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "Sometimes my hearing is so sensitive that it annoys me.": {
+      "id": 93,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I often feel everything is not real.": {
+      "id": 94,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I have some weird or special ideas.": {
+      "id": 95,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "There were a few times I gave up on the thing I was doing because I feel incapable.": {
+      "id": 96,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "Sometimes I am bothered by unimportant thoughts, making me uneasy for days.": {
+      "id": 97,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "In social gatherings, I mostly sit alone or with another person, rather than being with a crowd.": {
+      "id": 98,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "I like social gatherings because I can get together with people.": {
+      "id": 99,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "Things about sex annoy me.": {
+      "id": 100,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     },
     "My future doesn’t seem hopeful.": {
+      "id": 101,
       "selectionType": "dropdown",
       "selections": "YesNoSelections"
     }
