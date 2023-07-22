@@ -33,6 +33,11 @@ function SurveyForm(props) {
               </option>
             );
           });
+          selectionOptions.unshift(
+            <option key={0} value={"dropDownText"}>
+              Click to drop down
+            </option>
+          );
           // add question to the array
           questionsArray.push(
             <div className="question-container" key={questionObject["id"]}>
@@ -40,12 +45,20 @@ function SurveyForm(props) {
               <select
                 key={questionObject["id"]}
                 id={questionObject["id"]}
-                onChange={(event) =>
-                  setResponses((oldResponses) => ({
-                    ...oldResponses,
-                    [question]: event.target.value,
-                  }))
-                }
+                onChange={(event) => {
+                  if (event.target.value === "dropDownText") {
+                    setResponses((oldResponses) => {
+                      const newData = { ...oldResponses };
+                      delete newData[question];
+                      return newData;
+                    });
+                  } else {
+                    setResponses((oldResponses) => ({
+                      ...oldResponses,
+                      [question]: event.target.value,
+                    }));
+                  }
+                }}
               >
                 {selectionOptions}
               </select>
