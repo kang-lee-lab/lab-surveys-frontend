@@ -11,15 +11,21 @@ function ProgressBar(props) {
     setProgressStyle({
       height: "100%",
       width: `${percentage}%`,
-      backgroundColor: "#32a852",
+      backgroundColor: "#b3cce6",
       textAlign: "right",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
     });
   }, [props]);
 
   return (
-    <div className="progress-bar">
-      <div className="filled-progress" style={progressStyle}>
-        {`${props.questionsFilled}/${props.totalQuestions}`}
+    <div className="progress-container">
+      <p>Progress</p>
+      <div className="progress-bar">
+        <div className="filled-progress" style={progressStyle}>
+          {`${props.questionsFilled}/${props.totalQuestions}`}
+        </div>
       </div>
     </div>
   );
