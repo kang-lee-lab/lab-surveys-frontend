@@ -98,7 +98,7 @@ function SurveyForm(props) {
       }
     }
     setQuestions(questionsArray);
-  }, []);
+  }, [props.questions]);
   return (
     <div className="survey-form-container">
       <ProgressBar
