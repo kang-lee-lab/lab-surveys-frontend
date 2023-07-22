@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./SurveyPage.css";
 import SurveyForm from "../../components/SurveyForm/SurveyForm";
-import ProgressBar from "../../components/ProgressBar/ProgressBar";
 
 function SurveyPage() {
   const [description, setDescription] = useState([]);
@@ -43,7 +42,6 @@ function SurveyPage() {
       <div className="survey-page-container">
         <h3>Welcome to the {survey.title} interactive webpage.</h3>
         <div className="description-container">{description}</div>
-
         <div className="survey-container">
           <SurveyForm
             questions={survey.questions}
