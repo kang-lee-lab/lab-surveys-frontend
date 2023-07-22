@@ -39,7 +39,12 @@ function SurveyForm(props) {
                 key={questionObject["id"]}
                 id={questionObject["id"]}
                 onChange={(event) =>
-                  setResponses(...responses, { question: event.target.value })
+                  setResponses((oldResponses) => {
+                    return {
+                      ...oldResponses,
+                      question: event.target.value,
+                    };
+                  })
                 }
               >
                 {selectionOptions}
