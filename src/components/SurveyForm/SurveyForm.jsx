@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./SurveyForm.css";
 import {
   YesNoSelections,
   AppliedSelections,
 } from "../../enums/questionSelections";
+import ProgressBar from "../ProgressBar/ProgressBar";
 
 function SurveyForm(props) {
   const [questions, setQuestions] = useState([]);
   const [responses, setResponses] = useState({});
+  const totalQuestions = useRef(Object.keys(props.questions).length);
 
   useEffect(() => {
     const questionsArray = [];
@@ -39,12 +41,10 @@ function SurveyForm(props) {
                 key={questionObject["id"]}
                 id={questionObject["id"]}
                 onChange={(event) =>
-                  setResponses((oldResponses) => {
-                    return {
-                      ...oldResponses,
-                      question: event.target.value,
-                    };
-                  })
+                  setResponses((oldResponses) => ({
+                    ...oldResponses,
+                    questionObject: event.target.value,
+                  }))
                 }
               >
                 {selectionOptions}
@@ -84,8 +84,15 @@ function SurveyForm(props) {
   }, []);
   return (
     <div className="survey-form-container">
+      <ProgressBar
+        questionsFilled={Object.keys(responses).length}
+        totalQuestions={totalQuestions.current}
+      />
       <div className="questions-container">{questions}</div>
-      <button id="submit-survey-button" onClick={() => props.submitSurvey()}>
+      <button
+        id="submit-survey-button"
+        onClick={() => props.submitSurvey(responses)}
+      >
         Submit
       </button>
     </div>
