@@ -1,6 +1,6 @@
 # lab-surveys-frontend
 
-A prototype of the current Kang Lee Lab Surveys front-end but redeveloped in the React.js framework.
+A prototype of the current Kang Lee Lab Surveys front-end but redeveloped in the React.js framework. Currently hosted on [Heroku](https://kangleelab-surveys-qa-ae98ac8adddf.herokuapp.com/) on the QA environment.
 
 ## Running locally
 
