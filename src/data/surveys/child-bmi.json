@@ -3,13 +3,13 @@
   "description": "This applet computes children's future height, weight, and BMI. Based on a child's current age and physical measurements, this app uses a machine learning model to compute the children's future height, weight, and BMI for a specified number of years into the future.<br>Yasin, Y., Sun, Y.H., and Lee, K. (2022). A machine learning approach for predicting children's future BMI. Canadian Developmental Psychology Conference.",
   "questions": {
     "Gender:": {
-      "id": 1,
-      "selectionType": "dropdown",
+      "question_id": 1,
+      "selection_type": "dropdown",
       "selections": ["Male", "Female"]
     },
-    "Current Age": { "id": 2, "selectionType": "integer" },
-    "Weight (kg)": { "id": 3, "selectionType": "integer" },
-    "Height (cm)": { "id": 4, "selectionType": "integer" },
-    "Age to predict": { "id": 5, "selectionType": "integer" }
+    "Current Age": { "question_id": 2, "selection_type": "integer" },
+    "Weight (kg)": { "question_id": 3, "selection_type": "integer" },
+    "Height (cm)": { "question_id": 4, "selection_type": "integer" },
+    "Age to predict": { "question_id": 5, "selection_type": "integer" }
   }
 }

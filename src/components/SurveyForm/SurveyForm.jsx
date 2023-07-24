@@ -15,7 +15,7 @@ function SurveyForm(props) {
     const questionsArray = [];
     for (const question in props.questions) {
       const questionObject = props.questions[question];
-      switch (questionObject["selectionType"]) {
+      switch (questionObject["selection_type"]) {
         case "dropdown":
           // set responses to the question
           let selectionArray;
@@ -40,11 +40,14 @@ function SurveyForm(props) {
           );
           // add question to the array
           questionsArray.push(
-            <div className="question-container" key={questionObject["id"]}>
+            <div
+              className="question-container"
+              key={questionObject["question_id"]}
+            >
               <label className="question-label">{question}</label>
               <select
-                key={questionObject["id"]}
-                id={questionObject["id"]}
+                key={questionObject["question_id"]}
+                id={questionObject["question_id"]}
                 onChange={(event) => {
                   if (event.target.value === "dropDownText") {
                     setResponses((oldResponses) => {
@@ -67,7 +70,10 @@ function SurveyForm(props) {
           break;
         case "integer":
           questionsArray.push(
-            <div className="question-container" key={questionObject["id"]}>
+            <div
+              className="question-container"
+              key={questionObject["question_id"]}
+            >
               <label className="question-label">{question}</label>
               <input
                 type="number"
@@ -95,7 +101,10 @@ function SurveyForm(props) {
         case "float":
           // TODO add default value to each float
           questionsArray.push(
-            <div className="question-container" key={questionObject["id"]}>
+            <div
+              className="question-container"
+              key={questionObject["question_id"]}
+            >
               <label className="question-label">{question}</label>
               <input
                 type="number"
@@ -121,7 +130,7 @@ function SurveyForm(props) {
           );
           break;
         default:
-          // throw an error because there should be a selectionType on every question
+          // throw an error because there should be a selection_type on every question
           // TODO create error handler component
           throw Error;
       }
