@@ -1,4 +1,6 @@
 {
+  "survey_id": "dass",
+  "survey_mode": "stress",
   "title": "Depression Anxiety Stress Scales (DASS) prediction",
   "description": "This applet computes an individual's likelihood of moderate anxiety. Based on 6 questions, this app uses a machine learning model to compute the likelihood of anxiety.",
   "questions": {
