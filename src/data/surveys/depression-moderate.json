@@ -3,45 +3,54 @@
   "description": "This applet computes an individual's likelihood of moderate anxiety. Based on 6 questions, this app uses a machine learning model to compute the likelihood of anxiety.",
   "questions": {
     "Gender:": {
+      "question_alias": "gender",
       "question_id": 1,
       "selection_type": "dropdown",
       "selections": ["Male", "Female"]
     },
     "Region": {
+      "question_alias": "region",
       "question_id": 2,
       "selection_type": "dropdown",
       "selections": ["East", "West", "Other"]
     },
     "Age": {
+      "question_alias": "age",
       "question_id": 3,
       "selection_type": "integer"
     },
     "I couldn't seem to experience any positive feeling at all": {
+      "question_alias": "Q1A",
       "question_id": 4,
       "selection_type": "dropdown",
       "selections": "AppliedSelections"
     },
     "I felt sad and depressed": {
+      "question_alias": "Q2A",
       "question_id": 5,
       "selection_type": "dropdown",
       "selections": "AppliedSelections"
     },
     "I felt that I had lost interest in just about everything": {
+      "question_alias": "Q3A",
       "question_id": 6,
       "selection_type": "dropdown",
       "selections": "AppliedSelections"
     },
     "I found it hard to wind down": {
+      "question_alias": "Q4A",
       "question_id": 7,
       "selection_type": "dropdown",
       "selections": "AppliedSelections"
     },
     "I couldn't seem to get any enjoyment out of the things I did": {
+      "question_alias": "Q5A",
       "question_id": 8,
       "selection_type": "dropdown",
       "selections": "AppliedSelections"
     },
     "I felt I was pretty worthless": {
+      "question_alias": "Q6A",
       "question_id": 9,
       "selection_type": "dropdown",
       "selections": "AppliedSelections"

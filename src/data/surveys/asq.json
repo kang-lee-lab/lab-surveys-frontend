@@ -2,37 +2,150 @@
   "title": "integrated Heart Rate Variability (iHRV) Calculator",
   "description": "The integrated Heart Rate Variability (iHRV) synthesizes results of 29 Heart Rate Variability (HRV) measures (see description for each measure in the table below) into a set of six indexes, one for each orthogonal dimension that underly HRV measures (HRV-D1-6), which are then combined to produce a single integrated index (iHRV). HRV measures assess variation in the time intervals between two successive heartbeats. These measures can be obtained through analysis of an electrocardiogram. Extensive research has found these measures to be indicative of a person’s heart health. However, different measures are often used across research, clinical, and commercial domains, making interpretation of HRV difficult. Wu et al. (submitted) established a method for integrating multiple measures to enable examination of a small set of indexes that reflect the six dimensions of HRV, called Heart Rate Variability of dimensions 1 to 6 (HRV-D1-6). As well, a single index called integrated Heart Rate Variability (iHRV) is derived to allow easy interpretation. Here, we provquestionIde the iHRV Calculator for you to try Wu et al. (submitted)’s method! Please input values of HRV measures and we will generate your HRV-D1-6 and iHRV!",
   "questions": {
-    "Mean Heart Rate (BPM):": { "question_id": 1, "selection_type": "float" },
+    "Mean Heart Rate (BPM):": {
+      "question_alias": "MHR",
+      "question_id": 1,
+      "selection_type": "float"
+    },
     "Standard Deviation Heart Rate (BPM):": {
+      "question_alias": "SDHR",
       "question_id": 2,
       "selection_type": "float"
     },
-    "Max RR Interval (ms):": { "question_id": 3, "selection_type": "integer" },
-    "Min RR Interval (ms):": { "question_id": 4, "selection_type": "integer" },
-    "Mean RR Interval (ms):": { "question_id": 5, "selection_type": "float" },
-    "Median RR Interval (ms):": { "question_id": 6, "selection_type": "float" },
-    "SDNN (ms):": { "question_id": 7, "selection_type": "float" },
-    "NN50:": { "question_id": 8, "selection_type": "integer" },
-    "pNN50 (%):": { "question_id": 9, "selection_type": "float" },
-    "RMSSD (ms):": { "question_id": 10, "selection_type": "integer" },
-    "VLF (ms²):": { "question_id": 11, "selection_type": "float" },
-    "LF (ms²):": { "question_id": 12, "selection_type": "float" },
-    "HF (ms²):": { "question_id": 13, "selection_type": "float" },
-    "Total (ms²):": { "question_id": 14, "selection_type": "float" },
-    "Peak VLF (ms²):": { "question_id": 15, "selection_type": "float" },
-    "Peak LF (ms²):": { "question_id": 16, "selection_type": "float" },
-    "Peak HF (ms²):": { "question_id": 17, "selection_type": "float" },
-    "VLF (%):": { "question_id": 18, "selection_type": "float" },
-    "LF (%):": { "question_id": 19, "selection_type": "float" },
-    "HF (%):": { "question_id": 20, "selection_type": "float" },
-    "LF (nu):": { "question_id": 21, "selection_type": "float" },
-    "HF (nu):": { "question_id": 22, "selection_type": "float" },
-    "LF/HF:": { "question_id": 23, "selection_type": "float" },
-    "SD1 (ms):": { "question_id": 24, "selection_type": "float" },
-    "SD2 (ms):": { "question_id": 25, "selection_type": "float" },
-    "SD1/SD2:": { "question_id": 26, "selection_type": "float" },
-    "α:": { "question_id": 27, "selection_type": "float" },
-    "α1:": { "question_id": 28, "selection_type": "float" },
-    "α2:": { "question_id": 29, "selection_type": "float" }
+    "Max RR Interval (ms):": {
+      "question_alias": "max_RR_interval",
+      "question_id": 3,
+      "selection_type": "integer"
+    },
+    "Min RR Interval (ms):": {
+      "question_alias": "min_RR_interval",
+      "question_id": 4,
+      "selection_type": "integer"
+    },
+    "Mean RR Interval (ms):": {
+      "question_alias": "mean_RR_interval",
+      "question_id": 5,
+      "selection_type": "float"
+    },
+    "Median RR Interval (ms):": {
+      "question_alias": "median_RR_interval",
+      "question_id": 6,
+      "selection_type": "float"
+    },
+    "SDNN (ms):": {
+      "question_alias": "SDNN",
+      "question_id": 7,
+      "selection_type": "float"
+    },
+    "NN50:": {
+      "question_alias": "NN50",
+      "question_id": 8,
+      "selection_type": "integer"
+    },
+    "pNN50 (%):": {
+      "question_alias": "pNN500",
+      "question_id": 9,
+      "selection_type": "float"
+    },
+    "RMSSD (ms):": {
+      "question_alias": "RMSSDD",
+      "question_id": 10,
+      "selection_type": "integer"
+    },
+    "VLF (ms²):": {
+      "question_alias": "VLF",
+      "question_id": 11,
+      "selection_type": "float"
+    },
+    "LF (ms²):": {
+      "question_alias": "LF",
+      "question_id": 12,
+      "selection_type": "float"
+    },
+    "HF (ms²):": {
+      "question_alias": "HF",
+      "question_id": 13,
+      "selection_type": "float"
+    },
+    "Total (ms²):": {
+      "question_alias": "totall",
+      "question_id": 14,
+      "selection_type": "float"
+    },
+    "Peak VLF (ms²):": {
+      "question_alias": "VLF_peakpeak",
+      "question_id": 15,
+      "selection_type": "float"
+    },
+    "Peak LF (ms²):": {
+      "question_alias": "LF_peakeak",
+      "question_id": 16,
+      "selection_type": "float"
+    },
+    "Peak HF (ms²):": {
+      "question_alias": "HF_peakeak",
+      "question_id": 17,
+      "selection_type": "float"
+    },
+    "VLF (%):": {
+      "question_alias": "VLF_percentpercent",
+      "question_id": 18,
+      "selection_type": "float"
+    },
+    "LF (%):": {
+      "question_alias": "LF_percentercent",
+      "question_id": 19,
+      "selection_type": "float"
+    },
+    "HF (%):": {
+      "question_alias": "HF_percentercent",
+      "question_id": 20,
+      "selection_type": "float"
+    },
+    "LF (nu):": {
+      "question_alias": "LF_nuu",
+      "question_id": 21,
+      "selection_type": "float"
+    },
+    "HF (nu):": {
+      "question_alias": "HF_nuu",
+      "question_id": 22,
+      "selection_type": "float"
+    },
+    "LF/HF:": {
+      "question_alias": "LF_HFF",
+      "question_id": 23,
+      "selection_type": "float"
+    },
+    "SD1 (ms):": {
+      "question_alias": "SD1",
+      "question_id": 24,
+      "selection_type": "float"
+    },
+    "SD2 (ms):": {
+      "question_alias": "SD2",
+      "question_id": 25,
+      "selection_type": "float"
+    },
+    "SD1/SD2:": {
+      "question_alias": "SD1_SD2SD2",
+      "question_id": 26,
+      "selection_type": "float"
+    },
+    "α:": {
+      "question_alias": "alphaa",
+      "question_id": 27,
+      "selection_type": "float"
+    },
+    "α1:": {
+      "question_alias": "alpha1a1",
+      "question_id": 28,
+      "selection_type": "float"
+    },
+    "α2:": {
+      "question_alias": "alpha2",
+      "question_id": 29,
+      "selection_type": "float"
+    }
   }
 }

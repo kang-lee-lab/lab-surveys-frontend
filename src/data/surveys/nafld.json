@@ -3,67 +3,98 @@
   "description": "This applet computes an individuals likelihood of NAFLD. Based on 20 physical measures and blood biomarkers, this app uses a machine learning model to compute the likelihood of NAFLD.<br>Non-alcoholic fatty liver disease (NAFLD) is becoming a major global burden of disease, but its diagnosis based on liver biopsy is invasive and expensive. This study aimed to investigate the feasibility of using patient physical and blood biomarkers to build computational models to predict NAFLD risks accurately.<br>We obtained a large dataset (N=120,376) containing patients’ physical and blood measurements, and their NAFLD status based on the invasive liver biopsy. Using this dataset, the most important patient physical and blood biomarkers were extracted using feature selection techniques. Then, using the most important features, six different machine learning algorithms trained and tested models that predict the NAFLD status. Finally, these models were validated with a pristine set of patient data never used in model training and testing, and SHAP (SHapley Additive exPlanations) analysis was performed on the final model.<br>We identified the top 20 features for predicting NAFLD risk including Weight, BMI, Alanine aminotransferase, and HDL Cholesterol. Our best machine learning model using the Extreme Gradient Boosting Decision Tree (XGB) technique achieved 84.94% area under the curve (ROC AUC), and 82.58% accuracy (88.75% sensitivity and 81.13% specificity) for predicting NAFLD status<br>Our findings suggest that machine learning models based on patient physical and blood biomarkers provide a viable, non-invasive, and inexpensive method to assess patients’ risks for non-alcoholic fatty liver disease accurately.",
   "questions": {
     "Age": {
+      "question_alias": "age",
       "question_id": 1,
       "selection_type": "integer"
     },
     "Gender:": {
+      "question_alias": "gender0female1male",
       "question_id": 2,
       "selection_type": "dropdown",
       "selections": ["Male", "Female"]
     },
-    "Weight (kg)": { "question_id": 3, "selection_type": "integer" },
-    "Height (cm)": { "question_id": 4, "selection_type": "integer" },
+    "Weight (kg)": {
+      "question_alias": "weight",
+      "question_id": 3,
+      "selection_type": "integer"
+    },
+    "Height (cm)": {
+      "question_alias": "height",
+      "question_id": 4,
+      "selection_type": "integer"
+    },
     "HDL cholesterol (mmol/L):": {
+      "question_alias": "H cholesterol",
       "question_id": 5,
       "selection_type": "float"
     },
-    "Triglycerides (mmol/L):": { "question_id": 6, "selection_type": "float" },
+    "Triglycerides (mmol/L):": {
+      "question_alias": "Triglycerides",
+      "question_id": 6,
+      "selection_type": "float"
+    },
     "Diastolic blood pressure (mmHg):": {
+      "question_alias": "diastolic",
       "question_id": 7,
       "selection_type": "float"
     },
     "Systolic blood pressure (mmHg):": {
+      "question_alias": "systolic",
       "question_id": 8,
       "selection_type": "float"
     },
     "The average hemoglobin concentration (g/L):": {
+      "question_alias": "The average hemoglobin concentration",
       "question_id": 9,
       "selection_type": "float"
     },
     "Red blood cell count (trillion/L):": {
+      "question_alias": "Red blood cell count",
       "question_id": 10,
       "selection_type": "float"
     },
     "Platelet count (thousands/µL):": {
+      "question_alias": "Platelet count",
       "question_id": 11,
       "selection_type": "float"
     },
     "Alanine aminotransferase (IU/L):": {
+      "question_alias": "Alanine aminotransferase",
       "question_id": 12,
       "selection_type": "float"
     },
     "White blood cell count (billions/L):": {
+      "question_alias": "White blood cell count",
       "question_id": 13,
       "selection_type": "float"
     },
     "Lymphocyte count (billions/L):": {
+      "question_alias": "Lymphocyte count",
       "question_id": 14,
       "selection_type": "float"
     },
     "Eosinophil count (billions/L):": {
+      "question_alias": "Eosinophil count",
       "question_id": 15,
       "selection_type": "float"
     },
-    "Total bilirubin (mg/L):": { "question_id": 16, "selection_type": "float" },
+    "Total bilirubin (mg/L):": {
+      "question_alias": "Total bilirubin",
+      "question_id": 16,
+      "selection_type": "float"
+    },
     "Cholinesterase (U/mL):": {
+      "question_alias": "Cholinesterase",
       "question_id": 17,
       "selection_type": "integer"
     },
     "Leucine aminopeptidase (U/mL):": {
+      "question_alias": "Leucine aminopeptidase",
       "question_id": 18,
       "selection_type": "integer"
     },
     "Alkaline phosphatase (IU/L):": {
+      "question_alias": "Alkaline phosphatase",
       "question_id": 19,
       "selection_type": "integer"
     }
