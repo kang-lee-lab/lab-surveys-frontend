@@ -58,7 +58,7 @@ function SurveyForm(props) {
                   } else {
                     setResponses((oldResponses) => ({
                       ...oldResponses,
-                      [question]: event.target.value,
+                      [questionObject["question_alias"]]: event.target.value,
                     }));
                   }
                 }}
@@ -89,7 +89,7 @@ function SurveyForm(props) {
                   } else {
                     setResponses((oldResponses) => ({
                       ...oldResponses,
-                      [question]: event.target.value,
+                      [questionObject["question_alias"]]: event.target.value,
                     }));
                   }
                 }}
@@ -121,7 +121,7 @@ function SurveyForm(props) {
                   } else {
                     setResponses((oldResponses) => ({
                       ...oldResponses,
-                      [question]: event.target.value,
+                      [questionObject["question_alias"]]: event.target.value,
                     }));
                   }
                 }}
