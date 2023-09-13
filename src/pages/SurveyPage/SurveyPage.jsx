@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
 import "./SurveyPage.css";
 import SurveyForm from "../../components/SurveyForm/SurveyForm";
 
@@ -16,9 +17,18 @@ function SurveyPage() {
   }
 
   // TODO implement this after backend
-  const submitSurvey = (surveyResponses) => {
+  const submitSurvey = async (surveyResponses) => {
     console.log(surveyResponses);
     console.log("submitting survey...");
+    const response = await axios.post(
+      `${process.env.REACT_APP_API_ADDRESS}/results`,
+      {
+        survey: survey.survey_id,
+        mode: survey.survey_mode,
+        data: surveyResponses,
+      }
+    );
+    console.log(response);
   };
 
   useEffect(() => {
