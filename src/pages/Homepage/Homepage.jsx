@@ -23,7 +23,7 @@ function Homepage() {
       </div>
       <div className="survey-card-containers">
         <div className="psychology-survey-container">
-          <h2>Psychology Surveys</h2>
+          <h2>Demo Psychology Surveys</h2>
           {psychologySurveys.map((item) => (
             <SurveyCards survey={item} key={item.key} />
           ))}

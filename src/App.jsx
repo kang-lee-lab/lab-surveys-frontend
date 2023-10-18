@@ -4,6 +4,8 @@ import Homepage from "./pages/Homepage/Homepage";
 import Header from "./components/Header/Header";
 import InProgress from "./pages/InProgress/InProgress";
 import SurveyPage from "./pages/SurveyPage/SurveyPage";
+import Consent from "./pages/Consent/Consent";
+import DataColSurveys from "./pages/DataColSurveys/DataColSurveys";
 
 function App() {
   return (
@@ -12,8 +14,10 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/participate" element={<InProgress />} />
+          <Route path="/participate" element={<Consent />} />
           <Route path="/survey/:name" element={<SurveyPage />} />
+            {/*<Route path="/survey/consent/:name" element={<Consent />} />*/}
+            <Route path={"/datasurveys"} element={<DataColSurveys/>} />
         </Routes>
       </div>
     </Router>
