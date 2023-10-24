@@ -18,17 +18,29 @@ function SurveyPage() {
 
   // TODO implement this after backend
   const submitSurvey = async (surveyResponses) => {
-    console.log(surveyResponses);
-    console.log("submitting survey...");
-    const response = await axios.post(
-      `${process.env.REACT_APP_API_ADDRESS}/results/`,
-      {
-        survey: survey.survey_id,
-        mode: survey.survey_mode,
-        data: surveyResponses,
+    const valid = validateResponses(surveyResponses);
+    if (!valid) {
+      console.log("You must fill out all questions of the survey.");
+    } else {
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_ADDRESS}/results/`,
+        {
+          survey: survey.survey_id,
+          mode: survey.survey_mode,
+          data: surveyResponses,
+        }
+      );
+      console.log(response);
+    }
+  };
+
+  const validateResponses = (surveyResponses) => {
+    for (const response in surveyResponses) {
+      if (surveyResponses[response] === null) {
+        return false;
       }
-    );
-    console.log(response);
+    }
+    return true;
   };
 
   useEffect(() => {
