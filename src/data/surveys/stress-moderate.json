@@ -22,31 +22,31 @@
       "selection_type": "integer"
     },
     "I tended to over-react to situations": {
-      "question_alias": "Q1A",
+      "question_alias": "Q6A",
       "question_id": 4,
       "selection_type": "dropdown",
       "selections": "AppliedSelections"
     },
     "I found myself getting upset rather easily": {
-      "question_alias": "Q2A",
+      "question_alias": "Q11A",
       "question_id": 5,
       "selection_type": "dropdown",
       "selections": "AppliedSelections"
     },
     "I felt that I was rather touchy": {
-      "question_alias": "Q3A",
+      "question_alias": "Q18A",
       "question_id": 6,
       "selection_type": "dropdown",
       "selections": "AppliedSelections"
     },
     "I found that I was very irritable": {
-      "question_alias": "Q4A",
+      "question_alias": "Q27A",
       "question_id": 7,
       "selection_type": "dropdown",
       "selections": "AppliedSelections"
     },
     "I found it hard to calm down after something upset me": {
-      "question_alias": "Q5A",
+      "question_alias": "Q29A",
       "question_id": 8,
       "selection_type": "dropdown",
       "selections": "AppliedSelections"
