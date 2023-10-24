@@ -21,7 +21,7 @@ function SurveyPage() {
     console.log(surveyResponses);
     console.log("submitting survey...");
     const response = await axios.post(
-      `${process.env.REACT_APP_API_ADDRESS}/results`,
+      `${process.env.REACT_APP_API_ADDRESS}/results/`,
       {
         survey: survey.survey_id,
         mode: survey.survey_mode,
