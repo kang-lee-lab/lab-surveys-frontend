@@ -9,8 +9,20 @@ import ProgressBar from "../ProgressBar/ProgressBar";
 function SurveyForm(props) {
   const [questions, setQuestions] = useState([]);
   const [responses, setResponses] = useState({});
+  const [validResponses, setValidResponses] = useState(0);
   const totalQuestions = useRef(Object.keys(props.questions).length);
 
+  // set the response object so it always has the same order
+  useEffect(() => {
+    const tempResponses = {};
+    for (const question in props.questions) {
+      const alias = props.questions[question]["question_alias"];
+      tempResponses[alias] = null;
+    }
+    setResponses(tempResponses);
+  }, [props.questions]);
+
+  // set the questions and their responses
   useEffect(() => {
     const questionsArray = [];
     for (const question in props.questions) {
@@ -139,10 +151,22 @@ function SurveyForm(props) {
     }
     setQuestions(questionsArray);
   }, [props.questions]);
+
+  // keep track of responses for the progress bar
+  useEffect(() => {
+    let valid = 0;
+    for (const response in responses) {
+      if (responses[response] !== null) {
+        valid += 1;
+      }
+    }
+    setValidResponses(valid);
+  }, [responses]);
+
   return (
     <div className="survey-form-container">
       <ProgressBar
-        questionsFilled={Object.keys(responses).length}
+        questionsFilled={validResponses}
         totalQuestions={totalQuestions.current}
       />
       <div className="questions-container">{questions}</div>
