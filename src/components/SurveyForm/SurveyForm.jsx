@@ -18,21 +18,23 @@ function SurveyForm(props) {
       switch (questionObject["selection_type"]) {
         case "dropdown":
           // set responses to the question
-          let selectionArray;
+          let selectionObject;
           if (questionObject.selections === "YesNoSelections") {
-            selectionArray = YesNoSelections;
+            selectionObject = YesNoSelections;
           } else if (questionObject.selections === "AppliedSelections") {
-            selectionArray = AppliedSelections;
+            selectionObject = AppliedSelections;
           } else {
-            selectionArray = questionObject.selections;
+            selectionObject = questionObject.selections;
           }
-          const selectionOptions = selectionArray.map((selection) => {
-            return (
-              <option key={selection} value={selection}>
-                {selection}
+
+          const selectionOptions = [];
+          for (const key in selectionObject) {
+            selectionOptions.push(
+              <option key={key} value={selectionObject[key]}>
+                {key}
               </option>
             );
-          });
+          }
           selectionOptions.unshift(
             <option key={0} value={"dropDownText"}>
               Click to drop down
