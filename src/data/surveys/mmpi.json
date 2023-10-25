@@ -99,512 +99,518 @@
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
-    "I would have achieved a lot more if it wasn\u2019t because I was impeded by someone.": {
+    "I have experienced very special or strange experiences.": {
       "question_alias": "Q33",
+      "question_id": 200,
+      "selection_type": "dropdown",
+      "selections": "YesNoSelections"
+    },
+    "I would have achieved a lot more if it wasn\u2019t because I was impeded by someone.": {
+      "question_alias": "Q35",
       "question_id": 17,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I have never had problems with my sexual activities.": {
-      "question_alias": "Q35",
+      "question_alias": "Q37",
       "question_id": 18,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I did petty theft when I was young.": {
-      "question_alias": "Q37",
+      "question_alias": "Q38",
       "question_id": 19,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "My family is unsatisfied with my chosen job (or upcoming job).": {
-      "question_alias": "Q38",
+      "question_alias": "Q42",
       "question_id": 20,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I am as healthy as most of my friends.": {
-      "question_alias": "Q42",
+      "question_alias": "Q51",
       "question_id": 21,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I become familiar with others as soon as I meet them.": {
-      "question_alias": "Q51",
+      "question_alias": "Q51=7",
       "question_id": 22,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I defecate normally and controllably.": {
-      "question_alias": "Q57",
+      "question_alias": "Q63",
       "question_id": 23,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "Sometimes I do something non-stop until it annoys someone.": {
-      "question_alias": "Q63",
+      "question_alias": "Q64",
       "question_id": 24,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I hope I can be happy like others.": {
-      "question_alias": "Q64",
+      "question_alias": "Q67",
       "question_id": 25,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I have never had pain in the back of my neck.": {
-      "question_alias": "Q67",
+      "question_alias": "Q68",
       "question_id": 26,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I believe many people exaggerate their misfortunes to gain sympathy and help from others.": {
-      "question_alias": "Q68",
+      "question_alias": "Q71",
       "question_id": 27,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I get angry sometimes.": {
-      "question_alias": "Q71",
+      "question_alias": "Q76",
       "question_id": 28,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I believe I would enjoy being a forest ranger (or a similar job)": {
-      "question_alias": "Q76",
+      "question_alias": "Q72",
       "question_id": 29,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "Everyone can succeed if they have the ability and desire to do the job.": {
-      "question_alias": "Q82",
+      "question_alias": "Q84",
       "question_id": 30,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "Sometimes I delay things I am supposed to do today to the next day.": {
-      "question_alias": "Q84",
+      "question_alias": "Q91",
       "question_id": 31,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I want to be a nurse.": {
-      "question_alias": "Q91",
+      "question_alias": "Q93",
       "question_id": 32,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I believe most people will lie to make gains.": {
-      "question_alias": "Q93",
+      "question_alias": "Q94",
       "question_id": 33,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I rarely quarrel with my family.": {
-      "question_alias": "Q94",
+      "question_alias": "Q97",
       "question_id": 34,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I believe women should enjoy the same rights as men when it comes to sex life.": {
-      "question_alias": "Q97",
+      "question_alias": "Q102",
       "question_id": 35,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I believe I am the hardest to control.": {
-      "question_alias": "Q102",
+      "question_alias": "Q103",
       "question_id": 36,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I lose my temper when my body is in discomfort.": {
-      "question_alias": "Q103",
+      "question_alias": "Q106",
       "question_id": 37,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I always feel like I have done something wrong or committed some crime.": {
-      "question_alias": "Q106",
+      "question_alias": "Q107",
       "question_id": 38,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "Some people are so bossy that I have to go against them, even when I know they are right.": {
-      "question_alias": "Q107",
+      "question_alias": "Q110",
       "question_id": 39,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I like games or competitions that I have wagered in more.": {
-      "question_alias": "Q110",
+      "question_alias": "Q117",
       "question_id": 40,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "When I was in school, sometimes I was called out by the leader for making a fuss.": {
-      "question_alias": "Q117",
+      "question_alias": "Q119",
       "question_id": 41,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I always speak at a pace that is neither fast nor slow, and I am neither ambiguous nor hoarse.": {
-      "question_alias": "Q119",
+      "question_alias": "Q120",
       "question_id": 42,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I believe someone is plotting against me.": {
-      "question_alias": "Q120",
+      "question_alias": "Q122",
       "question_id": 43,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I seem to be as capable as the people around me.": {
-      "question_alias": "Q122",
+      "question_alias": "Q123",
       "question_id": 44,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I believe someone is stalking me.": {
-      "question_alias": "Q123",
+      "question_alias": "Q124",
       "question_id": 45,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I enjoy theatrical works.": {
-      "question_alias": "Q124",
+      "question_alias": "Q127",
       "question_id": 46,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I know who is causing me trouble.": {
-      "question_alias": "Q127",
+      "question_alias": "Q128",
       "question_id": 47,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I have never indulged myself in any unusual sexual behavior.": {
-      "question_alias": "Q128",
+      "question_alias": "Q134",
       "question_id": 48,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I enjoy cooking.": {
-      "question_alias": "Q134",
+      "question_alias": "Q141",
       "question_id": 49,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I like to be a soldier.": {
-      "question_alias": "Q141",
+      "question_alias": "Q145",
       "question_id": 50,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "Someone has been wanting to kill me with poison.": {
-      "question_alias": "Q145",
+      "question_alias": "Q152",
       "question_id": 51,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I have never had a twitching problem.": {
-      "question_alias": "Q152",
+      "question_alias": "Q155",
       "question_id": 52,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "There was a time when I didn't remember anything I did.": {
-      "question_alias": "Q155",
+      "question_alias": "Q157",
       "question_id": 53,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I hate it when people trick me, forcing me to admit defeat.": {
-      "question_alias": "Q157",
+      "question_alias": "Q163",
       "question_id": 54,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I hardly get tired.": {
-      "question_alias": "Q163",
+      "question_alias": "Q164",
       "question_id": 55,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I am afraid of looking down from high places.": {
-      "question_alias": "Q164",
+      "question_alias": "Q167",
       "question_id": 56,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I don\u2019t get nervous, even when someone in my family breaks the law.": {
-      "question_alias": "Q167",
+      "question_alias": "Q168",
       "question_id": 57,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I am not afraid to manage money.": {
-      "question_alias": "Q168",
+      "question_alias": "Q170",
       "question_id": 58,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I have never fainted before.": {
-      "question_alias": "Q170",
+      "question_alias": "Q175",
       "question_id": 59,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I am not afraid of snakes.": {
-      "question_alias": "Q175",
+      "question_alias": "Q177",
       "question_id": 60,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "My mother is a good person.": {
-      "question_alias": "Q177",
+      "question_alias": "Q178",
       "question_id": 61,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "My memory seems to be good.": {
-      "question_alias": "Q178",
+      "question_alias": "Q179",
       "question_id": 62,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I feel like I don\u2019t know what to say when I encounter strangers.": {
-      "question_alias": "Q179",
+      "question_alias": "Q181",
       "question_id": 63,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I often find my hands trembling when I need to do something.": {
-      "question_alias": "Q181",
+      "question_alias": "Q187",
       "question_id": 64,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "Sometimes, I sweat a lot when I am embarrassed. This troubles me.": {
-      "question_alias": "Q187",
+      "question_alias": "Q192",
       "question_id": 65,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "Someone wants to steal my thoughts and plans.": {
-      "question_alias": "Q192",
+      "question_alias": "Q201",
       "question_id": 66,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I wish I am not as shy as I am now.": {
-      "question_alias": "Q201",
+      "question_alias": "Q202",
       "question_id": 67,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I think I'd like a job as a construction contractor.": {
-      "question_alias": "Q202",
+      "question_alias": "Q220",
       "question_id": 68,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I like to hunt.": {
-      "question_alias": "Q220",
+      "question_alias": "Q224",
       "question_id": 69,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "Sometimes I feel it is easy to make a decision.": {
-      "question_alias": "Q224",
+      "question_alias": "Q229",
       "question_id": 70,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I like joining several groups at once.": {
-      "question_alias": "Q229",
+      "question_alias": "Q230",
       "question_id": 71,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I never felt short of breath.": {
-      "question_alias": "Q230",
+      "question_alias": "Q231",
       "question_id": 72,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "Sometimes I prevent others from doing certain things, not because of the potential impact, but because I feel I am morally obligated.": {
-      "question_alias": "Q231",
+      "question_alias": "Q234",
       "question_id": 73,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "Almost all my relatives sympathize with me.": {
-      "question_alias": "Q234",
+      "question_alias": "Q238",
       "question_id": 74,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "My methods are often misunderstood.": {
-      "question_alias": "Q238",
+      "question_alias": "Q245",
       "question_id": 75,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I get excited at least once or twice a week.": {
-      "question_alias": "Q245",
+      "question_alias": "Q267",
       "question_id": 76,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I don\u2019t know what to say when there are a lot of people.": {
-      "question_alias": "Q267",
+      "question_alias": "Q268",
       "question_id": 77,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I don\u2019t blame someone who bullies a person who has brought it upon themselves.": {
-      "question_alias": "Q268",
+      "question_alias": "Q272",
       "question_id": 78,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "Sometimes I admire a con man's wit so much that I even hope they get away with it.": {
-      "question_alias": "Q272",
+      "question_alias": "Q278",
       "question_id": 79,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I often feel that some strangers are staring at me critically.": {
-      "question_alias": "Q278",
+      "question_alias": "Q279",
       "question_id": 80,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "Most people make friends because friends are useful to them.": {
-      "question_alias": "Q279",
+      "question_alias": "Q281",
       "question_id": 81,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "Problems with nausea and vomiting bother me.": {
-      "question_alias": "Q281",
+      "question_alias": "Q289",
       "question_id": 82,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "At least once or twice in my life, I felt someone hint at me to do something.": {
-      "question_alias": "Q289",
+      "question_alias": "Q292",
       "question_id": 83,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I like reading novels like Dream of the Red Chamber.": {
-      "question_alias": "Q292",
+      "question_alias": "Q296",
       "question_id": 84,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I wish I wasn't bothered by sexual thoughts anymore.": {
-      "question_alias": "Q296",
+      "question_alias": "Q298",
       "question_id": 85,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I have never liked dolls in my entire life.": {
-      "question_alias": "Q298",
+      "question_alias": "Q301",
       "question_id": 86,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "Occasionally I think of things that are too evil to be said aloud.": {
-      "question_alias": "Q301",
+      "question_alias": "Q315",
       "question_id": 87,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I deeply believe that life is cruel to me.": {
-      "question_alias": "Q315",
+      "question_alias": "Q316",
       "question_id": 88,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I am more sensitive than most people.": {
-      "question_alias": "Q316",
+      "question_alias": "Q318",
       "question_id": 89,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I have a lot of dreams about sex.": {
-      "question_alias": "Q318",
+      "question_alias": "Q321",
       "question_id": 90,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I have had very special or strange experiences.": {
-      "question_alias": "Q321",
+      "question_alias": "Q324",
       "question_id": 91,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I worry about more things than I should.": {
-      "question_alias": "Q324",
+      "question_alias": "Q339",
       "question_id": 92,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "Sometimes my hearing is so sensitive that it annoys me.": {
-      "question_alias": "Q339",
+      "question_alias": "Q342",
       "question_id": 93,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I often feel everything is not real.": {
-      "question_alias": "Q342",
+      "question_alias": "Q346",
       "question_id": 94,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I have some weird or special ideas.": {
-      "question_alias": "Q346",
+      "question_alias": "Q350",
       "question_id": 95,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "There were a few times I gave up on the thing I was doing because I feel incapable.": {
-      "question_alias": "Q350",
+      "question_alias": "Q358",
       "question_id": 96,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "Sometimes I am bothered by unimportant thoughts, making me uneasy for days.": {
-      "question_alias": "Q358",
+      "question_alias": "Q360",
       "question_id": 97,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "In social gatherings, I mostly sit alone or with another person, rather than being with a crowd.": {
-      "question_alias": "Q360",
+      "question_alias": "Q370",
       "question_id": 98,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "I like social gatherings because I can get together with people.": {
-      "question_alias": "Q370",
+      "question_alias": "Q383",
       "question_id": 99,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "Things about sex annoy me.": {
-      "question_alias": "Q383",
+      "question_alias": "Q471",
       "question_id": 100,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
     },
     "My future doesn\u2019t seem hopeful.": {
-      "question_alias": "Q471",
+      "question_alias": "Q527",
       "question_id": 101,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
