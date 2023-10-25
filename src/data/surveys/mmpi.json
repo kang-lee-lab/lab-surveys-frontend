@@ -8,7 +8,7 @@
       "question_alias": "Gender",
       "question_id": 1,
       "selection_type": "dropdown",
-      "selections": { "Male": 1, "Female": 2 }
+      "selections": { "Male": 0, "Female": 1 }
     },
     "Age": {
       "question_alias": "Age",
