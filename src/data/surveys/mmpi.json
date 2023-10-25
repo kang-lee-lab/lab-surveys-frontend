@@ -136,7 +136,7 @@
       "selections": "YesNoSelections"
     },
     "I become familiar with others as soon as I meet them.": {
-      "question_alias": "Q51=7",
+      "question_alias": "Q57",
       "question_id": 22,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
