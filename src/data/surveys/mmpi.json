@@ -178,7 +178,7 @@
       "selections": "YesNoSelections"
     },
     "I believe I would enjoy being a forest ranger (or a similar job)": {
-      "question_alias": "Q72",
+      "question_alias": "Q82",
       "question_id": 29,
       "selection_type": "dropdown",
       "selections": "YesNoSelections"
