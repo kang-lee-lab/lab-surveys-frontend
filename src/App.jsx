@@ -6,6 +6,7 @@ import InProgress from "./pages/InProgress/InProgress";
 import SurveyPage from "./pages/SurveyPage/SurveyPage";
 import Consent from "./pages/Consent/Consent";
 import DataColSurveys from "./pages/DataColSurveys/DataColSurveys";
+import ResultsPage from "./pages/ResultsPage/ResultsPage";
 
 function App() {
   return (
@@ -15,9 +16,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/participate" element={<Consent />} />
+          <Route path="/survey/:name/results" element={<ResultsPage />} />
           <Route path="/survey/:name" element={<SurveyPage />} />
-            {/*<Route path="/survey/consent/:name" element={<Consent />} />*/}
-            <Route path={"/datasurveys"} element={<DataColSurveys/>} />
+          {/*<Route path="/survey/consent/:name" element={<Consent />} />*/}
+          <Route path={"/datasurveys"} element={<DataColSurveys />} />
         </Routes>
       </div>
     </Router>
