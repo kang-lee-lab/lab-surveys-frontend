@@ -1,22 +1,26 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import "./SurveyPage.css";
 import SurveyForm from "../../components/SurveyForm/SurveyForm";
 
 function SurveyPage() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [description, setDescription] = useState([]);
   const split = window.location.pathname.split("/");
   const totalQuestions = useRef(0);
   const surveyName = split[2];
   let survey;
+
   try {
     survey = require(`../../data/surveys/${surveyName}.json`);
     totalQuestions.current = Object.keys(survey.questions).length;
+    console.log(survey.questions);
   } catch {
     survey = "not-found";
   }
 
-  // TODO implement this after backend
   const submitSurvey = async (surveyResponses) => {
     const valid = validateResponses(surveyResponses);
     if (!valid) {
@@ -30,7 +34,7 @@ function SurveyPage() {
           data: surveyResponses,
         }
       );
-      console.log(response);
+      navigate(location.pathname + "/results", { state: response.data });
     }
   };
 
