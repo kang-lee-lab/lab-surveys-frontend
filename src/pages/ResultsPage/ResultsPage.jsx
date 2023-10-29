@@ -17,17 +17,20 @@ function ResultsPage() {
   const cleanData = objectToArray(JSON.parse(data.results));
   console.log(cleanData);
 
-  // const exampleData = [
-  //   {
-  //     name:
-  //       "Depression Percentage: " +
-  //       Number(data.positive.toFixed(5)) * 100 +
-  //       "%",
-  //     value: data.positive,
-  //     fill: "#0088FE",
-  //   },
-  //   { name: "", value: 1 - data.positive, fill: "#ffffff00" },
-  // ];
+  let exampleData = [];
+  if (data.metadata.survey_id === "dass") {
+    exampleData = [
+      {
+        name:
+          "Depression Percentage: " +
+          Number(data.positive.toFixed(5)) * 100 +
+          "%",
+        value: data.positive,
+        fill: "#0088FE",
+      },
+      { name: "", value: 1 - data.positive, fill: "#ffffff00" },
+    ];
+  }
 
   // location.state holds results
   return (
@@ -35,7 +38,7 @@ function ResultsPage() {
       <h3>
         Welcome to the results page for the {data.metadata.full_name} survey.
       </h3>
-      {/* {data.metadata.survey_id === "dass" && (
+      {data.metadata.survey_id === "dass" && (
         <PieChart width={800} height={400}>
           <Legend
             height={36}
@@ -53,15 +56,10 @@ function ResultsPage() {
             dataKey="value"
           ></Pie>
         </PieChart>
-      )} */}
+      )}
 
       {data.metadata.survey_id === "mmpi" && (
-        <RadarChart
-          height={500}
-          width={500}
-          outerRadius="80%"
-          data={objectToArray(data)}
-        >
+        <RadarChart height={500} width={500} outerRadius="80%" data={cleanData}>
           <PolarGrid />
           <PolarAngleAxis dataKey="name" />
           <PolarRadiusAxis />
