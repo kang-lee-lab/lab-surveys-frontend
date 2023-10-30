@@ -3,7 +3,8 @@
   "survey_mode": "",
   "title": "Children's Future BMI prediction",
   "description": {
-    "p1": "This applet computes children's future height, weight, and BMI. Based on a child's current age and physical measurements, this app uses a machine learning model to compute the children's future height, weight, and BMI for a specified number of years into the future.<br>Yasin, Y., Sun, Y.H., and Lee, K. (2022). A machine learning approach for predicting children's future BMI. Canadian Developmental Psychology Conference."
+    "p1": "This applet computes children's future height, weight, and BMI. Based on a child's current age and physical measurements, this app uses a machine learning model to compute the children's future height, weight, and BMI for a specified number of years into the future.",
+    "p2": "Yasin, Y., Sun, Y.H., and Lee, K. (2022). A machine learning approach for predicting children's future BMI. Canadian Developmental Psychology Conference."
   },
   "questions": {
     "Gender:": {
