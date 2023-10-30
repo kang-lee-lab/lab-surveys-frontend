@@ -2,7 +2,7 @@ import React from "react";
 import "./ResultsPage.css";
 import { useLocation } from "react-router-dom";
 import { PieChart, Pie, Legend } from "recharts";
-import { objectToArray } from "../../utils/helper";
+import { objectToArray, capitalize } from "../../utils/helper";
 import {
   Radar,
   RadarChart,
@@ -12,17 +12,21 @@ import {
 } from "recharts";
 
 function ResultsPage() {
+  // get the data from SurveyPage component
   const location = useLocation();
   const data = location.state;
-  const cleanData = objectToArray(JSON.parse(data.results));
-  console.log(cleanData);
 
-  let exampleData = [];
+  // declare survey specific data variables
+  let mmpiData = [];
+  let dassData = [];
+
+  // clean survey data according to their graph
   if (data.metadata.survey_id === "dass") {
-    exampleData = [
+    dassData = [
       {
         name:
-          "Depression Percentage: " +
+          capitalize(data.mode) +
+          " Percentage: " +
           Number(data.positive.toFixed(5)) * 100 +
           "%",
         value: data.positive,
@@ -30,6 +34,8 @@ function ResultsPage() {
       },
       { name: "", value: 1 - data.positive, fill: "#ffffff00" },
     ];
+  } else if (data.metadata.survey_id === "mmpi") {
+    mmpiData = objectToArray(JSON.parse(data.results));
   }
 
   // location.state holds results
@@ -47,7 +53,7 @@ function ResultsPage() {
             iconSize={0}
           />
           <Pie
-            data={exampleData}
+            data={dassData}
             cx={120}
             cy={200}
             innerRadius={90}
@@ -59,7 +65,7 @@ function ResultsPage() {
       )}
 
       {data.metadata.survey_id === "mmpi" && (
-        <RadarChart height={500} width={500} outerRadius="80%" data={cleanData}>
+        <RadarChart height={500} width={500} outerRadius="80%" data={mmpiData}>
           <PolarGrid />
           <PolarAngleAxis dataKey="name" />
           <PolarRadiusAxis />
