@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function Consent() {
   const [isAgreed, setIsAgreed] = useState(false);
   const [isNextEnabled, setIsNextEnabled] = useState(false);
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleAgreeChange = (event) => {
     setIsAgreed(event.target.checked);
