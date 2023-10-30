@@ -54,6 +54,18 @@ function ResultsPage() {
           <Radar dataKey="x" stroke="green" fill="green" fillOpacity={0.5} />
         </RadarChart>
       )}
+      {surveyId === "childbmi" && (
+        <div>
+          <h4>The child's predicted height is {data.pred_height} cm.</h4>
+          <h4>The child's predicted weight is {data.pred_weight} kg.</h4>
+          <h4>The child's predicted BMI is {data.pred_bmi} kg/m2.</h4>
+          <p>
+            Displayed is your children's future height, weight, and BMI given
+            their current physical measurements. This is calculated through a
+            machine learning model trained using patient data.
+          </p>
+        </div>
+      )}
       <p>
         *This webpage does not contain medical/health advice. This tool is
         intended for informational and educational purposes only, and should not
