@@ -16,7 +16,6 @@ function SurveyPage() {
   try {
     survey = require(`../../data/surveys/${surveyName}.json`);
     totalQuestions.current = Object.keys(survey.questions).length;
-    console.log(survey.questions);
   } catch {
     survey = "not-found";
   }
