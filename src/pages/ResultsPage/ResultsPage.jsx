@@ -72,6 +72,12 @@ function ResultsPage() {
           <Radar dataKey="x" stroke="green" fill="green" fillOpacity={0.5} />
         </RadarChart>
       )}
+      <p>
+        *This webpage does not contain medical/health advice. This tool is
+        intended for informational and educational purposes only, and should not
+        be taken as a substitute for professional advice. Reliance on any
+        information on the webpage is solely at your own risk.
+      </p>
     </div>
   );
 }
