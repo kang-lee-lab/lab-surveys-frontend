@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import "./SurveyPage.css";
 import SurveyForm from "../../components/SurveyForm/SurveyForm";
+import ErrorPopup from "../../components/ErrorPopup/ErrorPopup";
 
 function SurveyPage() {
   const navigate = useNavigate();
@@ -12,18 +13,24 @@ function SurveyPage() {
   const totalQuestions = useRef(0);
   const surveyName = split[2];
   let survey;
+  // error handling
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   try {
     survey = require(`../../data/surveys/${surveyName}.json`);
     totalQuestions.current = Object.keys(survey.questions).length;
   } catch {
     survey = "not-found";
+    setShowError(true);
+    setErrorMessage("Survey was not found.");
   }
 
   const submitSurvey = async (surveyResponses) => {
     const valid = validateResponses(surveyResponses);
     if (!valid) {
-      console.log("You must fill out all questions of the survey.");
+      setShowError(true);
+      setErrorMessage("You must fill out all survey questions.");
     } else {
       const response = await axios.post(
         `${process.env.REACT_APP_API_ADDRESS}/results/`,
@@ -65,6 +72,9 @@ function SurveyPage() {
   } else {
     return (
       <div className="survey-page-container">
+        {showError && (
+          <ErrorPopup message={errorMessage} setShowError={setShowError} />
+        )}
         <h3>Welcome to the {survey.title} interactive webpage.</h3>
         <div className="description-container">{description}</div>
         <div className="survey-container">
