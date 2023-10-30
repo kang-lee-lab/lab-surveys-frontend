@@ -64,11 +64,10 @@ function SurveyForm(props) {
                 id={questionObject["question_id"]}
                 onChange={(event) => {
                   if (event.target.value === "dropDownText") {
-                    setResponses((oldResponses) => {
-                      const newData = { ...oldResponses };
-                      delete newData[question];
-                      return newData;
-                    });
+                    setResponses((oldResponses) => ({
+                      ...oldResponses,
+                      [questionObject["question_alias"]]: null,
+                    }));
                   } else {
                     setResponses((oldResponses) => ({
                       ...oldResponses,
@@ -95,11 +94,10 @@ function SurveyForm(props) {
                 className="form-control"
                 onChange={(event) => {
                   if (event.target.value === "") {
-                    setResponses((oldResponses) => {
-                      const newData = { ...oldResponses };
-                      delete newData[question];
-                      return newData;
-                    });
+                    setResponses((oldResponses) => ({
+                      ...oldResponses,
+                      [questionObject["question_alias"]]: null,
+                    }));
                   } else {
                     setResponses((oldResponses) => ({
                       ...oldResponses,
@@ -127,11 +125,10 @@ function SurveyForm(props) {
                 required
                 onChange={(event) => {
                   if (event.target.value === "") {
-                    setResponses((oldResponses) => {
-                      const newData = { ...oldResponses };
-                      delete newData[question];
-                      return newData;
-                    });
+                    setResponses((oldResponses) => ({
+                      ...oldResponses,
+                      [questionObject["question_alias"]]: null,
+                    }));
                   } else {
                     setResponses((oldResponses) => ({
                       ...oldResponses,
