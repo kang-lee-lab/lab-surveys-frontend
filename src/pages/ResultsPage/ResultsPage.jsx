@@ -2,7 +2,7 @@ import React from "react";
 import "./ResultsPage.css";
 import { useLocation } from "react-router-dom";
 import { PieChart, Pie, Legend } from "recharts";
-import { objectToArray, capitalize } from "../../utils/helper";
+import { getCleanSurveyData } from "../../utils/helper";
 import {
   Radar,
   RadarChart,
@@ -15,28 +15,10 @@ function ResultsPage() {
   // get the data from SurveyPage component
   const location = useLocation();
   const data = location.state;
+  const surveyId = data.metadata.survey_id;
 
   // declare survey specific data variables
-  let mmpiData = [];
-  let dassData = [];
-
-  // clean survey data according to their graph
-  if (data.metadata.survey_id === "dass") {
-    dassData = [
-      {
-        name:
-          capitalize(data.mode) +
-          " Percentage: " +
-          Number(data.positive.toFixed(5)) * 100 +
-          "%",
-        value: data.positive,
-        fill: "#0088FE",
-      },
-      { name: "", value: 1 - data.positive, fill: "#ffffff00" },
-    ];
-  } else if (data.metadata.survey_id === "mmpi") {
-    mmpiData = objectToArray(JSON.parse(data.results));
-  }
+  const cleanData = getCleanSurveyData(surveyId, data);
 
   // location.state holds results
   return (
@@ -44,7 +26,7 @@ function ResultsPage() {
       <h3>
         Welcome to the results page for the {data.metadata.full_name} survey.
       </h3>
-      {data.metadata.survey_id === "dass" && (
+      {surveyId === "dass" && (
         <PieChart width={800} height={400}>
           <Legend
             height={36}
@@ -53,7 +35,7 @@ function ResultsPage() {
             iconSize={0}
           />
           <Pie
-            data={dassData}
+            data={cleanData}
             cx={120}
             cy={200}
             innerRadius={90}
@@ -64,8 +46,8 @@ function ResultsPage() {
         </PieChart>
       )}
 
-      {data.metadata.survey_id === "mmpi" && (
-        <RadarChart height={500} width={500} outerRadius="80%" data={mmpiData}>
+      {surveyId === "mmpi" && (
+        <RadarChart height={500} width={500} outerRadius="80%" data={cleanData}>
           <PolarGrid />
           <PolarAngleAxis dataKey="name" />
           <PolarRadiusAxis />
