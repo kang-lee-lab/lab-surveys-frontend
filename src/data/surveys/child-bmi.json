@@ -14,7 +14,7 @@
       "selections": { "Male": 1, "Female": 2 }
     },
     "Current Age": {
-      "question_alias": "Current Age",
+      "question_alias": "Current age",
       "question_id": 2,
       "selection_type": "integer"
     },
