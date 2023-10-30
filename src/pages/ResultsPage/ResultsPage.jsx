@@ -26,7 +26,7 @@ function ResultsPage() {
       <h3>
         Welcome to the results page for the {data.metadata.full_name} survey.
       </h3>
-      {surveyId === "dass" && (
+      {(surveyId === "dass" || surveyId === "nafld") && (
         <PieChart width={800} height={400}>
           <Legend
             height={36}

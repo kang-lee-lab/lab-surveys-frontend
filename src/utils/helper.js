@@ -27,6 +27,18 @@ export const getCleanSurveyData = (surveyId, data) => {
       },
       { name: "", value: 1 - data.positive, fill: "#ffffff00" },
     ];
+  } else if (surveyId === "nafld") {
+    return [
+      {
+        name:
+          "Likelihood of NAFLD: " +
+          Number(data.positive.toFixed(5)) * 100 +
+          "%",
+        value: data.positive,
+        fill: "#0088FE",
+      },
+      { name: "", value: 1 - data.positive, fill: "#ffffff00" },
+    ];
   } else if (surveyId === "mmpi") {
     return getRadarChartDataFormat(JSON.parse(data.results));
   }
