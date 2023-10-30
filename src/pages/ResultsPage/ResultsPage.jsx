@@ -56,6 +56,7 @@ function ResultsPage() {
       )}
       {surveyId === "childbmi" && (
         <div>
+          <h4>At age {data.age_to_predict}, </h4>
           <h4>The child's predicted height is {data.pred_height} cm.</h4>
           <h4>The child's predicted weight is {data.pred_weight} kg.</h4>
           <h4>The child's predicted BMI is {data.pred_bmi} kg/m2.</h4>
