@@ -1,26 +1,27 @@
 import React from "react";
 import "./ResultsPage.css";
 import { useLocation } from "react-router-dom";
-import { PieChart, Pie, Legend } from "recharts";
-import { getCleanSurveyData } from "../../utils/helper";
 import {
+  PieChart,
+  Pie,
+  Legend,
   Radar,
   RadarChart,
   PolarGrid,
   PolarAngleAxis,
   PolarRadiusAxis,
 } from "recharts";
+import { getCleanSurveyData } from "../../utils/helper";
 
 function ResultsPage() {
   // get the data from SurveyPage component
   const location = useLocation();
+  // location.state holds result data sent from the backend
   const data = location.state;
   const surveyId = data.metadata.survey_id;
-
-  // declare survey specific data variables
+  // format survey data specific to what graph is being used
   const cleanData = getCleanSurveyData(surveyId, data);
 
-  // location.state holds results
   return (
     <div className="survey-page-container">
       <h3>
@@ -45,7 +46,6 @@ function ResultsPage() {
           ></Pie>
         </PieChart>
       )}
-
       {surveyId === "mmpi" && (
         <RadarChart height={500} width={500} outerRadius="80%" data={cleanData}>
           <PolarGrid />
