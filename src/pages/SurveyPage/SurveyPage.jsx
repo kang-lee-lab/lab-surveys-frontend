@@ -48,10 +48,10 @@ function SurveyPage() {
 
   useEffect(() => {
     if (survey !== "not-found") {
-      const descriptionSplit = survey.description.split("<br>");
-      const paragraphs = descriptionSplit.map((paragraph) => {
-        return <p>{paragraph}</p>;
-      });
+      const paragraphs = [];
+      for (const property in survey.description) {
+        paragraphs.push(<p key={property}>{survey.description[property]}</p>);
+      }
       setDescription(paragraphs);
     }
   }, [survey]);
