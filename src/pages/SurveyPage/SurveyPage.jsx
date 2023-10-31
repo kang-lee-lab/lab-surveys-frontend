@@ -12,19 +12,25 @@ function SurveyPage() {
   const split = window.location.pathname.split("/");
   const totalQuestions = useRef(0);
   const surveyName = split[2];
-  let survey;
+  const [survey, setSurvey] = useState({});
   // error handling
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  try {
-    survey = require(`../../data/surveys/${surveyName}.json`);
-    totalQuestions.current = Object.keys(survey.questions).length;
-  } catch {
-    survey = "not-found";
-    setShowError(true);
-    setErrorMessage("Survey was not found.");
-  }
+  useEffect(() => {
+    const getSurveyData = async () => {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_ADDRESS}/survey/${surveyName}`
+      );
+      setSurvey(response.data);
+    };
+    getSurveyData();
+  }, [surveyName]);
+
+  useEffect(() => {
+    const surveyQuestions = survey?.questions ?? {};
+    totalQuestions.current = Object.keys(surveyQuestions).length;
+  }, [survey]);
 
   const submitSurvey = async (surveyResponses) => {
     const valid = validateResponses(surveyResponses);
@@ -56,8 +62,8 @@ function SurveyPage() {
   useEffect(() => {
     if (survey !== "not-found") {
       const paragraphs = [];
-      for (const property in survey.description) {
-        paragraphs.push(<p key={property}>{survey.description[property]}</p>);
+      for (const property in survey?.description) {
+        paragraphs.push(<p key={property}>{survey?.description[property]}</p>);
       }
       setDescription(paragraphs);
     }
@@ -75,12 +81,12 @@ function SurveyPage() {
         {showError && (
           <ErrorPopup message={errorMessage} setShowError={setShowError} />
         )}
-        <h3>Welcome to the {survey.title} interactive webpage.</h3>
+        <h3>Welcome to the {survey?.title} interactive webpage.</h3>
         <div className="description-container">{description}</div>
         <div className="survey-container">
           <SurveyForm
-            questions={survey.questions}
-            key={survey.title}
+            questions={survey?.questions}
+            key={survey?.title}
             submitSurvey={submitSurvey}
           />
         </div>
