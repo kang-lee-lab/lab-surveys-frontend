@@ -25,19 +25,19 @@ function Homepage() {
         <div className="psychology-survey-container">
           <h2>Demo Psychology Surveys</h2>
           {psychologySurveys.map((item) => (
-            <SurveyCards survey={item} key={item.key} />
+            <SurveyCards survey={item} key={item.title} />
           ))}
         </div>
         <div className="physiology-survey-container">
           <h2>Physiology Surveys</h2>
           {physiologySurveys.map((item) => (
-            <SurveyCards survey={item} key={item.key} />
+            <SurveyCards survey={item} key={item.title} />
           ))}
         </div>
         <div className="physical-survey-container">
           <h2>Physical Surveys</h2>
           {physicalSurveys.map((item) => (
-            <SurveyCards survey={item} key={item.key} />
+            <SurveyCards survey={item} key={item.title} />
           ))}
         </div>
       </div>
