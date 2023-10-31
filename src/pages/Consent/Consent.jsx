@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "./Consent.css";
-import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Consent() {
     const [isAgreed, setIsAgreed] = useState(false);

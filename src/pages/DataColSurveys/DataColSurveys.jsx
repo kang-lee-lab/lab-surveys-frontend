@@ -1,9 +1,7 @@
 import React from "react";
 import "./DataColSurveys.css";
-import psychologySurveys from "../../data/psychology-surveys.json";
 import SurveyCards from "../../components/SurveyCards/SurveyCards";
-import physiologySurveys from "../../data/physiology-surveys.json";
-import physicalSurveys from "../../data/physical-surveys.json";
+import datacollectionSurveys from "../../data/datacollection-surveys.json";
 
 function DataColSurveys(){
     return(
@@ -29,21 +27,9 @@ function DataColSurveys(){
                 </p>
             </div>
             <div className="survey-card-containers">
-                <div className="psychology-survey-container">
-                    <h2>Psychology Surveys for Data Collection</h2>
-                    {psychologySurveys.map((item) => (
-                        <SurveyCards survey={item} key={item.key} />
-                    ))}
-                </div>
-                <div className="physiology-survey-container">
-                    <h2>Physiology Surveys</h2>
-                    {physiologySurveys.map((item) => (
-                        <SurveyCards survey={item} key={item.key} />
-                    ))}
-                </div>
-                <div className="physical-survey-container">
-                    <h2>Physical Surveys</h2>
-                    {physicalSurveys.map((item) => (
+                <div className="datacollection-survey-container">
+                    <h2>Demo Survey for Data Collection</h2>
+                    {datacollectionSurveys.map((item) => (
                         <SurveyCards survey={item} key={item.key} />
                     ))}
                 </div>

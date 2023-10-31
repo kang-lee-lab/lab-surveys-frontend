@@ -129,6 +129,49 @@ function SurveyForm(props) {
             </div>
           );
           break;
+        case "select":
+
+          let selectionArrayTwo;
+          selectionArrayTwo = questionObject.selections;
+          const selectionOptionsTwo = selectionArrayTwo.map((selection) => {
+            return (
+                <option key={selection} value={selection}>
+                  {selection}
+                </option>
+            );
+          });
+          questionsArray.push(
+              <div
+                  className="question-container"
+                  key={questionObject["question_id"]}
+              >
+                <label className="question-label">{question} (Press Ctrl to select multiple options)</label>
+                <select
+                    key={questionObject["question_id"]}
+                    id={questionObject["question_id"]}
+                    multiple={true}
+                    onChange={(event) => {
+                      if (event.target.value === "selectionText") {
+                        setResponses((oldResponses) => {
+                          const newData = { ...oldResponses };
+                          delete newData[question];
+                          return newData;
+                        });
+                      } else {
+                        setResponses((oldResponses) => ({
+                          ...oldResponses,
+                          [questionObject["question_alias"]]: event.target.value,
+                        }));
+                      }
+                    }}
+
+                >
+                  {selectionOptionsTwo}
+                </select>
+              </div>
+          );
+          break;
+
         default:
           // throw an error because there should be a selection_type on every question
           // TODO create error handler component

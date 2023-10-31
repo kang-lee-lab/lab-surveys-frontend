@@ -1,0 +1,284 @@
+{
+  "survey_id": "manga",
+  "survey_mode": "",
+  "title": "Teen Manga Report-Teen",
+  "description": "",
+  "questions": {
+    "What is your gender?": {
+      "question_alias": "Gender",
+      "question_id": 1,
+      "selection_type": "dropdown",
+      "selections": [
+        "Male",
+        "Female"
+      ]
+    },
+    "What is your race/ethnicity?": {
+      "question_alias": "Race",
+      "question_id": 2,
+      "selection_type": "dropdown",
+      "selections": [
+        "White",
+        "Black",
+        "Indigenous",
+        "South Asian (e.g., East Indian, Pakistani, Sri Lankan, etc.)",
+        "Chinese",
+        "Filipino",
+        "Latin America",
+        "Arab",
+        "Southeast Asian (e.g., Vietnamese, Cambodian, Laotian, Thai etc.)",
+        "West Asian (e.g. Iranian, Afghan, etc.)",
+        "Korean",
+        "Japanese",
+        "Other"
+      ]
+    },
+    "Have you ever been diagnosed with any psychological disorder(s)?": {
+      "question_alias": "Disorders",
+      "question_id": 3,
+      "selection_type": "dropdown",
+      "selections": [
+        "No diagnosed disorder",
+        "Dyslexia",
+        "Attention-Deficit/Hyperactivity Disorder (ADHD)",
+        "Autism Spectrum Disorder (ASD)",
+        "Generalized Anxiety Disorder",
+        "Major Depressive Disorder",
+        "Other (please specify)"
+      ]
+    },
+    "How old were you when you began reading manga?": {
+      "question_alias": "age",
+      "question_id": 4,
+      "selection_type": "integer"
+    },
+    "What language do you most often read manga in?": {
+      "question_alias": "Language",
+      "question_id": 5,
+      "selection_type": "dropdown",
+      "selections": [
+        "English",
+        "Japanese",
+        "Chinese",
+        "Korean",
+        "French",
+        "Spanish",
+        "Other"
+      ]
+    },
+    "The following questions ask about how often you engage with different sources of stories. How often do you read magazines?": {
+      "question_alias": "OftenMag",
+      "question_id": 6,
+      "selection_type": "dropdown",
+      "selections": [
+        "Never",
+        "Once or twice a year",
+        "Once or twice a month",
+        "Once or twice a week",
+        "Several times a week",
+        "Once a day",
+        "Several times a day"
+      ]
+    },
+    "How often do you read nonfiction books for enjoyment?": {
+      "question_alias": "OftenNonFict",
+      "question_id": 7,
+      "selection_type": "dropdown",
+      "selections": [
+        "Never",
+        "Once or twice a year",
+        "Once or twice a month",
+        "Once or twice a week",
+        "Several times a week",
+        "Once a day",
+        "Several times a day"
+      ]
+    },
+    "How often do you read novels for enjoyment?": {
+      "question_alias": "OftenNovels",
+      "question_id": 8,
+      "selection_type": "dropdown",
+      "selections": [
+        "Never",
+        "Once or twice a year",
+        "Once or twice a month",
+        "Once or twice a week",
+        "Several times a week",
+        "Once a day",
+        "Several times a day"
+      ]
+    },
+    "How often do you read comic books?": {
+      "question_alias": "OftenComics",
+      "question_id": 9,
+      "selection_type": "dropdown",
+      "selections": [
+        "Never",
+        "Once or twice a year",
+        "Once or twice a month",
+        "Once or twice a week",
+        "Several times a week",
+        "Once a day",
+        "Several times a day"
+      ]
+    },
+    "How often do you read comic strips?": {
+      "question_alias": "OftenComicStrip",
+      "question_id": 10,
+      "selection_type": "dropdown",
+      "selections": [
+        "Never",
+        "Once or twice a year",
+        "Once or twice a month",
+        "Once or twice a week",
+        "Several times a week",
+        "Once a day",
+        "Several times a day"
+      ]
+    },
+    "How often do you read graphic novels?": {
+      "question_alias": "OftenGraphicNovels",
+      "question_id": 11,
+      "selection_type": "dropdown",
+      "selections": [
+        "Never",
+        "Once or twice a year",
+        "Once or twice a month",
+        "Once or twice a week",
+        "Several times a week",
+        "Once a day",
+        "Several times a day"
+      ]
+    },
+    "How often do you read Japanese comics (manga)?": {
+      "question_alias": "OftenManga",
+      "question_id": 12,
+      "selection_type": "dropdown",
+      "selections": [
+        "Never",
+        "Once or twice a year",
+        "Once or twice a month",
+        "Once or twice a week",
+        "Several times a week",
+        "Once a day",
+        "Several times a day"
+      ]
+    },
+    "How often do you read webcomics (webtoons)?": {
+      "question_alias": "OftenWebtoons",
+      "question_id": 13,
+      "selection_type": "dropdown",
+      "selections": [
+        "Never",
+        "Once or twice a year",
+        "Once or twice a month",
+        "Once or twice a week",
+        "Several times a week",
+        "Once a day",
+        "Several times a day"
+      ]
+    },
+    "How often do you watch movies?": {
+      "question_alias": "OftenMovies",
+      "question_id": 14,
+      "selection_type": "dropdown",
+      "selections": [
+        "Never",
+        "Once or twice a year",
+        "Once or twice a month",
+        "Once or twice a week",
+        "Several times a week",
+        "Once a day",
+        "Several times a day"
+      ]
+    },
+    "How often do you watch TV shows?": {
+      "question_alias": "OftenTVshows",
+      "question_id": 15,
+      "selection_type": "dropdown",
+      "selections": [
+        "Never",
+        "Once or twice a year",
+        "Once or twice a month",
+        "Once or twice a week",
+        "Several times a week",
+        "Once a day",
+        "Several times a day"
+      ]
+    },
+    "How often do you watch cartoons?": {
+      "question_alias": "OftenCartoons",
+      "question_id": 16,
+      "selection_type": "dropdown",
+      "selections": [
+        "Never",
+        "Once or twice a year",
+        "Once or twice a month",
+        "Once or twice a week",
+        "Several times a week",
+        "Once a day",
+        "Several times a day"
+      ]
+    },
+    "How often do you watch Japanese animations (anime)?": {
+      "question_alias": "OftenAnime",
+      "question_id": 17,
+      "selection_type": "dropdown",
+      "selections": [
+        "Never",
+        "Once or twice a year",
+        "Once or twice a month",
+        "Once or twice a week",
+        "Several times a week",
+        "Once a day",
+        "Several times a day"
+      ]
+    },
+    "How often do you play video games?": {
+      "question_alias": "OftenGames",
+      "question_id": 18,
+      "selection_type": "dropdown",
+      "selections": [
+        "Never",
+        "Once or twice a year",
+        "Once or twice a month",
+        "Once or twice a week",
+        "Several times a week",
+        "Once a day",
+        "Several times a day"
+      ]
+    },
+    "How carefully are you reading this survey? Choose never if you are reading carefully.": {
+      "question_alias": "Careful",
+      "question_id": 19,
+      "selection_type": "dropdown",
+      "selections": [
+        "Never",
+        "Once or twice a year",
+        "Once or twice a month",
+        "Once or twice a week",
+        "Several times a week",
+        "Once a day",
+        "Several times a day"
+      ]
+    },
+    "Your honesty in this survey is important to our understanding of manga readers. Please \ntell us if you've responded to the previous questions honestly. You will be compensated for your \ntime and effort in this study regardless." : {
+      "question_alias": "Honesty",
+      "question_id": 20,
+      "selection_type": "dropdown",
+      "selections": [
+        "Yes, I have answered questions honestly. ",
+        "No, I have not answered questions honestly."
+      ]
+    },
+    "Would you like to be contacted for future studies similar to this one? ": {
+      "question_alias": "Contacted",
+      "question_id": 21,
+      "selection_type": "dropdown",
+      "selections": [
+        "Yes",
+        "No"
+      ]
+    }
+  }
+}
