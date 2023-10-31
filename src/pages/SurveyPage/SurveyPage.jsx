@@ -75,6 +75,12 @@ function SurveyPage() {
         <h3>404. Not Found.</h3>
       </div>
     );
+  } else if (Object.keys(survey).length === 0) {
+    return (
+      <div className="survey-page-container">
+        <h3>Fetching survey...</h3>
+      </div>
+    );
   } else {
     return (
       <div className="survey-page-container">
