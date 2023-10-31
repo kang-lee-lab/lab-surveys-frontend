@@ -9,30 +9,50 @@ import ProgressBar from "../ProgressBar/ProgressBar";
 function SurveyForm(props) {
   const [questions, setQuestions] = useState([]);
   const [responses, setResponses] = useState({});
-  const totalQuestions = useRef(Object.keys(props.questions).length);
+  const [validResponses, setValidResponses] = useState(0);
+  const totalQuestions = useRef(0);
 
+  // // set the response object so it always has the same order
+  useEffect(() => {
+    const surveyQuestions = props?.questions ?? {};
+    totalQuestions.current = Object.keys(surveyQuestions).length;
+  }, [props?.questions]);
+
+  // set the response object so it always has the same order
+  useEffect(() => {
+    const tempResponses = {};
+    for (const question in props?.questions) {
+      const alias = props?.questions[question]["question_alias"];
+      tempResponses[alias] = null;
+    }
+    setResponses(tempResponses);
+  }, [props?.questions]);
+
+  // set the questions and their responses
   useEffect(() => {
     const questionsArray = [];
-    for (const question in props.questions) {
-      const questionObject = props.questions[question];
+    for (const question in props?.questions) {
+      const questionObject = props?.questions[question];
       switch (questionObject["selection_type"]) {
         case "dropdown":
           // set responses to the question
-          let selectionArray;
+          let selectionObject;
           if (questionObject.selections === "YesNoSelections") {
-            selectionArray = YesNoSelections;
+            selectionObject = YesNoSelections;
           } else if (questionObject.selections === "AppliedSelections") {
-            selectionArray = AppliedSelections;
+            selectionObject = AppliedSelections;
           } else {
-            selectionArray = questionObject.selections;
+            selectionObject = questionObject.selections;
           }
-          const selectionOptions = selectionArray.map((selection) => {
-            return (
-              <option key={selection} value={selection}>
-                {selection}
+
+          const selectionOptions = [];
+          for (const key in selectionObject) {
+            selectionOptions.push(
+              <option key={key} value={selectionObject[key]}>
+                {key}
               </option>
             );
-          });
+          }
           selectionOptions.unshift(
             <option key={0} value={"dropDownText"}>
               Click to drop down
@@ -50,11 +70,10 @@ function SurveyForm(props) {
                 id={questionObject["question_id"]}
                 onChange={(event) => {
                   if (event.target.value === "dropDownText") {
-                    setResponses((oldResponses) => {
-                      const newData = { ...oldResponses };
-                      delete newData[question];
-                      return newData;
-                    });
+                    setResponses((oldResponses) => ({
+                      ...oldResponses,
+                      [questionObject["question_alias"]]: null,
+                    }));
                   } else {
                     setResponses((oldResponses) => ({
                       ...oldResponses,
@@ -81,11 +100,10 @@ function SurveyForm(props) {
                 className="form-control"
                 onChange={(event) => {
                   if (event.target.value === "") {
-                    setResponses((oldResponses) => {
-                      const newData = { ...oldResponses };
-                      delete newData[question];
-                      return newData;
-                    });
+                    setResponses((oldResponses) => ({
+                      ...oldResponses,
+                      [questionObject["question_alias"]]: null,
+                    }));
                   } else {
                     setResponses((oldResponses) => ({
                       ...oldResponses,
@@ -99,7 +117,6 @@ function SurveyForm(props) {
           );
           break;
         case "float":
-          // TODO add default value to each float
           questionsArray.push(
             <div
               className="question-container"
@@ -113,11 +130,10 @@ function SurveyForm(props) {
                 required
                 onChange={(event) => {
                   if (event.target.value === "") {
-                    setResponses((oldResponses) => {
-                      const newData = { ...oldResponses };
-                      delete newData[question];
-                      return newData;
-                    });
+                    setResponses((oldResponses) => ({
+                      ...oldResponses,
+                      [questionObject["question_alias"]]: null,
+                    }));
                   } else {
                     setResponses((oldResponses) => ({
                       ...oldResponses,
@@ -179,17 +195,29 @@ function SurveyForm(props) {
       }
     }
     setQuestions(questionsArray);
-  }, [props.questions]);
+  }, [props?.questions]);
+
+  // keep track of responses for the progress bar
+  useEffect(() => {
+    let valid = 0;
+    for (const response in responses) {
+      if (responses[response] !== null) {
+        valid += 1;
+      }
+    }
+    setValidResponses(valid);
+  }, [responses]);
+
   return (
     <div className="survey-form-container">
       <ProgressBar
-        questionsFilled={Object.keys(responses).length}
+        questionsFilled={validResponses}
         totalQuestions={totalQuestions.current}
       />
       <div className="questions-container">{questions}</div>
       <button
         id="submit-survey-button"
-        onClick={() => props.submitSurvey(responses)}
+        onClick={() => props?.submitSurvey(responses)}
       >
         Submit
       </button>
