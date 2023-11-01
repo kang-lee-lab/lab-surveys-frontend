@@ -37,7 +37,11 @@ function SurveyPage() {
     if (!valid) {
       setShowError(true);
       setErrorMessage("You must fill out all survey questions.");
-    } else {
+    }
+    else if (survey.survey_id === 'manga'){
+      navigate(location.pathname + "/completed")
+    }
+    else {
       const response = await axios.post(
         `${process.env.REACT_APP_API_ADDRESS}/results/`,
         {
