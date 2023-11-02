@@ -13,6 +13,11 @@ function ErrorPopup(props) {
           name={SymbolEmoji.RED_MULTIPLY}
           width={20}
           height={20}
+          style={{
+            paddingTop: `7px`,
+            padding: "0",
+            margin: "0",
+          }}
         />
       </button>
     </div>

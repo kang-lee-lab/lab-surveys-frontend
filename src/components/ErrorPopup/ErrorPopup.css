@@ -8,11 +8,12 @@
   top: 10px;
   background-color: #ffd9d9;
   border: 2px solid #ff3838;
-  padding: 10px 20px;
+  padding: 10px 5px 10px 20px;
   border-radius: 10px;
 }
 
 .error-popup-container>button {
-  margin-left: 10px;
+  margin-left: 0px;
   background-color: #ffd9d9;
+  border: none;
 }
