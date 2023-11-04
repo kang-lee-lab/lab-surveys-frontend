@@ -219,7 +219,7 @@ function SurveyForm(props) {
         id="submit-survey-button"
         onClick={() => props?.submitSurvey(responses)}
       >
-        Submit
+        <span>Submit</span>
       </button>
     </div>
   );
