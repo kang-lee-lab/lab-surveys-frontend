@@ -67,6 +67,73 @@ function ResultsPage() {
           </p>
         </div>
       )}
+      {surveyId === "asq" && (
+        <div>
+          <h1>Your iHRV is {data.asq_result}. </h1>
+          <p>
+            Lower HRV measures are related to higher risk of cardiovascular disease. If your iHRV fell within ranges
+            classified as shades of green, it signals good heart health. If your iHRV fell within ranges classified as
+            yellow, orange, or red, you may wish to examine your HRV measures further. Please consult a medical
+            professional with any health concerns.
+
+            Your iHRV is reflect multiple underlying HRV measures. The table below can be used to interpret your score.
+          </p>
+          <table className="table" style={{ width: "100%" }}>
+              <tr>
+                  <th style={{ textAlign: "left" }}>iHRV Range</th>
+                  <th style={{ textAlign: "left" }}>Underlying HRV Measures</th>
+                  <th style={{ textAlign: "left" }}>iHRV Classification</th>
+              </tr>
+              <tr>
+                  <td>80 and over</td>
+                  <td>Extremely Low</td>
+                  <td>Red</td>
+              </tr>
+              <tr>
+                  <td>70-79</td>
+                  <td>Low</td>
+                  <td>Orange</td>
+              </tr>
+              <tr>
+                  <td>60-69</td>
+                  <td>Slightly Low</td>
+                  <td>Yellow</td>
+              </tr>
+              <tr>
+                  <td>41-59</td>
+                  <td>Average</td>
+                  <td>Light Green</td>
+              </tr>
+              <tr>
+                  <td>31-40</td>
+                  <td>Slightly High</td>
+                  <td>Green</td>
+              </tr>
+              <tr>
+                  <td>21-30</td>
+                  <td>High</td>
+                  <td>Dark Green</td>
+              </tr>
+              <tr>
+                  <td>20 and below</td>
+                  <td>Extremely High</td>
+                  <td>Emerald</td>
+              </tr>
+          </table>
+
+          <p>
+            Displayed below are your Heart Rate Variability of dimensions 1-6 (HRV-D1-6). Each reflect an orthogonal
+            dimension underlying your HRV measures.
+          </p>
+          <RadarChart height={500} width={500} outerRadius="80%" data={cleanData}>
+            <PolarGrid />
+            <PolarAngleAxis dataKey="name" />
+            <PolarRadiusAxis />
+            <Radar dataKey="x" stroke="green" fill="green" fillOpacity={0.5} />
+          </RadarChart>
+          
+        </div>
+      )}
       <p>
         *This webpage does not contain medical/health advice. This tool is
         intended for informational and educational purposes only, and should not

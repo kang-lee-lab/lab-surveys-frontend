@@ -41,5 +41,7 @@ export const getCleanSurveyData = (surveyId, data) => {
     ];
   } else if (surveyId === "mmpi") {
     return getRadarChartDataFormat(JSON.parse(data.results));
+  } else if (surveyId === "asq") {
+    return getRadarChartDataFormat(data.sq_result)
   }
 };
