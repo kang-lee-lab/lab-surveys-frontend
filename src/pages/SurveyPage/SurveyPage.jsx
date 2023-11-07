@@ -25,7 +25,6 @@ function SurveyPage() {
         `${process.env.REACT_APP_API_ADDRESS}/survey/${pythonSurveyName}`
       );
       setSurvey(response.data);
-      console.log(response.data);
     };
     getSurveyData();
   }, [surveyName]);
