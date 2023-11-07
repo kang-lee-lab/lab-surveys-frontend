@@ -38,7 +38,7 @@ function SurveyForm(props) {
           for (let i in selectionObject) {
             selectionOptions.push(
               <option
-                key={selectionObject[i].id}
+                key={selectionObject[i].id + 1}
                 value={selectionObject[i].value}
               >
                 {selectionObject[i].text}
@@ -93,7 +93,7 @@ function SurveyForm(props) {
                 step={questionObject.question.step}
                 min={questionObject.question.min}
                 max={questionObject.question.max}
-                value={responses[questionObject["question_id"]]}
+                value={responses[questionObject["question_id"]] ?? 0}
                 className="form-control"
                 onChange={(event) => {
                   if (event.target.value === "") {
