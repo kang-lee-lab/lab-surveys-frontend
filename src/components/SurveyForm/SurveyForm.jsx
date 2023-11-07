@@ -19,7 +19,8 @@ function SurveyForm(props) {
     const tempResponses = {};
     for (const question in props?.data?.questions) {
       const questionId = props?.data?.questions[question]["question_id"];
-      tempResponses[questionId] = null;
+      tempResponses[questionId] =
+        props?.data?.questions[question]["question"]["default_value"] ?? null;
     }
     setResponses(tempResponses);
   }, [props?.data?.questions]);
@@ -90,6 +91,9 @@ function SurveyForm(props) {
               <input
                 type="number"
                 step={questionObject.question.step}
+                min={questionObject.question.min}
+                max={questionObject.question.max}
+                value={responses[questionObject["question_id"]]}
                 className="form-control"
                 onChange={(event) => {
                   if (event.target.value === "") {
@@ -116,7 +120,7 @@ function SurveyForm(props) {
       }
     }
     setQuestions(questionsArray);
-  }, [props?.data?.questions]);
+  }, [props?.data?.questions, responses]);
 
   // keep track of responses for the progress bar
   useEffect(() => {
