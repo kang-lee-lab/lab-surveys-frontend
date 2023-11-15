@@ -1,4 +1,3 @@
-import "./Completed.css";
 import React from "react";
 
 function Completed() {

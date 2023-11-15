@@ -1,5 +1,4 @@
 import React from "react";
-import "./ResultsPage.css";
 import { useLocation } from "react-router-dom";
 import {
   PieChart,
