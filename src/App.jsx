@@ -7,6 +7,7 @@ import ResultsPage from "./pages/ResultsPage/ResultsPage";
 import Completed from "./pages/Completed/Completed";
 import GeneralConsent from "./pages/GeneralConsent/GeneralConsent";
 import Consent from "./pages/Consent/Consent";
+import History from "./pages/History/History";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/survey/consent/:name" element={<Consent />} />
             <Route path={"/data-surveys"} element={<DataColSurveys/>} />
             <Route path={"/survey/manga/completed"} element={<Completed />} />
+            <Route path={"/survey/history"} element={<History/>} />
         </Routes>
       </div>
     </Router>
