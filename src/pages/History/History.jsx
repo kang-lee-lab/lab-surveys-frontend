@@ -14,31 +14,49 @@ function History() {
             });
     }, []);
     const history_data = data.map((data, i) =>
-        // <div className="history">
-        //     <p>{data.id}</p>
-        //     <p>{data.response_type}</p>
-        //     <p>{data.response_answers}</p>
-        // </div>
         <tr key={i}>
             <td>{data.id}</td>
             <td>{data.response_type}</td>
             <td>{data.response_answers}</td>
+            <td>{data.response_results}</td>
             <td>{data.response_time}</td>
         </tr>
     );
+
+    const handleDownload = async () => {
+        try {
+            const response = await fetch('http://127.0.0.1:8000/surveys/download-csv');
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(new Blob([blob]));
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'data.csv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        } catch (error) {
+            console.error('Error downloading CSV:', error);
+        }
+    };
+
     return (
         <div className="history-container">
             <h1>History</h1>
+            <button onClick={handleDownload}>Download CSV</button>
+            <br/>
+            <br/>
             <table>
             <tr>
                 <th>ID</th>
                 <th>Response Type</th>
                 <th>Response Answers</th>
+                <th>Response Results</th>
                 <th>Response Time</th>
             </tr>
-
             {history_data}
             </table>
+
+
         </div>
     );
 }
