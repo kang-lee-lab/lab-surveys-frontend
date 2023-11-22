@@ -13,7 +13,10 @@ function History() {
                 console.error('Error fetching data:', error);
             });
     }, []);
-    const history_data = data.map((data, i) =>
+
+    const filteredData = data.filter(item => item.response_type === 'asq');
+
+    const history_data = filteredData.map((data, i) =>
         <tr key={i}>
             <td>{data.id}</td>
             <td>{data.response_type}</td>
@@ -22,6 +25,16 @@ function History() {
             <td>{data.response_time}</td>
         </tr>
     );
+
+    // const history_data = data.map((data, i) =>
+    // <tr key={i}>
+    //     <td>{data.id}</td>
+    //     <td>{data.response_type}</td>
+    //     <td>{data.response_answers}</td>
+    //     <td>{data.response_results}</td>
+    //     <td>{data.response_time}</td>
+    // </tr>
+    // );
 
     const handleDownload = async () => {
         try {

@@ -146,6 +146,13 @@ function SurveyForm(props) {
       >
         <span>Submit</span>
       </button>
+      <button
+        id="history-button"
+        onClick={() => window.location.href='http://localhost:3000/survey/history'} //CHANGE THE LINK
+        style={{ float: 'right' }}
+      >
+        <span>History</span>
+      </button>
     </div>
   );
 }
