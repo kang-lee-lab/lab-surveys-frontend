@@ -22,7 +22,7 @@ function App() {
             <Route path="/survey/consent/:name" element={<Consent />} />
             <Route path={"/data-surveys"} element={<DataColSurveys/>} />
             <Route path={"/survey/manga/completed"} element={<Completed />} />
-            <Route path={"/survey/history"} element={<History/>} />
+            {/*<Route path={"/survey/history"} element={<History/>} />*/}
             <Route path={"/survey/:name/history"} element={<History />} />
         </Routes>
       </div>

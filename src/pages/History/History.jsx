@@ -4,36 +4,50 @@ import axios from 'axios';
 
 function History() {
     const [data, setData] = useState([]);
+    const split = window.location.pathname.split("/");
+    const surveyName = split[2];
+
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/surveys/history')
-            .then(response => {
-                setData(response.data);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
-    }, []);
+        const getData = async () => {
+            const responseType = surveyName.replaceAll("-", "_");
+            const response = await axios.get(
+                `${process.env.REACT_APP_API_ADDRESS}/history/${responseType}/`
+            );
+            setData(response.data);
+        };
+        getData();
+    }, [surveyName]);
 
-    const filteredData = data.filter(item => item.response_type === 'asq');
-
-    const history_data = filteredData.map((data, i) =>
-        <tr key={i}>
-            <td>{data.id}</td>
-            <td>{data.response_type}</td>
-            <td>{data.response_answers}</td>
-            <td>{data.response_results}</td>
-            <td>{data.response_time}</td>
-        </tr>
+    const history_data = data?.map((data, i) =>
+    <tr key={i}>
+        <td>{data.id}</td>
+        <td>{data.response_type}</td>
+        <td>{data.response_answers}</td>
+        <td>{data.response_results}</td>
+        <td>{data.response_time}</td>
+    </tr>
     );
 
-    // const history_data = data.map((data, i) =>
-    // <tr key={i}>
-    //     <td>{data.id}</td>
-    //     <td>{data.response_type}</td>
-    //     <td>{data.response_answers}</td>
-    //     <td>{data.response_results}</td>
-    //     <td>{data.response_time}</td>
-    // </tr>
+    // useEffect(() => {
+    //     axios.get('http://127.0.0.1:8000/surveys/history')
+    //         .then(response => {
+    //             setData(response.data);
+    //         })
+    //         .catch(error => {
+    //             console.error('Error fetching data:', error);
+    //         });
+    // }, []);
+    //
+    // const filteredData = data.filter(item => item.response_type === 'test');
+    //
+    // const history_data = filteredData.map((data, i) =>
+    //     <tr key={i}>
+    //         <td>{data.id}</td>
+    //         <td>{data.response_type}</td>
+    //         <td>{data.response_answers}</td>
+    //         <td>{data.response_results}</td>
+    //         <td>{data.response_time}</td>
+    //     </tr>
     // );
 
     const handleDownload = async () => {
