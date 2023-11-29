@@ -50,6 +50,12 @@ function History() {
     //     </tr>
     // );
 
+    // TODO
+    // timestamp shld incl date, less digits
+    // response answers - table
+    // response type remove from table
+    // response type shld be displayed in header so <h1> {ResponseType} History <\h1>
+
     const handleDownload = async () => {
         try {
             const response = await fetch('http://127.0.0.1:8000/surveys/download-csv');

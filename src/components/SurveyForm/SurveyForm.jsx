@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./SurveyForm.css";
 import ProgressBar from "../ProgressBar/ProgressBar";
+import {useNavigate} from "react-router-dom";
 
 function SurveyForm(props) {
   const [questions, setQuestions] = useState([]);
@@ -133,6 +134,16 @@ function SurveyForm(props) {
     setValidResponses(valid);
   }, [responses]);
 
+  const split = window.location.pathname.split("/");
+  const surveyName = split[2];
+  const navigate = useNavigate();
+
+  const handleNextClick = () => {
+    const pythonSurveyName = surveyName.replaceAll("-", "_");
+    let path = `/survey/${pythonSurveyName}/history`;
+    navigate(path);
+  };
+
   return (
     <div className="survey-form-container">
       <ProgressBar
@@ -148,7 +159,7 @@ function SurveyForm(props) {
       </button>
       <button
         id="history-button"
-        onClick={() => window.location.href='http://localhost:3000/survey/history'} //CHANGE THE LINK
+        onClick={handleNextClick}
         style={{ float: 'right' }}
       >
         <span>History</span>
