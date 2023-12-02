@@ -18,43 +18,59 @@ function History() {
         getData();
     }, [surveyName]);
 
-    const history_data = data?.map((data, i) =>
-    <tr key={i}>
-        <td>{data.id}</td>
-        <td>{data.response_type}</td>
-        <td>{data.response_answers}</td>
-        <td>{data.response_results}</td>
-        <td>{data.response_time}</td>
-    </tr>
-    );
-
-    // useEffect(() => {
-    //     axios.get('http://127.0.0.1:8000/surveys/history')
-    //         .then(response => {
-    //             setData(response.data);
-    //         })
-    //         .catch(error => {
-    //             console.error('Error fetching data:', error);
-    //         });
-    // }, []);
-    //
-    // const filteredData = data.filter(item => item.response_type === 'test');
-    //
-    // const history_data = filteredData.map((data, i) =>
-    //     <tr key={i}>
-    //         <td>{data.id}</td>
-    //         <td>{data.response_type}</td>
-    //         <td>{data.response_answers}</td>
-    //         <td>{data.response_results}</td>
-    //         <td>{data.response_time}</td>
-    //     </tr>
+    // const history_data = data?.map((data, i) =>
+    // <tr key={i}>
+    //     <td>{data.id}</td>
+    //     <td>{JSON.stringify(data.response_answers)}</td>
+    //     <td>{JSON.stringify(data.response_results)}</td>
+    //     <td>{data.response_time}</td>
+    // </tr>
     // );
 
-    // TODO
-    // timestamp shld incl date, less digits
-    // response answers - table
-    // response type remove from table
-    // response type shld be displayed in header so <h1> {ResponseType} History <\h1>
+    const formatJsonToTable = (jsonObject) => {
+        return (
+            <table className="nested-table">
+                <thead>
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                {Object.entries(jsonObject).map(([key, value]) => (
+                    <tr key={key}>
+                        <td>{key}</td>
+                        <td>{typeof value === 'object' ? formatJsonToTable(value) : value}</td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+        );
+    };
+
+    const formatDateTime = (dateTimeString) => {
+        const options = {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false,
+        };
+        const formattedDateTime = new Date(dateTimeString).toLocaleString('en-US', options);
+        return formattedDateTime;
+    };
+
+
+    const history_data = data?.map((entry, i) => (
+        <tr key={i}>
+            <td>{entry.id}</td>
+            <td>{formatJsonToTable(entry.response_answers)}</td>
+            <td>{formatJsonToTable(entry.response_results)}</td>
+            <td>{formatDateTime(entry.response_timestamp)}</td>
+        </tr>
+    ));
 
     const handleDownload = async () => {
         try {
@@ -72,16 +88,17 @@ function History() {
         }
     };
 
+    const responseType = surveyName.replaceAll("-", "_");
+
     return (
         <div className="history-container">
-            <h1>History</h1>
+            <h1> {responseType} History</h1>
             <button onClick={handleDownload}>Download CSV</button>
             <br/>
             <br/>
-            <table>
+            <table className="main-table">
             <tr>
                 <th>ID</th>
-                <th>Response Type</th>
                 <th>Response Answers</th>
                 <th>Response Results</th>
                 <th>Response Time</th>
