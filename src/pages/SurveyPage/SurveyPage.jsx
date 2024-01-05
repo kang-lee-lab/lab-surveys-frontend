@@ -17,7 +17,8 @@ function SurveyPage() {
   // error handling
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
+  // get time when survey is loaded
+  const startTime = useRef(new Date())
   useEffect(() => {
     const getSurveyData = async () => {
       const pythonSurveyName = surveyName.replaceAll("-", "_");
@@ -42,12 +43,18 @@ function SurveyPage() {
     } else if (survey.survey_id === "manga") {
       navigate(location.pathname + "/completed");
     } else {
+      // get end time when survey is submitted
+      const endTime = new Date();
+      // calculate time duration to complete survey
+      const response_duration = (endTime - startTime.current) / 1000;
+
       const response = await axios.post(
         `${process.env.REACT_APP_API_ADDRESS}/results/`,
         {
           survey: survey.survey_id,
           mode: survey.survey_mode,
           data: surveyResponses,
+          duration: response_duration, // include duration
         }
       );
       navigate(location.pathname + "/results", { state: response.data });
