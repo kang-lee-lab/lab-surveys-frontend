@@ -62,13 +62,22 @@ function History() {
         return formattedDateTime;
     };
 
+    const formatDecimalPlaces = (object) => {
+        return Object.entries(object).map(([key, value]) => (
+            <div key={key}>
+                <strong>{key}:</strong> {typeof value === 'number' ? value.toFixed(2) : value}
+            </div>
+        ));
+    };
 
     const history_data = data?.map((entry, i) => (
         <tr key={i}>
             <td>{entry.id}</td>
-            <td>{formatJsonToTable(entry.response_answers)}</td>
-            <td>{formatJsonToTable(entry.response_results)}</td>
-            <td>{formatDateTime(entry.response_timestamp)}</td>
+            <td>{formatDecimalPlaces(JSON.parse(entry.response_answers))}</td>
+            <td>{formatDecimalPlaces(JSON.parse(entry.response_results))}</td>
+            <td>{entry.response_date}</td>
+            <td>{entry.response_time}</td>
+            <td>{entry.response_duration}</td>
         </tr>
     ));
 
@@ -101,7 +110,9 @@ function History() {
                 <th>ID</th>
                 <th>Response Answers</th>
                 <th>Response Results</th>
+                <th>Response Date</th>
                 <th>Response Time</th>
+                <th>Response Duration</th>
             </tr>
             {history_data}
             </table>
