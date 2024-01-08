@@ -73,8 +73,8 @@ function History() {
     const history_data = data?.map((entry, i) => (
         <tr key={i}>
             <td>{entry.id}</td>
-            <td>{formatDecimalPlaces(JSON.parse(entry.response_answers))}</td>
-            <td>{formatDecimalPlaces(JSON.parse(entry.response_results))}</td>
+            <td>{formatDecimalPlaces(entry.response_answers)}</td>
+            <td>{formatDecimalPlaces(entry.response_results)}</td>
             <td>{entry.response_date}</td>
             <td>{entry.response_time}</td>
             <td>{entry.response_duration}</td>
