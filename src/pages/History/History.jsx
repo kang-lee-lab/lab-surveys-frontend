@@ -1,4 +1,4 @@
-import React , { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import "./History.css";
 import axios from 'axios';
 
@@ -13,7 +13,18 @@ function History() {
             const response = await axios.get(
                 `${process.env.REACT_APP_API_ADDRESS}/history/${responseType}/`
             );
-            setData(response.data);
+            if (responseType === "nafld" || "anxiety_moderate"){
+                const b=JSON.stringify(response.data);
+                let tmp = JSON.parse(b.replace(/\\/g, '')
+                    .replace(/""/g, '')
+                    .replace(/"{/g, '{')
+                    .replace(/}"/g, '}')
+                );
+                setData(tmp);
+            } else {
+                setData(response.data);
+            }
+
         };
         getData();
     }, [surveyName]);
@@ -70,16 +81,31 @@ function History() {
         ));
     };
 
-    const history_data = data?.map((entry, i) => (
-        <tr key={i}>
-            <td>{entry.id}</td>
-            <td>{formatDecimalPlaces(entry.response_answers)}</td>
-            <td>{formatDecimalPlaces(entry.response_results)}</td>
-            <td>{entry.response_date}</td>
-            <td>{entry.response_time}</td>
-            <td>{entry.response_duration}</td>
-        </tr>
-    ));
+    const responseType = surveyName.replaceAll("-", "_");
+    let history_data;
+    if (responseType === "nafld" || "anxiety_moderate"){
+        history_data = data?.map((entry, i) => (
+            <tr key={i}>
+                <td>{entry.id}</td>
+                <td>{formatDecimalPlaces(entry.response_answers)}</td>
+                <td>{entry.response_results}</td>
+                <td>{entry.response_date}</td>
+                <td>{entry.response_time}</td>
+                <td>{entry.response_duration}</td>
+            </tr>
+        ));
+    } else {
+        history_data = data?.map((entry, i) => (
+            <tr key={i}>
+                <td>{entry.id}</td>
+                <td>{formatDecimalPlaces(entry.response_answers)}</td>
+                <td>{formatDecimalPlaces(entry.response_results)}</td>
+                <td>{entry.response_date}</td>
+                <td>{entry.response_time}</td>
+                <td>{entry.response_duration}</td>
+            </tr>
+        ));
+    }
 
     const handleDownload = async () => {
         try {
@@ -96,8 +122,6 @@ function History() {
             console.error('Error downloading CSV:', error);
         }
     };
-
-    const responseType = surveyName.replaceAll("-", "_");
 
     return (
         <div className="history-container">
@@ -116,8 +140,6 @@ function History() {
             </tr>
             {history_data}
             </table>
-
-
         </div>
     );
 }
