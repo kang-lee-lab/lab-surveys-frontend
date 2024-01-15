@@ -83,7 +83,7 @@ function History() {
 
     const responseType = surveyName.replaceAll("-", "_");
     let history_data;
-    if (responseType === "nafld" || "anxiety_moderate"){
+    if (responseType === "nafld" || responseType === "anxiety_moderate"){
         history_data = data?.map((entry, i) => (
             <tr key={i}>
                 <td>{entry.id}</td>
