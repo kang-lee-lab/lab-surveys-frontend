@@ -8,25 +8,19 @@ function History() {
     const surveyName = split[2];
 
     useEffect(() => {
-        const getData = async () => {
-            const responseType = surveyName.replaceAll("-", "_");
-            const response = await axios.get(
-                `${process.env.REACT_APP_API_ADDRESS}/history/${responseType}/`
-            );
-            if (responseType === "nafld" || "anxiety_moderate"){
-                const b=JSON.stringify(response.data);
-                let tmp = JSON.parse(b.replace(/\\/g, '')
-                    .replace(/""/g, '')
-                    .replace(/"{/g, '{')
-                    .replace(/}"/g, '}')
+        const fetchData = async () => {
+            try {
+                const responseType = surveyName.replaceAll("-", "_");
+                const response = await axios.get(
+                    `${process.env.REACT_APP_API_ADDRESS}/history/${responseType}/`
                 );
-                setData(tmp);
-            } else {
                 setData(response.data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
             }
-
         };
-        getData();
+
+        fetchData();
     }, [surveyName]);
 
     // const history_data = data?.map((data, i) =>
@@ -81,32 +75,71 @@ function History() {
         ));
     };
 
-    const responseType = surveyName.replaceAll("-", "_");
-    let history_data;
-    if (responseType === "nafld" || responseType === "anxiety_moderate"){
-        history_data = data?.map((entry, i) => (
-            <tr key={i}>
-                <td>{entry.id}</td>
-                <td>{formatDecimalPlaces(entry.response_answers)}</td>
-                <td>{entry.response_results}</td>
-                <td>{entry.response_date}</td>
-                <td>{entry.response_time}</td>
-                <td>{entry.response_duration}</td>
-            </tr>
-        ));
-    } else {
-        history_data = data?.map((entry, i) => (
-            <tr key={i}>
-                <td>{entry.id}</td>
-                <td>{formatDecimalPlaces(entry.response_answers)}</td>
-                <td>{formatDecimalPlaces(entry.response_results)}</td>
-                <td>{entry.response_date}</td>
-                <td>{entry.response_time}</td>
-                <td>{entry.response_duration}</td>
-            </tr>
-        ));
-    }
 
+    const formatAnswers = (answers, questions) => {
+        const formattedAnswers = [];
+        Object.entries(answers).forEach(([key, value]) => {
+            const questionInfo = questions.find(q => q.question_id === key);
+            if (questionInfo) {
+                const unit = questionInfo.question.unit || '';
+                formattedAnswers.push({
+                    question: questionInfo.question_text,
+                    value: `${value} ${unit}`,
+                });
+            }
+        });
+        return formattedAnswers;
+    };
+
+    const formatResults = (results) => {
+        const formattedResults = [];
+        Object.entries(results).forEach(([key, value]) => {
+            formattedResults.push({
+                question: key,
+                value: value,
+            });
+        });
+        return formattedResults;
+    }
+    const formatTable = (formattedAnswers) => {
+        return (
+            <table className="nested-table">
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {formattedAnswers.map((answer, index) => (
+                        <tr key={index}>
+                            <td>{answer.question}</td>
+                            <td>{answer.value}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        );
+    };
+
+    const history_data = data?.map((entry, i) => {
+        const answers = JSON.parse(entry.response_answers);
+        const questions = entry.questions || [];
+
+        const formattedAnswers = formatAnswers(answers, questions);
+        const formattedResults = formatResults(JSON.parse(entry.response_results));
+        return (
+            <tr key={i}>
+                <td>{entry.id}</td>
+                <td>{formatTable(formattedAnswers)}</td>
+                <td>{formatTable(formattedResults)}</td>
+                <td>{entry.response_date}</td>
+                <td>{entry.response_time}</td>
+                <td>{entry.response_duration}</td>
+            </tr>
+        );
+    });
+    
     const handleDownload = async () => {
         try {
             const response = await fetch('http://127.0.0.1:8000/surveys/download-csv');
@@ -122,6 +155,8 @@ function History() {
             console.error('Error downloading CSV:', error);
         }
     };
+
+    const responseType = surveyName.replaceAll("-", "_");
 
     return (
         <div className="history-container">
@@ -140,6 +175,8 @@ function History() {
             </tr>
             {history_data}
             </table>
+
+
         </div>
     );
 }
