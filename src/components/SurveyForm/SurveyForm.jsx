@@ -2,12 +2,14 @@ import React, { useEffect, useState, useRef } from "react";
 import "./SurveyForm.css";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import {useNavigate} from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function SurveyForm(props) {
   const [questions, setQuestions] = useState([]);
   const [responses, setResponses] = useState({});
   const [validResponses, setValidResponses] = useState(0);
   const totalQuestions = useRef(0);
+  const { isAuthenticated } = useAuth0();
 
   // // set the response object so it always has the same order
   useEffect(() => {
@@ -162,13 +164,15 @@ function SurveyForm(props) {
       >
         <span>Submit</span>
       </button>
-      <button
-        id="history-button"
-        onClick={handleNextClick}
-        style={{ float: 'right' }}
-      >
-        <span>History</span>
-      </button>
+      {isAuthenticated && (
+        <button
+          id="history-button"
+          onClick={handleNextClick}
+          style={{ float: 'right' }}
+        >
+          <span>History</span>
+        </button>)
+      }
     </div>
   );
 }
