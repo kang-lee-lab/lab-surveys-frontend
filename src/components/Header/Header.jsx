@@ -8,14 +8,15 @@ function Header() {
 
   return (
     <div className="header">
-      <h3>Kang Lee Lab Surveys</h3>
-      <Link to={"/"}>Home</Link>
+      <h3>
+          <Link to={"/"}>Kang Lee Lab Surveys</Link>
+      </h3>
       <a
         href={"https://www.kangleelab.com/"}
         target="_blank"
         rel="noopener noreferrer"
       >
-        Lab Website
+          Kang Lee Development Lab
       </a>
       <Link to={"/participate"}>Participate</Link>
       {!isAuthenticated && (
