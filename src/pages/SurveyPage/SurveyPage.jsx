@@ -17,12 +17,13 @@ function SurveyPage() {
   // error handling
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
+  // get time when survey is loaded
+  const startTime = useRef(new Date())
   useEffect(() => {
     const getSurveyData = async () => {
       const pythonSurveyName = surveyName.replaceAll("-", "_");
       const response = await axios.get(
-          `${process.env.REACT_APP_API_ADDRESS}/survey/${pythonSurveyName}`
+        `${process.env.REACT_APP_API_ADDRESS}/survey/${pythonSurveyName}`
       );
       setSurvey(response.data);
     };
@@ -42,13 +43,19 @@ function SurveyPage() {
     } else if (survey.survey_id === "manga") {
       navigate(location.pathname + "/completed");
     } else {
+      // get end time when survey is submitted
+      const endTime = new Date();
+      // calculate time duration to complete survey
+      const response_duration = (endTime - startTime.current) / 1000;
+
       const response = await axios.post(
-          `${process.env.REACT_APP_API_ADDRESS}/results/`,
-          {
-            survey: survey.survey_id,
-            mode: survey.survey_mode,
-            data: surveyResponses,
-          }
+        `${process.env.REACT_APP_API_ADDRESS}/results/`,
+        {
+          survey: survey.survey_id,
+          mode: survey.survey_mode,
+          data: surveyResponses,
+          duration: response_duration, // include duration
+        }
       );
       navigate(location.pathname + "/results", { state: response.data });
     }
@@ -75,33 +82,33 @@ function SurveyPage() {
 
   if (survey === "not-found") {
     return (
-        <div className="survey-page-container">
-          <h3>404. Not Found.</h3>
-        </div>
+      <div className="survey-page-container">
+        <h3>404. Not Found.</h3>
+      </div>
     );
   } else if (Object.keys(survey).length === 0) {
     return (
-        <div className="survey-page-container">
-          <h3>Fetching survey...</h3>
-        </div>
+      <div className="survey-page-container">
+        <h3>Fetching survey...</h3>
+      </div>
     );
   } else {
     return (
-        <div className="survey-page-container">
-          {showError && (
-              <ErrorPopup message={errorMessage} setShowError={setShowError} />
-          )}
-          <h3>Welcome to the {survey?.title} interactive webpage.</h3>
-          <div className="description-container">{description}</div>
-          <div className="survey-container">
-            <SurveyForm
-                key={survey?.title}
-                submitSurvey={submitSurvey}
-                data={survey?.pages[currentPage]}
-                page={currentPage}
-            />
-          </div>
+      <div className="survey-page-container">
+        {showError && (
+          <ErrorPopup message={errorMessage} setShowError={setShowError} />
+        )}
+        <h3>Welcome to the {survey?.title} interactive webpage.</h3>
+        <div className="description-container">{description}</div>
+        <div className="survey-container">
+          <SurveyForm
+            key={survey?.title}
+            submitSurvey={submitSurvey}
+            data={survey?.pages[currentPage]}
+            page={currentPage}
+          />
         </div>
+      </div>
     );
   }
 }
