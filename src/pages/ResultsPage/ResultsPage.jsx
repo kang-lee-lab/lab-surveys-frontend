@@ -46,12 +46,68 @@ function ResultsPage() {
         </PieChart>
       )}
       {surveyId === "mmpi" && (
-        <RadarChart height={500} width={500} outerRadius="80%" data={cleanData}>
-          <PolarGrid />
-          <PolarAngleAxis dataKey="name" />
-          <PolarRadiusAxis />
-          <Radar dataKey="x" stroke="green" fill="green" fillOpacity={0.5} />
-        </RadarChart>
+        <div>
+          <h1>Your likelihood of being positive in each condition is: </h1>
+          <table className="table" style={{ width: "100%" }}>
+            <tbody>
+              <tr>
+                <th style={{ textAlign: "left" }}>Condition</th>
+                <th style={{ textAlign: "left" }}>Likelihood</th>
+              </tr>
+              <tr>
+                <td>Depression (DT)</td>
+                <td>{(cleanData.find(item => item.name === 'DT').x * 100).toFixed(2)}%</td>
+              </tr>
+              <tr>
+                <td>Hypochondriasis (HsT)</td>
+                <td>{(cleanData.find(item => item.name === 'HsT').x * 100).toFixed(2)}%</td>
+              </tr>
+              <tr>
+                <td>Hysteria (HyT)</td>
+                <td>{(cleanData.find(item => item.name === 'HyT').x * 100).toFixed(2)}%</td>
+              </tr>
+              <tr>
+                <td>Psychopathic Deviate (PdT)</td>
+                <td>{(cleanData.find(item => item.name === 'PdT').x * 100).toFixed(2)}%</td>
+              </tr>
+              <tr>
+                <td>Masculinity (MfT)</td>
+                <td>{(cleanData.find(item => item.name === 'MfT').x * 100).toFixed(2)}%</td>
+              </tr>
+              <tr>
+                <td>Paranoia (PaT)</td>
+                <td>{(cleanData.find(item => item.name === 'PaT').x * 100).toFixed(2)}%</td>
+              </tr>
+              <tr>
+                <td>Psychasthenia (PtT)</td>
+                <td>{(cleanData.find(item => item.name === 'PtT').x * 100).toFixed(2)}%</td>
+              </tr>
+              <tr>
+                <td>Schizophrenia (ScT)</td>
+                <td>{(cleanData.find(item => item.name === 'ScT').x * 100).toFixed(2)}%</td>
+              </tr>
+              <tr>
+                <td>Hypomania (MaT)</td>
+                <td>{(cleanData.find(item => item.name === 'MaT').x * 100).toFixed(2)}%</td>
+              </tr>
+              <tr>
+                <td>Social Introversion (SiT)</td>
+                <td>{(cleanData.find(item => item.name === 'SiT').x * 100).toFixed(2)}%</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+          Displayed below is a graph depicting your likelihood of being positive in each condition of the MMPI.
+          </p>
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <RadarChart height={500} width={500} outerRadius="80%" data={cleanData}>
+            <PolarGrid />
+            <PolarAngleAxis dataKey="name" />
+            <PolarRadiusAxis />
+            <Radar dataKey="x" stroke="grey" fill="grey" fillOpacity={0.5} />
+          </RadarChart>
+        </div>
+        </div>
       )}
       {surveyId === "childbmi" && (
         <div>
@@ -120,17 +176,19 @@ function ResultsPage() {
             (HRV-D1-6). Each reflect an orthogonal dimension underlying your HRV
             measures.
           </p>
-          <RadarChart
-            height={500}
-            width={500}
-            outerRadius="80%"
-            data={cleanData}
-          >
-            <PolarGrid />
-            <PolarAngleAxis dataKey="name" />
-            <PolarRadiusAxis />
-            <Radar dataKey="x" stroke="grey" fill="grey" fillOpacity={0.5} />
-          </RadarChart>
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <RadarChart
+              height={500}
+              width={500}
+              outerRadius="80%"
+              data={cleanData}
+            >
+              <PolarGrid />
+              <PolarAngleAxis dataKey="name" />
+              <PolarRadiusAxis />
+              <Radar dataKey="x" stroke="grey" fill="grey" fillOpacity={0.5} />
+            </RadarChart>
+          </div>
         </div>
       )}
       <p>
