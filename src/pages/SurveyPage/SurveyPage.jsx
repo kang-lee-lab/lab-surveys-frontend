@@ -13,14 +13,17 @@ function SurveyPage() {
   const totalQuestions = useRef(0);
   const surveyName = split[2];
   const [survey, setSurvey] = useState({});
+  const [currentPage, setCurrentPage] = useState(0);
   // error handling
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
+  // get time when survey is loaded
+  const startTime = useRef(new Date())
   useEffect(() => {
     const getSurveyData = async () => {
+      const pythonSurveyName = surveyName.replaceAll("-", "_");
       const response = await axios.get(
-        `${process.env.REACT_APP_API_ADDRESS}/survey/${surveyName}`
+        `${process.env.REACT_APP_API_ADDRESS}/survey/${pythonSurveyName}`
       );
       setSurvey(response.data);
     };
@@ -37,13 +40,21 @@ function SurveyPage() {
     if (!valid) {
       setShowError(true);
       setErrorMessage("You must fill out all survey questions.");
+    } else if (survey.survey_id === "manga") {
+      navigate(location.pathname + "/completed");
     } else {
+      // get end time when survey is submitted
+      const endTime = new Date();
+      // calculate time duration to complete survey
+      const response_duration = (endTime - startTime.current) / 1000;
+
       const response = await axios.post(
         `${process.env.REACT_APP_API_ADDRESS}/results/`,
         {
           survey: survey.survey_id,
           mode: survey.survey_mode,
           data: surveyResponses,
+          duration: response_duration, // include duration
         }
       );
       navigate(location.pathname + "/results", { state: response.data });
@@ -91,9 +102,10 @@ function SurveyPage() {
         <div className="description-container">{description}</div>
         <div className="survey-container">
           <SurveyForm
-            questions={survey?.questions}
             key={survey?.title}
             submitSurvey={submitSurvey}
+            data={survey?.pages[currentPage]}
+            page={currentPage}
           />
         </div>
       </div>
