@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   PieChart,
   Pie,
@@ -30,6 +30,7 @@ function ResultsPage() {
     let path = `/survey/${pythonSurveyName}`;
     navigate(path);
   };
+  // return to home button
   const returnToHome = () => {
     let path = `/`;
     navigate(path);
