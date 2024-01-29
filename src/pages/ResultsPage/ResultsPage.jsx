@@ -20,7 +20,7 @@ function ResultsPage() {
   const surveyId = data.metadata.survey_id;
   // format survey data specific to what graph is being used
   const cleanData = getCleanSurveyData(surveyId, data);
-
+console.log(cleanData)
   return (
     <div className="survey-page-container">
       <h3>
@@ -112,9 +112,9 @@ function ResultsPage() {
       {surveyId === "childbmi" && (
         <div>
           <h4>At age {data.age_to_predict}, </h4>
-          <h4>The child's predicted height is {data.pred_height} cm.</h4>
-          <h4>The child's predicted weight is {data.pred_weight} kg.</h4>
-          <h4>The child's predicted BMI is {data.pred_bmi} kg/m2.</h4>
+          <h4>The child's predicted height is {(data.pred_height).toFixed(2)} cm.</h4>
+          <h4>The child's predicted weight is {(data.pred_weight).toFixed(2)} kg.</h4>
+            <h4>The child's predicted BMI is {(data.pred_bmi.toFixed(2))} kg/m<sup>2</sup>.</h4>
           <p>
             Displayed is your children's future height, weight, and BMI given
             their current physical measurements. This is calculated through a
