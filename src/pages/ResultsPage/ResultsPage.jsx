@@ -46,26 +46,28 @@ function ResultsPage() {
           <h1>Your likelihood of moderate {data.mode} is {(data.positive*100).toFixed(2)}%.</h1>
           <p>Displayed is your estimated likelihood of moderate {data.mode} given your answers to the DASS questions. 
           This is calculated through a machine learning model trained using data collected from an online survey.</p>
-           <PieChart width={1000} height={500}>
-            <Tooltip />
-            <Pie
-              data={cleanData}
-              cx={500}
-              cy={220}
-              innerRadius={110}
-              outerRadius={160}
-              paddingAngle={0}
-              dataKey="value"
-            >
-              <Label
-                value={`${(data.positive*100).toFixed(2)}%`}
-                position="center"
-                fill="#000"
-                fontSize={20}
-                fontWeight="bold"
-              />
-            </Pie>
-          </PieChart>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <PieChart width={1000} height={500}>
+              <Tooltip />
+              <Pie
+                data={cleanData}
+                cx={500}
+                cy={220}
+                innerRadius={110}
+                outerRadius={160}
+                paddingAngle={0}
+                dataKey="value"
+              >
+                <Label
+                  value={`${(data.positive * 100).toFixed(2)}%`}
+                  position="center"
+                  fill="#000"
+                  fontSize={20}
+                  fontWeight="bold"
+                />
+              </Pie>
+            </PieChart>
+          </div>
         </div>
       )}
       {surveyId === "nafld" && (
@@ -73,26 +75,28 @@ function ResultsPage() {
           <h1>Your likelihood of NAFLD is {(data.positive*100).toFixed(2)}%.</h1>
           <p>Displayed is your estimated likelihood of Non-Alcoholic Fatty Liver Disease (NAFLD) given your physical measurements and blood biomarkers. 
             This is calculated through a machine learning model trained using patient data.</p>
-           <PieChart width={1000} height={500}>
-            <Tooltip />
-            <Pie
-              data={cleanData}
-              cx={500}
-              cy={220}
-              innerRadius={110}
-              outerRadius={160}
-              paddingAngle={0}
-              dataKey="value"
-            >
-              <Label
-                value={`${(data.positive*100).toFixed(2)}%`}
-                position="center"
-                fill="#000"
-                fontSize={20}
-                fontWeight="bold"
-              />
-            </Pie>
-          </PieChart>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <PieChart width={1000} height={500}>
+              <Tooltip />
+              <Pie
+                data={cleanData}
+                cx={500}
+                cy={220}
+                innerRadius={110}
+                outerRadius={160}
+                paddingAngle={0}
+                dataKey="value"
+              >
+                <Label
+                  value={`${(data.positive * 100).toFixed(2)}%`}
+                  position="center"
+                  fill="#000"
+                  fontSize={20}
+                  fontWeight="bold"
+                />
+              </Pie>
+            </PieChart>
+          </div>
         </div>
       )}
       {surveyId === "mmpi" && (
