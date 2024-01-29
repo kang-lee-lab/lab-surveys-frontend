@@ -1,9 +1,10 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import {
   PieChart,
   Pie,
-  Legend,
+  Tooltip,
+  Label,
   Radar,
   RadarChart,
   PolarGrid,
@@ -20,6 +21,19 @@ function ResultsPage() {
   const surveyId = data.metadata.survey_id;
   // format survey data specific to what graph is being used
   const cleanData = getCleanSurveyData(surveyId, data);
+  // try again button
+  const split = window.location.pathname.split("/");
+  const surveyName = split[2];
+  const navigate = useNavigate();
+  const returnToSurvey = () => {
+    const pythonSurveyName = surveyName.replaceAll("-", "_");
+    let path = `/survey/${pythonSurveyName}`;
+    navigate(path);
+  };
+  const returnToHome = () => {
+    let path = `/`;
+    navigate(path);
+  };
 
   return (
     <div className="survey-page-container">
@@ -29,46 +43,54 @@ function ResultsPage() {
       {surveyId === "dass" && (
         <div>
           <h1>Your likelihood of moderate {data.mode} is {(data.positive*100).toFixed(2)}%.</h1>
-
-          <PieChart width={800} height={400}>
-            <Legend
-              height={36}
-              layout="vertical"
-              verticalAlign="middle"
-              iconSize={0}
-            />
+          <p>Displayed is your estimated likelihood of moderate {data.mode} given your answers to the DASS questions. 
+          This is calculated through a machine learning model trained using data collected from an online survey.</p>
+           <PieChart width={1000} height={500}>
+            <Tooltip />
             <Pie
               data={cleanData}
-              cx={120}
-              cy={200}
-              innerRadius={90}
-              outerRadius={120}
+              cx={500}
+              cy={220}
+              innerRadius={110}
+              outerRadius={160}
               paddingAngle={0}
               dataKey="value"
-            ></Pie>
+            >
+              <Label
+                value={`${(data.positive*100).toFixed(2)}%`}
+                position="center"
+                fill="#000"
+                fontSize={20}
+                fontWeight="bold"
+              />
+            </Pie>
           </PieChart>
         </div>
       )}
       {surveyId === "nafld" && (
         <div>
-          <h1>Your likelihood of non-alcoholic fatty liver disease is {(data.positive*100).toFixed(2)}%.</h1>
-
-          <PieChart width={800} height={400}>
-            <Legend
-              height={36}
-              layout="vertical"
-              verticalAlign="middle"
-              iconSize={0}
-            />
+          <h1>Your likelihood of NAFLD is {(data.positive*100).toFixed(2)}%.</h1>
+          <p>Displayed is your estimated likelihood of Non-Alcoholic Fatty Liver Disease (NAFLD) given your physical measurements and blood biomarkers. 
+            This is calculated through a machine learning model trained using patient data.</p>
+           <PieChart width={1000} height={500}>
+            <Tooltip />
             <Pie
               data={cleanData}
-              cx={120}
-              cy={200}
-              innerRadius={90}
-              outerRadius={120}
+              cx={500}
+              cy={220}
+              innerRadius={110}
+              outerRadius={160}
               paddingAngle={0}
               dataKey="value"
-            ></Pie>
+            >
+              <Label
+                value={`${(data.positive*100).toFixed(2)}%`}
+                position="center"
+                fill="#000"
+                fontSize={20}
+                fontWeight="bold"
+              />
+            </Pie>
           </PieChart>
         </div>
       )}
@@ -224,7 +246,22 @@ function ResultsPage() {
         be taken as a substitute for professional advice. Reliance on any
         information on the webpage is solely at your own risk.
       </p>
+      <button
+          id="try-again-button"
+          onClick={returnToSurvey}
+          style={{ float: 'left' }}
+        >
+          <span>Try Again</span>
+      </button>
+      <button
+          id="home-button"
+          onClick={returnToHome}
+          style={{ float: 'right' }}
+        >
+          <span>Return to Home</span>
+      </button>
     </div>
+
   );
 }
 
