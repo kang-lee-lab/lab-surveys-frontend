@@ -20,30 +20,57 @@ function ResultsPage() {
   const surveyId = data.metadata.survey_id;
   // format survey data specific to what graph is being used
   const cleanData = getCleanSurveyData(surveyId, data);
-console.log(cleanData)
+
   return (
     <div className="survey-page-container">
       <h3>
         Welcome to the results page for the {data.metadata.full_name} survey.
       </h3>
-      {(surveyId === "dass" || surveyId === "nafld") && (
-        <PieChart width={800} height={400}>
-          <Legend
-            height={36}
-            layout="vertical"
-            verticalAlign="middle"
-            iconSize={0}
-          />
-          <Pie
-            data={cleanData}
-            cx={120}
-            cy={200}
-            innerRadius={90}
-            outerRadius={120}
-            paddingAngle={0}
-            dataKey="value"
-          ></Pie>
-        </PieChart>
+      {surveyId === "dass" && (
+        <div>
+          <h1>Your likelihood of moderate {data.mode} is {(data.positive*100).toFixed(2)}%.</h1>
+
+          <PieChart width={800} height={400}>
+            <Legend
+              height={36}
+              layout="vertical"
+              verticalAlign="middle"
+              iconSize={0}
+            />
+            <Pie
+              data={cleanData}
+              cx={120}
+              cy={200}
+              innerRadius={90}
+              outerRadius={120}
+              paddingAngle={0}
+              dataKey="value"
+            ></Pie>
+          </PieChart>
+        </div>
+      )}
+      {surveyId === "nafld" && (
+        <div>
+          <h1>Your likelihood of non-alcoholic fatty liver disease is {(data.positive*100).toFixed(2)}%.</h1>
+
+          <PieChart width={800} height={400}>
+            <Legend
+              height={36}
+              layout="vertical"
+              verticalAlign="middle"
+              iconSize={0}
+            />
+            <Pie
+              data={cleanData}
+              cx={120}
+              cy={200}
+              innerRadius={90}
+              outerRadius={120}
+              paddingAngle={0}
+              dataKey="value"
+            ></Pie>
+          </PieChart>
+        </div>
       )}
       {surveyId === "mmpi" && (
         <div>
