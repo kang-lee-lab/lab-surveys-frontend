@@ -145,9 +145,16 @@ function SurveyForm(props) {
   const surveyName = split[2];
   const navigate = useNavigate();
 
+  // history button
   const handleNextClick = () => {
     const pythonSurveyName = surveyName.replaceAll("-", "_");
     let path = `/survey/${pythonSurveyName}/history`;
+    navigate(path);
+  };
+
+  // return to home button
+  const returnToHome = () => {
+    let path = `/`;
     navigate(path);
   };
 
@@ -158,21 +165,29 @@ function SurveyForm(props) {
         totalQuestions={totalQuestions.current}
       />
       <div className="questions-container">{questions}</div>
-      <button
-        id="submit-survey-button"
-        onClick={() => props?.submitSurvey(responses)}
-      >
-        <span>Submit</span>
-      </button>
-      {isAuthenticated && (
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <button
-          id="history-button"
-          onClick={handleNextClick}
-          style={{ float: 'right' }}
+          id="submit-survey-button"
+          onClick={() => props?.submitSurvey(responses)}
         >
-          <span>History</span>
-        </button>)
-      }
+          <span>Submit</span>
+        </button>
+
+        {isAuthenticated && (
+          <button
+            id="history-button"
+            onClick={handleNextClick}
+          >
+            <span>History</span>
+          </button>
+        )}
+          <button
+          id="home-button"
+          onClick={returnToHome}
+        >
+          <span>Return to Home</span>
+        </button>
+      </div>
     </div>
   );
 }
