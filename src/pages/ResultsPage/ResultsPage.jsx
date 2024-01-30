@@ -181,10 +181,7 @@ function ResultsPage() {
           <h1>Your iHRV is {data.asq_result}. </h1>
           <p>
             Lower HRV measures are related to higher risk of cardiovascular
-            disease. If your iHRV fell within ranges classified as shades of
-            green, it signals good heart health. If your iHRV fell within ranges
-            classified as yellow, orange, or red, you may wish to examine your
-            HRV measures further. Please consult a medical professional with any
+            disease. Please consult a medical professional with any
             health concerns. Your iHRV is reflect multiple underlying HRV
             measures. The table below can be used to interpret your score.
           </p>
@@ -196,15 +193,15 @@ function ResultsPage() {
               </tr>
               <tr>
                 <td>80 and over</td>
-                <td>Extremely Low</td>
+                <td>Very Healthy</td>
               </tr>
               <tr>
                 <td>70-79</td>
-                <td>Low</td>
+                <td>Healthy</td>
               </tr>
               <tr>
                 <td>60-69</td>
-                <td>Slightly Low</td>
+                <td>Slightly Healthy</td>
               </tr>
               <tr>
                 <td>41-59</td>
@@ -212,15 +209,15 @@ function ResultsPage() {
               </tr>
               <tr>
                 <td>31-40</td>
-                <td>Slightly High</td>
+                <td>Slightly Unhealthy</td>
               </tr>
               <tr>
                 <td>21-30</td>
-                <td>High</td>
+                <td>Unhealthy</td>
               </tr>
               <tr>
                 <td>20 and below</td>
-                <td>Extremely High</td>
+                <td>Very Unhealthy</td>
               </tr>
             </tbody>
           </table>
