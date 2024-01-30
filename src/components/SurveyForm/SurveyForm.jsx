@@ -11,6 +11,11 @@ function SurveyForm(props) {
   const totalQuestions = useRef(0);
   const { isAuthenticated } = useAuth0();
 
+  const [validationMessages, setValidationMessages] = useState({
+    textInput: '',
+    numberInput: '',
+  });
+
   // // set the response object so it always has the same order
   useEffect(() => {
     const surveyQuestions = props?.data?.questions ?? [];
@@ -31,8 +36,10 @@ function SurveyForm(props) {
   // set the questions and their responses
   useEffect(() => {
     const questionsArray = [];
+
     for (const question of props?.data?.questions) {
       const questionObject = question;
+
       switch (questionObject["question"]["type"]) {
         case "single_select_dropdown":
           // set responses to the question
@@ -71,6 +78,11 @@ function SurveyForm(props) {
                       ...oldResponses,
                       [questionObject["question_id"]]: null,
                     }));
+
+                    setValidationMessages((prevMessages) => ({
+                      ...prevMessages,
+                      textInput: 'This is required.',
+                    }));
                   } else {
                     setResponses((oldResponses) => ({
                       ...oldResponses,
@@ -78,9 +90,13 @@ function SurveyForm(props) {
                     }));
                   }
                 }}
+
               >
                 {selectionOptions}
               </select>
+              <div>
+                <p>{validationMessages.textInput}</p>
+              </div>
             </div>
           );
           break;
@@ -105,17 +121,31 @@ function SurveyForm(props) {
                         ...oldResponses,
                         [questionObject["question_id"]]: null,
                       }));
+
+                      setValidationMessages((prevMessages) => ({
+                        ...prevMessages,
+                        textInput: 'This is required.',
+                      }));
+
                     } else {
                       setResponses((oldResponses) => ({
                         ...oldResponses,
                         [questionObject["question_id"]]: event.target.value,
                       }));
+
+                      if (isNaN(event.target.valueAsNumber) || event.target.valueAsNumber < questionObject.question.min || event.target.valueAsNumber > questionObject.question.max) {
+                        setValidationMessages((prevMessages) => ({
+                          ...prevMessages,
+                          numberInput: `Value must be between ${questionObject.question.min} and ${questionObject.question.max}.`,
+                        }));
                     }
-                  }}
-                  required
+                  }}}
                 />
                 <div className="unit-wrapper">
                  <span className="unit">{questionObject.question.unit}</span>
+                </div>
+                <div>
+                  <p>{validationMessages.numberInput}</p>
                 </div>
               </div>
             </div>
@@ -140,6 +170,7 @@ function SurveyForm(props) {
     }
     setValidResponses(valid);
   }, [responses]);
+
 
   const split = window.location.pathname.split("/");
   const surveyName = split[2];
