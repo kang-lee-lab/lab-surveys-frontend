@@ -20,24 +20,24 @@ export const getCleanSurveyData = (surveyId, data) => {
         name:
           capitalizeWord(data.mode) +
           " Percentage: " +
-          Number(data.positive.toFixed(5)) * 100 +
+          Number(data.positive*100).toFixed(2) +
           "%",
         value: data.positive,
         fill: "#0088FE",
       },
-      { name: "", value: 1 - data.positive, fill: "#ffffff00" },
+      { name: "", value: 1 - data.positive, fill: "#e3e4e6" },
     ];
   } else if (surveyId === "nafld") {
     return [
       {
         name:
           "Likelihood of NAFLD: " +
-          Number(data.positive.toFixed(5)) * 100 +
+          Number(data.positive*100).toFixed(2) +
           "%",
         value: data.positive,
         fill: "#0088FE",
       },
-      { name: "", value: 1 - data.positive, fill: "#ffffff00" },
+      { name: "", value: 1 - data.positive, fill: "#e3e4e6" },
     ];
   } else if (surveyId === "mmpi") {
     return getRadarChartDataFormat(JSON.parse(data.results));
