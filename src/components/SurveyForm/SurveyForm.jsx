@@ -11,12 +11,21 @@ function SurveyForm(props) {
   const totalQuestions = useRef(0);
   const { isAuthenticated } = useAuth0();
 
-  const [validationMessages, setValidationMessages] = useState({
-    textInput: '',
-    numberInput: '',
-  });
+  const [validationMessages, setValidationMessages] = useState({});
 
-  // // set the response object so it always has the same order
+  useEffect(() => {
+    const surveyQuestions = props?.data?.questions ?? [];
+    totalQuestions.current = surveyQuestions.length;
+
+    const initialValidationMessages = {};
+    surveyQuestions.forEach((question) => {
+      const questionId = question["question_id"];
+      initialValidationMessages[questionId] = "";
+    });
+    setValidationMessages(initialValidationMessages);
+  }, [props?.data?.questions]);
+
+  // set the response object so it always has the same order
   useEffect(() => {
     const surveyQuestions = props?.data?.questions ?? [];
     totalQuestions.current = surveyQuestions.length;
@@ -81,12 +90,17 @@ function SurveyForm(props) {
 
                     setValidationMessages((prevMessages) => ({
                       ...prevMessages,
-                      textInput: 'This is required.',
+                      [questionObject["question_id"]]: 'This is required.',
                     }));
+
                   } else {
                     setResponses((oldResponses) => ({
                       ...oldResponses,
                       [questionObject["question_id"]]: event.target.value,
+                    }));
+                    setValidationMessages((prevMessages) => ({
+                      ...prevMessages,
+                      [questionObject["question_id"]]: '',
                     }));
                   }
                 }}
@@ -95,7 +109,7 @@ function SurveyForm(props) {
                 {selectionOptions}
               </select>
               <div>
-                <p>{validationMessages.textInput}</p>
+                <p>{validationMessages[questionObject["question_id"]]}</p>
               </div>
             </div>
           );
@@ -124,7 +138,7 @@ function SurveyForm(props) {
 
                       setValidationMessages((prevMessages) => ({
                         ...prevMessages,
-                        textInput: 'This is required.',
+                        [questionObject["question_id"]]: 'This is required.',
                       }));
 
                     } else {
@@ -133,10 +147,19 @@ function SurveyForm(props) {
                         [questionObject["question_id"]]: event.target.value,
                       }));
 
-                      if (isNaN(event.target.valueAsNumber) || event.target.valueAsNumber < questionObject.question.min || event.target.valueAsNumber > questionObject.question.max) {
+                      if (
+                          isNaN(event.target.valueAsNumber) ||
+                          event.target.valueAsNumber < questionObject.question.min ||
+                          event.target.valueAsNumber > questionObject.question.max
+                      ) {
                         setValidationMessages((prevMessages) => ({
                           ...prevMessages,
-                          numberInput: `Value must be between ${questionObject.question.min} and ${questionObject.question.max}.`,
+                          [questionObject["question_id"]]: `Value must be between ${questionObject.question.min} and ${questionObject.question.max}.`,
+                        }));
+                      } else {
+                        setValidationMessages((prevMessages) => ({
+                          ...prevMessages,
+                          [questionObject["question_id"]]: '',
                         }));
                     }
                   }}}
@@ -144,8 +167,8 @@ function SurveyForm(props) {
                 <div className="unit-wrapper">
                  <span className="unit">{questionObject.question.unit}</span>
                 </div>
-                <div>
-                  <p>{validationMessages.numberInput}</p>
+                <div className="validation-error">
+                  <p>{validationMessages[questionObject["question_id"]]}</p>
                 </div>
               </div>
             </div>
