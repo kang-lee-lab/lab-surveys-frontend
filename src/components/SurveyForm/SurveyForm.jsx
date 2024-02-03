@@ -10,8 +10,9 @@ function SurveyForm(props) {
   const [validResponses, setValidResponses] = useState(0);
   const totalQuestions = useRef(0);
   const { isAuthenticated } = useAuth0();
-
   const [validationMessages, setValidationMessages] = useState({});
+
+  const [isFormValid, setIsFormValid] = useState(true);
 
   useEffect(() => {
     const surveyQuestions = props?.data?.questions ?? [];
@@ -192,7 +193,9 @@ function SurveyForm(props) {
       }
     }
     setValidResponses(valid);
+    setIsFormValid(valid === totalQuestions.current);
   }, [responses]);
+
 
 
   const split = window.location.pathname.split("/");
@@ -215,6 +218,7 @@ function SurveyForm(props) {
       <button
         id="submit-survey-button"
         onClick={() => props?.submitSurvey(responses)}
+        disabled={!isFormValid}
       >
         <span>Submit</span>
       </button>
