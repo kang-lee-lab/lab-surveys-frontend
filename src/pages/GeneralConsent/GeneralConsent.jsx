@@ -19,7 +19,7 @@ function GeneralConsent() {
   return (
     <div className="general-consent-container">
       <div className="description-container">
-        <h2>Introduction</h2>
+        <h2>Participate in Our Studies</h2>
         <p>
           You are participating in [insert study name] conducted by Kang Lee
           Lab. <br /> <br />
