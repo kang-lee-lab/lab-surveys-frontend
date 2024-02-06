@@ -110,7 +110,7 @@ function SurveyForm(props) {
                 {selectionOptions}
               </select>
               <div>
-                <p>{validationMessages[questionObject["question_id"]]}</p>
+                <p className="text-error">{validationMessages[questionObject["question_id"]]}</p>
               </div>
             </div>
           );
@@ -168,8 +168,8 @@ function SurveyForm(props) {
                 <div className="unit-wrapper">
                  <span className="unit">{questionObject.question.unit}</span>
                 </div>
-                <div className="validation-error">
-                  <p>{validationMessages[questionObject["question_id"]]}</p>
+                <div>
+                  <p className="text-error">{validationMessages[questionObject["question_id"]]}</p>
                 </div>
               </div>
             </div>

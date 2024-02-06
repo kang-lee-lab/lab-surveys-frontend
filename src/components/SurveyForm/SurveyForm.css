@@ -27,3 +27,7 @@ button[disabled]{
     background-color: #cccccc;
     color: #666666;
 }
+
+.text-error{
+    color:red;
+}
