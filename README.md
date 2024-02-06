@@ -15,3 +15,5 @@ Once that is finished, run `npm start` in the terminal which will start a local 
 ## Development
 
 Please download the 'Prettier - Code formatter' extension on VSCode so we can keep our formatting consistent. This also reduces conflicts when committing code since it'll adjust spacing, tabbing, etc for us.
+
+## Account Management
