@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./SurveyForm.css";
 import ProgressBar from "../ProgressBar/ProgressBar";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 function SurveyForm(props) {
@@ -10,8 +10,23 @@ function SurveyForm(props) {
   const [validResponses, setValidResponses] = useState(0);
   const totalQuestions = useRef(0);
   const { isAuthenticated } = useAuth0();
+  const [validationMessages, setValidationMessages] = useState({});
 
-  // // set the response object so it always has the same order
+  const [isFormValid, setIsFormValid] = useState(true);
+
+  useEffect(() => {
+    const surveyQuestions = props?.data?.questions ?? [];
+    totalQuestions.current = surveyQuestions.length;
+
+    const initialValidationMessages = {};
+    surveyQuestions.forEach((question) => {
+      const questionId = question["question_id"];
+      initialValidationMessages[questionId] = "";
+    });
+    setValidationMessages(initialValidationMessages);
+  }, [props?.data?.questions]);
+
+  // set the response object so it always has the same order
   useEffect(() => {
     const surveyQuestions = props?.data?.questions ?? [];
     totalQuestions.current = surveyQuestions.length;
@@ -31,8 +46,10 @@ function SurveyForm(props) {
   // set the questions and their responses
   useEffect(() => {
     const questionsArray = [];
+
     for (const question of props?.data?.questions) {
       const questionObject = question;
+
       switch (questionObject["question"]["type"]) {
         case "single_select_dropdown":
           // set responses to the question
@@ -71,16 +88,30 @@ function SurveyForm(props) {
                       ...oldResponses,
                       [questionObject["question_id"]]: null,
                     }));
+
+                    setValidationMessages((prevMessages) => ({
+                      ...prevMessages,
+                      [questionObject["question_id"]]: "This is required.",
+                    }));
                   } else {
                     setResponses((oldResponses) => ({
                       ...oldResponses,
                       [questionObject["question_id"]]: event.target.value,
+                    }));
+                    setValidationMessages((prevMessages) => ({
+                      ...prevMessages,
+                      [questionObject["question_id"]]: "",
                     }));
                   }
                 }}
               >
                 {selectionOptions}
               </select>
+              <div>
+                <p className="text-error">
+                  {validationMessages[questionObject["question_id"]]}
+                </p>
+              </div>
             </div>
           );
           break;
@@ -105,17 +136,45 @@ function SurveyForm(props) {
                         ...oldResponses,
                         [questionObject["question_id"]]: null,
                       }));
+
+                      setValidationMessages((prevMessages) => ({
+                        ...prevMessages,
+                        [questionObject["question_id"]]: "This is required.",
+                      }));
                     } else {
                       setResponses((oldResponses) => ({
                         ...oldResponses,
                         [questionObject["question_id"]]: event.target.value,
                       }));
+
+                      if (
+                        isNaN(event.target.valueAsNumber) ||
+                        event.target.valueAsNumber <
+                          questionObject.question.min ||
+                        event.target.valueAsNumber > questionObject.question.max
+                      ) {
+                        setValidationMessages((prevMessages) => ({
+                          ...prevMessages,
+                          [questionObject[
+                            "question_id"
+                          ]]: `Value must be between ${questionObject.question.min} and ${questionObject.question.max}.`,
+                        }));
+                      } else {
+                        setValidationMessages((prevMessages) => ({
+                          ...prevMessages,
+                          [questionObject["question_id"]]: "",
+                        }));
+                      }
                     }
                   }}
-                  required
                 />
                 <div className="unit-wrapper">
-                 <span className="unit">{questionObject.question.unit}</span>
+                  <span className="unit">{questionObject.question.unit}</span>
+                </div>
+                <div>
+                  <p className="text-error">
+                    {validationMessages[questionObject["question_id"]]}
+                  </p>
                 </div>
               </div>
             </div>
@@ -128,7 +187,7 @@ function SurveyForm(props) {
       }
     }
     setQuestions(questionsArray);
-  }, [props?.data?.questions, responses]);
+  }, [props?.data?.questions, responses, validationMessages]);
 
   // keep track of responses for the progress bar
   useEffect(() => {
@@ -139,6 +198,7 @@ function SurveyForm(props) {
       }
     }
     setValidResponses(valid);
+    setIsFormValid(valid === totalQuestions.current);
   }, [responses]);
 
   const split = window.location.pathname.split("/");
@@ -165,26 +225,21 @@ function SurveyForm(props) {
         totalQuestions={totalQuestions.current}
       />
       <div className="questions-container">{questions}</div>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
         <button
           id="submit-survey-button"
           onClick={() => props?.submitSurvey(responses)}
+          disabled={!isFormValid}
         >
           <span>Submit</span>
         </button>
 
         {isAuthenticated && (
-          <button
-            id="history-button"
-            onClick={handleNextClick}
-          >
+          <button id="history-button" onClick={handleNextClick}>
             <span>History</span>
           </button>
         )}
-          <button
-          id="home-button"
-          onClick={returnToHome}
-        >
+        <button id="home-button" onClick={returnToHome}>
           <span>Return to Home</span>
         </button>
       </div>
