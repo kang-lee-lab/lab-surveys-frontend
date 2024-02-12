@@ -18,7 +18,7 @@ function SurveyPage() {
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   // get time when survey is loaded
-  const startTime = useRef(new Date())
+  const startTime = useRef(new Date());
   useEffect(() => {
     const getSurveyData = async () => {
       const pythonSurveyName = surveyName.replaceAll("-", "_");
@@ -47,9 +47,8 @@ function SurveyPage() {
       const endTime = new Date();
       // calculate time duration to complete survey
       const response_duration = (endTime - startTime.current) / 1000;
-
       const response = await axios.post(
-        `${process.env.REACT_APP_API_ADDRESS}/results/`,
+        `${process.env.REACT_APP_API_ADDRESS}/survey/results`,
         {
           survey: survey.survey_id,
           mode: survey.survey_mode,
