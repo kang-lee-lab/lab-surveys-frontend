@@ -48,7 +48,7 @@ function SurveyPage() {
       // calculate time duration to complete survey
       const response_duration = (endTime - startTime.current) / 1000;
       const response = await axios.post(
-        `${process.env.REACT_APP_API_ADDRESS}/survey/results`,
+        `${process.env.REACT_APP_API_ADDRESS}/results`,
         {
           survey: survey.survey_id,
           mode: survey.survey_mode,
