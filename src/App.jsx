@@ -16,7 +16,7 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/participate" element={<GeneralConsent />} />
+          <Route path="/participate/:name" element={<GeneralConsent />} />
           <Route path="/survey/:name/results" element={<ResultsPage />} />
           <Route path="/survey/:name" element={<SurveyPage />} />
             <Route path="/survey/consent/:name" element={<Consent />} />
