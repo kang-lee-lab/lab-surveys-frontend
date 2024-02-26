@@ -17,8 +17,11 @@ function GeneralConsent() {
   };
 
   const handleNextClick = () => {
-    let path = `/data-surveys`;
+    const pythonSurveyName = surveyName.split('_')[0];
+    let path = `/survey/${pythonSurveyName}`;
     navigate(path);
+    // let path = `/data-surveys`;
+    // navigate(path);
   };
 
   useEffect(() => {
