@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./SurveyForm.css";
 import ProgressBar from "../ProgressBar/ProgressBar";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 function SurveyForm(props) {
@@ -91,9 +91,8 @@ function SurveyForm(props) {
 
                     setValidationMessages((prevMessages) => ({
                       ...prevMessages,
-                      [questionObject["question_id"]]: 'This is required.',
+                      [questionObject["question_id"]]: "This is required.",
                     }));
-
                   } else {
                     setResponses((oldResponses) => ({
                       ...oldResponses,
@@ -101,16 +100,17 @@ function SurveyForm(props) {
                     }));
                     setValidationMessages((prevMessages) => ({
                       ...prevMessages,
-                      [questionObject["question_id"]]: '',
+                      [questionObject["question_id"]]: "",
                     }));
                   }
                 }}
-
               >
                 {selectionOptions}
               </select>
               <div>
-                <p className="text-error">{validationMessages[questionObject["question_id"]]}</p>
+                <p className="text-error">
+                  {validationMessages[questionObject["question_id"]]}
+                </p>
               </div>
             </div>
           );
@@ -139,9 +139,8 @@ function SurveyForm(props) {
 
                       setValidationMessages((prevMessages) => ({
                         ...prevMessages,
-                        [questionObject["question_id"]]: 'This is required.',
+                        [questionObject["question_id"]]: "This is required.",
                       }));
-
                     } else {
                       setResponses((oldResponses) => ({
                         ...oldResponses,
@@ -149,27 +148,33 @@ function SurveyForm(props) {
                       }));
 
                       if (
-                          isNaN(event.target.valueAsNumber) ||
-                          event.target.valueAsNumber < questionObject.question.min ||
-                          event.target.valueAsNumber > questionObject.question.max
+                        isNaN(event.target.valueAsNumber) ||
+                        event.target.valueAsNumber <
+                          questionObject.question.min ||
+                        event.target.valueAsNumber > questionObject.question.max
                       ) {
                         setValidationMessages((prevMessages) => ({
                           ...prevMessages,
-                          [questionObject["question_id"]]: `Value must be between ${questionObject.question.min} and ${questionObject.question.max}.`,
+                          [questionObject[
+                            "question_id"
+                          ]]: `Value must be between ${questionObject.question.min} and ${questionObject.question.max}.`,
                         }));
                       } else {
                         setValidationMessages((prevMessages) => ({
                           ...prevMessages,
-                          [questionObject["question_id"]]: '',
+                          [questionObject["question_id"]]: "",
                         }));
+                      }
                     }
-                  }}}
+                  }}
                 />
                 <div className="unit-wrapper">
-                 <span className="unit">{questionObject.question.unit}</span>
+                  <span className="unit">{questionObject.question.unit}</span>
                 </div>
                 <div>
-                  <p className="text-error">{validationMessages[questionObject["question_id"]]}</p>
+                  <p className="text-error">
+                    {validationMessages[questionObject["question_id"]]}
+                  </p>
                 </div>
               </div>
             </div>
@@ -182,7 +187,7 @@ function SurveyForm(props) {
       }
     }
     setQuestions(questionsArray);
-  }, [props?.data?.questions, responses]);
+  }, [props?.data?.questions, responses, validationMessages]);
 
   // keep track of responses for the progress bar
   useEffect(() => {
@@ -195,8 +200,6 @@ function SurveyForm(props) {
     setValidResponses(valid);
     setIsFormValid(valid === totalQuestions.current);
   }, [responses]);
-
-
 
   const split = window.location.pathname.split("/");
   const surveyName = split[2];
@@ -216,37 +219,31 @@ function SurveyForm(props) {
   };
 
   return (
-      <div className="survey-form-container">
-        <ProgressBar
-            questionsFilled={validResponses}
-            totalQuestions={totalQuestions.current}
-        />
-        <div className="questions-container">{questions}</div>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <button
-              id="submit-survey-button"
-              onClick={() => props?.submitSurvey(responses)}
-              disabled={!isFormValid}
-          >
-            <span>Submit</span>
-          </button>
+    <div className="survey-form-container">
+      <ProgressBar
+        questionsFilled={validResponses}
+        totalQuestions={totalQuestions.current}
+      />
+      <div className="questions-container">{questions}</div>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <button
+          id="submit-survey-button"
+          onClick={() => props?.submitSurvey(responses)}
+          disabled={!isFormValid}
+        >
+          <span>Submit</span>
+        </button>
 
-          {isAuthenticated && (
-              <button
-                  id="history-button"
-                  onClick={handleNextClick}
-              >
-                <span>History</span>
-              </button>
-          )}
-          <button
-              id="home-button"
-              onClick={returnToHome}
-          >
-            <span>Return to Home</span>
+        {isAuthenticated && (
+          <button id="history-button" onClick={handleNextClick}>
+            <span>History</span>
           </button>
-        </div>
+        )}
+        <button id="home-button" onClick={returnToHome}>
+          <span>Return to Home</span>
+        </button>
       </div>
+    </div>
   );
 }
 
