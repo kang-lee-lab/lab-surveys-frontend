@@ -1,6 +1,6 @@
 import React from "react";
 import "./DataColSurveys.css";
-import SurveyCards from "../../components/SurveyCards/SurveyCards";
+import ConsentSurveyCards from "../../components/ConsentSurveyCards/ConsentSurveyCards";
 import dataCollectionSurveys from "../../data/data-collection-surveys.json";
 
 function DataColSurveys() {
@@ -33,7 +33,7 @@ function DataColSurveys() {
         <div className="datacollection-survey-container">
           <h2>Demo Survey for Data Collection</h2>
           {dataCollectionSurveys.map((item) => (
-            <SurveyCards survey={item} key={item.key} />
+            <ConsentSurveyCards survey={item} key={item.key} />
           ))}
         </div>
       </div>
