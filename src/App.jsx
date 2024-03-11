@@ -16,11 +16,12 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/participate" element={<GeneralConsent />} />
+          <Route path={"/participate"} element={<DataColSurveys/>} />
+          <Route path="/participate/:name" element={<GeneralConsent />} />
           <Route path="/survey/:name/results" element={<ResultsPage />} />
           <Route path="/survey/:name" element={<SurveyPage />} />
             <Route path="/survey/consent/:name" element={<Consent />} />
-            <Route path={"/data-surveys"} element={<DataColSurveys/>} />
+            {/*<Route path={"/data-surveys"} element={<DataColSurveys/>} />*/}
             <Route path={"/survey/manga/completed"} element={<Completed />} />
             {/*<Route path={"/survey/history"} element={<History/>} />*/}
             <Route path={"/survey/:name/history"} element={<History />} />
