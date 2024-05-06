@@ -154,12 +154,16 @@ function ResultsPage() {
           Displayed below is a graph depicting your likelihood of being positive in each condition of the MMPI.
           </p>
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-          <RadarChart height={500} width={500} outerRadius="80%" data={cleanData}>
+          <RadarChart height={500} width={500} outerRadius="90%" data={cleanData}>
             <PolarGrid />
             <PolarAngleAxis dataKey="name" />
             <PolarRadiusAxis />
-            <Radar dataKey="x" stroke="grey" fill="grey" fillOpacity={0.5} />
-          </RadarChart>
+            
+            <Radar dataKey="a" stroke="grey" fill = "red" fillOpacity={0.5} />
+            <Radar dataKey="b" stroke="grey" fill = "yellow" fillOpacity={0.5} />
+            <Radar dataKey="c" stroke="grey" fill = "green" fillOpacity={0.5} />
+            <Radar dataKey="x" stroke="darkgrey" fill="grey" fillOpacity={0.75} />
+          </RadarChart>       
         </div>
         </div>
       )}
