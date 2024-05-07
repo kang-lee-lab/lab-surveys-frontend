@@ -2,7 +2,7 @@ const getRadarChartDataFormat = (data) => {
   const arr = [];
 
   for (const key in data) {
-    const item = { name: key, x: data[key] };
+    const item = { name: key, x: data[key], a: 1, b:0.75, c:0.5 };
     arr.push(item);
   }
   return arr;
