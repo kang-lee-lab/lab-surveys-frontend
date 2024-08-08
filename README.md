@@ -12,6 +12,9 @@ In the terminal, open the repository and run `npm install` to install all requir
 
 Once that is finished, run `npm start` in the terminal which will start a local server on `localhost:3000`
 
+Go into the `.env` file and set the `REACT_APP_API_ADDRESS=http://localhost:3000`.
+Next, log into the master Auth0 account (designated for managing the lab's applications). Select the 'Applications' section on the sidebar, and then select the 'Applications' page. Following this, select the 'ML Survey Website' application and copy the 'Domain' and 'Client ID' and paste it into the `REACT_APP_AUTH0_DOMAIN=<domain>` and `REACT_APP_AUTH0_CLIENT_ID=<client_id>` sections respectively.
+
 ## Development
 
 Please download the 'Prettier - Code formatter' extension on VSCode so we can keep our formatting consistent. This also reduces conflicts when committing code since it'll adjust spacing, tabbing, etc for us.
