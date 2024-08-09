@@ -23,5 +23,10 @@
         "title": "iHRV",
         "description": "Integrated Heart Rate Variability calculator",
         "link": "asq"
+    },
+    {
+        "title": "Multiclass DASS Anxiety",
+        "description": "Multiclass Depression Anxiety Stress Scale - Anxiety",
+        "link": "anxiety-multiclass"
     }
 ]

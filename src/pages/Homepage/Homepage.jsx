@@ -29,13 +29,13 @@ function Homepage() {
           ))}
         </div>
         <div className="physiology-survey-container">
-          <h2>Physiology Surveys</h2>
+          <h2>Demo Physiology Surveys</h2>
           {physiologySurveys.map((item) => (
             <SurveyCards survey={item} key={item.title} />
           ))}
         </div>
         <div className="physical-survey-container">
-          <h2>Physical Surveys</h2>
+          <h2>Demo Physical Surveys</h2>
           {physicalSurveys.map((item) => (
             <SurveyCards survey={item} key={item.title} />
           ))}
