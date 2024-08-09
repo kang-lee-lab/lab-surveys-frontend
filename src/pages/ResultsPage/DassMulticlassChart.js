@@ -45,7 +45,7 @@ export default class DassMulticlassChart extends PureComponent {
     const value = (severityLevel / 5) * 180 + 18;
 
     return (
-      <PieChart width={600} height={600}> {/* Increased size */}
+      <PieChart width={600} height={400}> {/* Increased size */}
         <Pie
           dataKey="value"
           startAngle={180}

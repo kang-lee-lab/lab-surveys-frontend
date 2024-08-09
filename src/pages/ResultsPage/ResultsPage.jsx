@@ -258,7 +258,6 @@ function ResultsPage() {
           </div>
         </div>
       )}
-      
       <p>
         *This webpage does not contain medical/health advice. This tool is
         intended for informational and educational purposes only, and should not
