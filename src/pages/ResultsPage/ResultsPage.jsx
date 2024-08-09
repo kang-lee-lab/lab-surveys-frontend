@@ -12,6 +12,7 @@ import {
   PolarRadiusAxis,
 } from "recharts";
 import { getCleanSurveyData } from "../../utils/helper";
+import DassMulticlassChart from "./DassMulticlassChart"; 
 
 function ResultsPage() {
   // get the data from SurveyPage component
@@ -249,9 +250,12 @@ function ResultsPage() {
       )}
       {surveyId === "dass_multiclass" && (
         <div>
-          <h1>Your anxiety classification is {[data.results[0], data.results[1], data.results[2], data.results[3], data.results[4]].join(', ')}.</h1>
-          <p>Displayed is your estimated likelihood of moderate {data.mode} given your answers to the DASS questions. 
+          <h1>Your anxiety severity level is: {data.rank}.</h1>
+          <p>Displayed is your estimated anxiety severity level given your answers to the DASS questions. 
           This is calculated through a machine learning model trained using data collected from an online survey.</p>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <DassMulticlassChart severityLevel={data.severity_level} />
+          </div>
         </div>
       )}
       
