@@ -12,12 +12,14 @@ import {
   PolarRadiusAxis,
 } from "recharts";
 import { getCleanSurveyData } from "../../utils/helper";
+import DassMulticlassChart from "./DassMulticlassChart"; 
 
 function ResultsPage() {
   // get the data from SurveyPage component
   const location = useLocation();
   // location.state holds result data sent from the backend
   const data = location.state;
+  console.log(data);
   const surveyId = data.metadata.survey_id;
   // format survey data specific to what graph is being used
   const cleanData = getCleanSurveyData(surveyId, data);
@@ -243,6 +245,16 @@ function ResultsPage() {
               <PolarRadiusAxis />
               <Radar dataKey="x" stroke="grey" fill="grey" fillOpacity={0.5} />
             </RadarChart>
+          </div>
+        </div>
+      )}
+      {surveyId === "dass_multiclass" && (
+        <div>
+          <h1>Your anxiety severity level is: {data.rank}.</h1>
+          <p>Displayed is your estimated anxiety severity level given your answers to the DASS questions. 
+          This is calculated through a machine learning model trained using data collected from an online survey.</p>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <DassMulticlassChart severityLevel={data.severity_level} />
           </div>
         </div>
       )}
