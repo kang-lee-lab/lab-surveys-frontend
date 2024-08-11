@@ -250,9 +250,9 @@ function ResultsPage() {
       )}
       {surveyId === "dass_multiclass" && (
         <div>
-          <h1>Your anxiety severity level is: {data.rank}.</h1>
-          <p>Displayed is your estimated anxiety severity level given your answers to the DASS questions. 
-          This is calculated through a machine learning model trained using data collected from an online survey.</p>
+          <h1>Your predicted anxiety severity level is: {data.rank}.</h1>
+          <p>Displayed is your estimated anxiety severity level given your answers to the selected DASS questions. 
+          This is calculated through a machine learning model pre-trained using data collected from an online survey.</p>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <DassMulticlassChart severityLevel={data.severity_level} />
           </div>
