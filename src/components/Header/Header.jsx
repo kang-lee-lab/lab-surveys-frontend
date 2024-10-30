@@ -2,7 +2,7 @@ import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import img from "../../assets/images/logos/lab-logo.webp";
+import logo from "../../assets/images/logos/lab-logo.webp";
 
 function Header() {
   const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
@@ -14,7 +14,7 @@ function Header() {
         target="_blank"
         rel="noopener noreferrer"
       >
-          <img src={img} />
+          <img src={logo} />
       </a>
       <Link to={"/"}>Home</Link>
       <Link to={"/participate"}>Participate</Link>
