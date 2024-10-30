@@ -2,22 +2,21 @@ import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import img from "../../assets/images/logos/lab-logo.webp";
 
 function Header() {
   const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
 
   return (
     <div className="header">
-      <h3>
-          <Link to={"/"}>Kang Lee Lab Surveys</Link>
-      </h3>
       <a
         href={"https://www.kangleelab.com/"}
         target="_blank"
         rel="noopener noreferrer"
       >
-          Kang Lee Development Lab
+          <img src={img} />
       </a>
+      <Link to={"/"}>Home</Link>
       <Link to={"/participate"}>Participate</Link>
       {!isAuthenticated && (
         <button onClick={() => loginWithRedirect()}>Log In</button>
