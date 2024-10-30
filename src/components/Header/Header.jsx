@@ -16,10 +16,10 @@ function Header() {
       >
           <img className="logo" src={logo} />
       </a>
-      <Link to={"/"}>Home</Link>
-      <Link to={"/participate"}>Participate</Link>
+      <Link to={"/"}><h3>Home</h3></Link>
+      <Link to={"/participate"}><h3>Participate</h3></Link>
       {!isAuthenticated && (
-        <button onClick={() => loginWithRedirect()}>Log In</button>
+        <button onClick={() => loginWithRedirect()}><h3>Log In</h3></button>
       )}
       {isAuthenticated && (
         <button
@@ -27,7 +27,7 @@ function Header() {
             logout({ logoutParams: { returnTo: window.location.origin } })
           }
         >
-          Log Out
+          <h3>Log Out</h3>
         </button>
       )}
     </div>
