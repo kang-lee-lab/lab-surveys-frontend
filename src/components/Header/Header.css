@@ -25,3 +25,7 @@
     margin: 0px;
     color: #424242;
 }
+
+.header>img {
+    width: 100px;
+}
