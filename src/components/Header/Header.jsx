@@ -14,7 +14,7 @@ function Header() {
         target="_blank"
         rel="noopener noreferrer"
       >
-          <img src={logo} />
+          <img className="logo" src={logo} />
       </a>
       <Link to={"/"}>Home</Link>
       <Link to={"/participate"}>Participate</Link>
