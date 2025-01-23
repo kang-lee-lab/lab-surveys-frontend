@@ -226,12 +226,8 @@ function SurveyForm(props) {
       />
       <div className="questions-container">{questions}</div>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <button
-          id="submit-survey-button"
-          onClick={() => props?.submitSurvey(responses)}
-          disabled={!isFormValid}
-        >
-          <span>Submit</span>
+        <button id="home-button" onClick={returnToHome}>
+          <span>Return to Home</span>
         </button>
 
         {isAuthenticated && (
@@ -239,8 +235,13 @@ function SurveyForm(props) {
             <span>History</span>
           </button>
         )}
-        <button id="home-button" onClick={returnToHome}>
-          <span>Return to Home</span>
+
+        <button
+          id="submit-survey-button"
+          onClick={() => props?.submitSurvey(responses)}
+          disabled={!isFormValid}
+        >
+          <span>Submit</span>
         </button>
       </div>
     </div>
