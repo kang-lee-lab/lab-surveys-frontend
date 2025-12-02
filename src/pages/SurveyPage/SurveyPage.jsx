@@ -5,28 +5,6 @@ import "./SurveyPage.css";
 import SurveyForm from "../../components/SurveyForm/SurveyForm";
 import ErrorPopup from "../../components/ErrorPopup/ErrorPopup";
 
-// Backend routing helpers
-const LEGACY_API_BASE = process.env.REACT_APP_API_ADDRESS;
-const DASS_MULTICLASS_API_BASE = process.env.REACT_APP_DASS_MULTICLASS_API_ADDRESS;
-
-// Decide whether this survey should use the modern backend (sklearn 1.4.2)
-function isDassMulticlassSurvey(pythonSurveyName, surveyObj) {
-  const surveyId = surveyObj?.survey_id;
-  const surveyMode = surveyObj?.survey_mode;
-
-  return (
-    pythonSurveyName === "anxiety_multiclass" || // from URL: anxiety-multiclass
-    surveyId === "dass_multiclass" ||            // backend survey_id for multiclass
-    surveyMode === "anxiety-multiclass"          // explicit survey_mode
-  );
-}
-
-function pickApiBaseForSurvey(pythonSurveyName, surveyObj) {
-  return isDassMulticlassSurvey(pythonSurveyName, surveyObj)
-    ? DASS_MULTICLASS_API_BASE
-    : LEGACY_API_BASE;
-}
-
 function SurveyPage() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -42,17 +20,13 @@ function SurveyPage() {
   // get time when survey is loaded
   const startTime = useRef(new Date());
   useEffect(() => {
-  const getSurveyData = async () => {
-    const pythonSurveyName = surveyName.replaceAll("-", "_");
-
-    // Decide which backend to use for this survey
-    const apiBase = pickApiBaseForSurvey(pythonSurveyName, null);
-
-    const response = await axios.get(
-      `${apiBase}/survey/${pythonSurveyName}`
-    );
-    setSurvey(response.data);
-  };
+    const getSurveyData = async () => {
+      const pythonSurveyName = surveyName.replaceAll("-", "_");
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_ADDRESS}/survey/${pythonSurveyName}`
+      );
+      setSurvey(response.data);
+    };
     getSurveyData();
   }, [surveyName]);
 
@@ -73,18 +47,13 @@ function SurveyPage() {
       const endTime = new Date();
       // calculate time duration to complete survey
       const response_duration = (endTime - startTime.current) / 1000;
-
-      // Decide backend based on this survey
-      const pythonSurveyName = surveyName.replaceAll("-", "_");
-      const apiBaseForPost = pickApiBaseForSurvey(pythonSurveyName, survey);
-
       const response = await axios.post(
-        `${apiBaseForPost}/results`,
+        `${process.env.REACT_APP_API_ADDRESS}/results`,
         {
           survey: survey.survey_id,
           mode: survey.survey_mode,
           data: surveyResponses,
-          duration: response_duration,
+          duration: response_duration, // include duration
         }
       );
       navigate(location.pathname + "/results", { state: response.data });
