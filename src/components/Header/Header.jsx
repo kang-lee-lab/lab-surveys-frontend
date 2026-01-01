@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth } from "../../contexts/AuthContext";
+import LoginModal from "../LoginModal/LoginModal";
 import logo from "../../assets/images/logos/lab-logo.webp";
 
 function Header() {
-  const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
+  const { isAuthenticated, logout } = useAuth();
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   return (
     <div className="header">
@@ -14,22 +16,20 @@ function Header() {
         target="_blank"
         rel="noopener noreferrer"
       >
-          <img className="logo" src={logo} />
+        <img className="logo" src={logo} alt="Lab Logo" />
       </a>
       <Link to={"/"}>Home</Link>
       <Link to={"/participate"}>Participate</Link>
       {!isAuthenticated && (
-        <button onClick={() => loginWithRedirect()}>Log In</button>
+        <button onClick={() => setIsLoginModalOpen(true)}>Log In</button>
       )}
       {isAuthenticated && (
-        <button
-          onClick={() =>
-            logout({ logoutParams: { returnTo: window.location.origin } })
-          }
-        >
-          Log Out
-        </button>
+        <button onClick={logout}>Log Out</button>
       )}
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+      />
     </div>
   );
 }

@@ -2,14 +2,14 @@ import React, { useEffect, useState, useRef } from "react";
 import "./SurveyForm.css";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import { useNavigate } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth } from "../../contexts/AuthContext";
 
 function SurveyForm(props) {
   const [questions, setQuestions] = useState([]);
   const [responses, setResponses] = useState({});
   const [validResponses, setValidResponses] = useState(0);
   const totalQuestions = useRef(0);
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuth();
   const [validationMessages, setValidationMessages] = useState({});
 
   const [isFormValid, setIsFormValid] = useState(true);

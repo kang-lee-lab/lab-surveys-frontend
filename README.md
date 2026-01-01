@@ -12,20 +12,51 @@ In the terminal, open the repository and run `npm install` to install all requir
 
 Once that is finished, run `npm start` in the terminal which will start a local server on `localhost:3000`
 
-Go into the `.env` file and set the `REACT_APP_API_ADDRESS=http://localhost:3000`.
-Next, log into the master Auth0 account (designated for managing the lab's applications). Select the 'Applications' section on the sidebar, and then select the 'Applications' page. Following this, select the 'ML Survey Website' application and copy the 'Domain' and 'Client ID' and paste it into the `REACT_APP_AUTH0_DOMAIN=<domain>` and `REACT_APP_AUTH0_CLIENT_ID=<client_id>` sections respectively.
+### Environment Variables
+
+Create a `.env` file in the project root with the following variables:
+
+```
+REACT_APP_API_ADDRESS=http://localhost:3000
+REACT_APP_ADMIN_USERNAME=admin
+REACT_APP_ADMIN_PASSWORD_HASH=<your_password_hash>
+```
+
+#### Generating a Password Hash
+
+To generate a password hash for admin login, run:
+
+```bash
+node scripts/generate-password-hash.js yourpassword
+```
+
+This will output the hash to add to your `.env` file.
 
 ## Development
 
 Please download the 'Prettier - Code formatter' extension on VSCode so we can keep our formatting consistent. This also reduces conflicts when committing code since it'll adjust spacing, tabbing, etc for us.
 
-## Account Management
+## Admin Authentication
 
-To manage accounts, please login to Auth0 using the Kang Lee Lab Surveys general account by following the instructions below:
-1. Log into the Kang Lee Lab Surveys Gmail account.
-2. Sign into Auth0 (https://auth0.com/) using the "Continue with Google" option.
+The application includes a simple admin authentication system for accessing survey history and data exports.
 
-This will allow you to:
-- Manage user identities including password resets, creating and provisioning, blocking and deleting users.
-- Associate user accounts with multiple connections such as database, enterprise or social with the same user on Auth0, allowing that user to authenticate with any of them.
-- Store arbitrary JSON objects attached to an Auth0 user.
+### Features available to authenticated admins:
+- View survey response history
+- Download survey data as CSV
+
+### Setting up admin credentials:
+
+1. Generate a password hash:
+   ```bash
+   node scripts/generate-password-hash.js your_secure_password
+   ```
+
+2. Add the credentials to your `.env` file:
+   ```
+   REACT_APP_ADMIN_USERNAME=admin
+   REACT_APP_ADMIN_PASSWORD_HASH=<hash_from_step_1>
+   ```
+
+3. Restart the development server if it's running.
+
+**Note:** Sessions expire after 24 hours and are stored in localStorage.
