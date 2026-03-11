@@ -20,8 +20,8 @@
         "link": "mmpi"
     },
     {
-        "title": "iHRV",
-        "description": "Integrated Heart Rate Variability calculator",
+        "title": "ASQ",
+        "description": "Average Stress Quotient calculator",
         "link": "asq"
     },
     {
