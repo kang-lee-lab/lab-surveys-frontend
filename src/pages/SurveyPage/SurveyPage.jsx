@@ -35,7 +35,7 @@ function SurveyPage() {
   const totalQuestions = useRef(0);
   const surveyName = split[2];
   const [survey, setSurvey] = useState({});
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage] = useState(0);
   // error handling
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");

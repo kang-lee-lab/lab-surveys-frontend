@@ -39,7 +39,7 @@ function GeneralConsent() {
       }
     };
     fetchConsentForm();
-  }, []);
+  }, [surveyName]);
 
 
   return (
