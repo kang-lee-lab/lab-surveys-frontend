@@ -186,10 +186,7 @@ function ResultsPage() {
         <div>
           <h1>Your ASQ is {data.asq_result}. </h1>
           <p>
-            Lower ASQ measures are related to higher risk of cardiovascular
-            disease. Please consult a medical professional with any
-            health concerns. Your ASQ reflects multiple underlying HRV
-            measures. The table below can be used to interpret your score.
+            Your ASQ is an indication of your overall stress level. The table below can be used to interpret your score. 
           </p>
           <table className="table" style={{ width: "100%" }}>
             <tbody>
@@ -229,9 +226,7 @@ function ResultsPage() {
           </table>
 
           <p>
-            Displayed below are your Heart Rate Variability of dimensions 1-6
-            (HRV-D1-6). Each reflect an orthogonal dimension underlying your HRV
-            measures.
+            Displayed below are your Stress Quotients for factors 1-6 (SQ1-6). Each SQ is unique and contributes to your overall Average Stress Quotient (ASQ).
           </p>
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             <RadarChart
