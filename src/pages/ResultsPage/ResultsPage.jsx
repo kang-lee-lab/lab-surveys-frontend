@@ -184,30 +184,30 @@ function ResultsPage() {
       )}
       {surveyId === "asq" && (
         <div>
-          <h1>Your iHRV is {data.asq_result}. </h1>
+          <h1>Your ASQ is {data.asq_result}. </h1>
           <p>
-            Lower HRV measures are related to higher risk of cardiovascular
+            Lower ASQ measures are related to higher risk of cardiovascular
             disease. Please consult a medical professional with any
-            health concerns. Your iHRV is reflect multiple underlying HRV
+            health concerns. Your ASQ reflects multiple underlying HRV
             measures. The table below can be used to interpret your score.
           </p>
           <table className="table" style={{ width: "100%" }}>
             <tbody>
               <tr>
-                <th style={{ textAlign: "left" }}>iHRV Range</th>
-                <th style={{ textAlign: "left" }}>Underlying HRV Measures</th>
+                <th style={{ textAlign: "left" }}>ASQ Range</th>
+                <th style={{ textAlign: "left" }}>ASQ Classification</th>
               </tr>
               <tr>
                 <td>80 and over</td>
-                <td>Very Healthy</td>
+                <td>Very High Stress</td>
               </tr>
               <tr>
                 <td>70-79</td>
-                <td>Healthy</td>
+                <td>High Stress</td>
               </tr>
               <tr>
                 <td>60-69</td>
-                <td>Slightly Healthy</td>
+                <td>Slightly High Stress</td>
               </tr>
               <tr>
                 <td>41-59</td>
@@ -215,15 +215,15 @@ function ResultsPage() {
               </tr>
               <tr>
                 <td>31-40</td>
-                <td>Slightly Unhealthy</td>
+                <td>Slightly Low Stress</td>
               </tr>
               <tr>
                 <td>21-30</td>
-                <td>Unhealthy</td>
+                <td>Low Stress</td>
               </tr>
               <tr>
                 <td>20 and below</td>
-                <td>Very Unhealthy</td>
+                <td>Very Low Stress</td>
               </tr>
             </tbody>
           </table>
