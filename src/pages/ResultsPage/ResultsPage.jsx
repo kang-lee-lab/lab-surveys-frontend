@@ -188,39 +188,39 @@ function ResultsPage() {
           <p>
             Your ASQ is an indication of your overall stress level. The table below can be used to interpret your score. 
           </p>
-          <table className="table" style={{ width: "100%" }}>
+          <table className="table" style={{ width: "100%", borderCollapse: "collapse" }}>
             <tbody>
               <tr>
-                <th style={{ textAlign: "left" }}>ASQ Range</th>
-                <th style={{ textAlign: "left" }}>ASQ Classification</th>
+                <th style={{ textAlign: "left", padding: "8px" }}>ASQ Range</th>
+                <th style={{ textAlign: "left", padding: "8px" }}>ASQ Classification</th>
               </tr>
-              <tr>
-                <td>80 and over</td>
-                <td>Very High Stress</td>
+              <tr style={{ backgroundColor: "#d32f2f", color: "white" }}>
+                <td style={{ padding: "8px" }}>80 and over</td>
+                <td style={{ padding: "8px" }}>Very High Stress</td>
               </tr>
-              <tr>
-                <td>70-79</td>
-                <td>High Stress</td>
+              <tr style={{ backgroundColor: "#f44336", color: "white" }}>
+                <td style={{ padding: "8px" }}>70-79</td>
+                <td style={{ padding: "8px" }}>High Stress</td>
               </tr>
-              <tr>
-                <td>60-69</td>
-                <td>Slightly High Stress</td>
+              <tr style={{ backgroundColor: "#ff9800", color: "white" }}>
+                <td style={{ padding: "8px" }}>60-69</td>
+                <td style={{ padding: "8px" }}>Slightly High Stress</td>
               </tr>
-              <tr>
-                <td>41-59</td>
-                <td>Average</td>
+              <tr style={{ backgroundColor: "#ffeb3b" }}>
+                <td style={{ padding: "8px" }}>41-59</td>
+                <td style={{ padding: "8px" }}>Average</td>
               </tr>
-              <tr>
-                <td>31-40</td>
-                <td>Slightly Low Stress</td>
+              <tr style={{ backgroundColor: "#8bc34a" }}>
+                <td style={{ padding: "8px" }}>31-40</td>
+                <td style={{ padding: "8px" }}>Slightly Low Stress</td>
               </tr>
-              <tr>
-                <td>21-30</td>
-                <td>Low Stress</td>
+              <tr style={{ backgroundColor: "#4caf50", color: "white" }}>
+                <td style={{ padding: "8px" }}>21-30</td>
+                <td style={{ padding: "8px" }}>Low Stress</td>
               </tr>
-              <tr>
-                <td>20 and below</td>
-                <td>Very Low Stress</td>
+              <tr style={{ backgroundColor: "#2e7d32", color: "white" }}>
+                <td style={{ padding: "8px" }}>20 and below</td>
+                <td style={{ padding: "8px" }}>Very Low Stress</td>
               </tr>
             </tbody>
           </table>
