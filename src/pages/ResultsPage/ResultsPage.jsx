@@ -12,42 +12,7 @@ import {
   PolarRadiusAxis,
 } from "recharts";
 import { getCleanSurveyData } from "../../utils/helper";
-import DassMulticlassChart from "./DassMulticlassChart";
-
-const ZONE_COLORS = [
-  { threshold: 100, color: "#d32f2f" },
-  { threshold: 80, color: "#f44336" },
-  { threshold: 70, color: "#ff9800" },
-  { threshold: 60, color: "#ffeb3b" },
-  { threshold: 40, color: "#8bc34a" },
-  { threshold: 30, color: "#4caf50" },
-  { threshold: 20, color: "#2e7d32" },
-];
-
-function hexagonPath(cx, cy, radius, numSides) {
-  const points = [];
-  for (let i = 0; i < numSides; i++) {
-    const angle = (Math.PI / 2) + (2 * Math.PI * i) / numSides;
-    points.push(`${cx + radius * Math.cos(angle)},${cy - radius * Math.sin(angle)}`);
-  }
-  return `M${points.join("L")}Z`;
-}
-
-function ColoredRadarBackground({ cx, cy, outerRadius, numSides, domain }) {
-  const maxVal = domain[1];
-  return (
-    <g>
-      {ZONE_COLORS.map(({ threshold, color }, i) => (
-        <path
-          key={i}
-          d={hexagonPath(cx, cy, (threshold / maxVal) * outerRadius, numSides)}
-          fill={color}
-          fillOpacity={0.5}
-        />
-      ))}
-    </g>
-  );
-} 
+import DassMulticlassChart from "./DassMulticlassChart"; 
 
 function ResultsPage() {
   // get the data from SurveyPage component
@@ -269,20 +234,11 @@ function ResultsPage() {
               width={500}
               outerRadius="80%"
               data={cleanData}
-              cx={250}
-              cy={250}
             >
-              <ColoredRadarBackground
-                cx={250}
-                cy={250}
-                outerRadius={200}
-                numSides={cleanData.length}
-                domain={[0, 100]}
-              />
-              <PolarGrid stroke="rgba(255,255,255,0.4)" />
+              <PolarGrid />
               <PolarAngleAxis dataKey="name" />
-              <PolarRadiusAxis domain={[0, 100]} tick={{ fontSize: 12 }} />
-              <Radar dataKey="x" stroke="rgba(63,81,181,0.8)" fill="rgba(63,81,181,0.5)" fillOpacity={0.6} />
+              <PolarRadiusAxis />
+              <Radar dataKey="x" stroke="grey" fill="grey" fillOpacity={0.5} />
             </RadarChart>
           </div>
         </div>
