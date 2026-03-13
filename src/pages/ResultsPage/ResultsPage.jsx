@@ -12,7 +12,42 @@ import {
   PolarRadiusAxis,
 } from "recharts";
 import { getCleanSurveyData } from "../../utils/helper";
-import DassMulticlassChart from "./DassMulticlassChart"; 
+import DassMulticlassChart from "./DassMulticlassChart";
+
+const ZONE_COLORS = [
+  { threshold: 100, color: "#d32f2f" },
+  { threshold: 80, color: "#f44336" },
+  { threshold: 70, color: "#ff9800" },
+  { threshold: 60, color: "#ffeb3b" },
+  { threshold: 40, color: "#8bc34a" },
+  { threshold: 30, color: "#4caf50" },
+  { threshold: 20, color: "#2e7d32" },
+];
+
+function hexagonPath(cx, cy, radius, numSides) {
+  const points = [];
+  for (let i = 0; i < numSides; i++) {
+    const angle = (Math.PI / 2) + (2 * Math.PI * i) / numSides;
+    points.push(`${cx + radius * Math.cos(angle)},${cy - radius * Math.sin(angle)}`);
+  }
+  return `M${points.join("L")}Z`;
+}
+
+function ColoredRadarBackground({ cx, cy, outerRadius, numSides, domain }) {
+  const maxVal = domain[1];
+  return (
+    <g>
+      {ZONE_COLORS.map(({ threshold, color }, i) => (
+        <path
+          key={i}
+          d={hexagonPath(cx, cy, (threshold / maxVal) * outerRadius, numSides)}
+          fill={color}
+          fillOpacity={0.5}
+        />
+      ))}
+    </g>
+  );
+} 
 
 function ResultsPage() {
   // get the data from SurveyPage component
@@ -188,39 +223,39 @@ function ResultsPage() {
           <p>
             Your ASQ is an indication of your overall stress level. The table below can be used to interpret your score. 
           </p>
-          <table className="table" style={{ width: "100%", borderCollapse: "collapse" }}>
+          <table className="table" style={{ width: "100%" }}>
             <tbody>
               <tr>
-                <th style={{ textAlign: "left", padding: "8px" }}>ASQ Range</th>
-                <th style={{ textAlign: "left", padding: "8px" }}>ASQ Classification</th>
+                <th style={{ textAlign: "left" }}>ASQ Range</th>
+                <th style={{ textAlign: "left" }}>ASQ Classification</th>
               </tr>
-              <tr style={{ backgroundColor: "#d32f2f", color: "white" }}>
-                <td style={{ padding: "8px" }}>80 and over</td>
-                <td style={{ padding: "8px" }}>Very High Stress</td>
+              <tr>
+                <td>80 and over</td>
+                <td>Very High Stress</td>
               </tr>
-              <tr style={{ backgroundColor: "#f44336", color: "white" }}>
-                <td style={{ padding: "8px" }}>70-79</td>
-                <td style={{ padding: "8px" }}>High Stress</td>
+              <tr>
+                <td>70-79</td>
+                <td>High Stress</td>
               </tr>
-              <tr style={{ backgroundColor: "#ff9800", color: "white" }}>
-                <td style={{ padding: "8px" }}>60-69</td>
-                <td style={{ padding: "8px" }}>Slightly High Stress</td>
+              <tr>
+                <td>60-69</td>
+                <td>Slightly High Stress</td>
               </tr>
-              <tr style={{ backgroundColor: "#ffeb3b" }}>
-                <td style={{ padding: "8px" }}>41-59</td>
-                <td style={{ padding: "8px" }}>Average</td>
+              <tr>
+                <td>41-59</td>
+                <td>Average</td>
               </tr>
-              <tr style={{ backgroundColor: "#8bc34a" }}>
-                <td style={{ padding: "8px" }}>31-40</td>
-                <td style={{ padding: "8px" }}>Slightly Low Stress</td>
+              <tr>
+                <td>31-40</td>
+                <td>Slightly Low Stress</td>
               </tr>
-              <tr style={{ backgroundColor: "#4caf50", color: "white" }}>
-                <td style={{ padding: "8px" }}>21-30</td>
-                <td style={{ padding: "8px" }}>Low Stress</td>
+              <tr>
+                <td>21-30</td>
+                <td>Low Stress</td>
               </tr>
-              <tr style={{ backgroundColor: "#2e7d32", color: "white" }}>
-                <td style={{ padding: "8px" }}>20 and below</td>
-                <td style={{ padding: "8px" }}>Very Low Stress</td>
+              <tr>
+                <td>20 and below</td>
+                <td>Very Low Stress</td>
               </tr>
             </tbody>
           </table>
@@ -234,11 +269,20 @@ function ResultsPage() {
               width={500}
               outerRadius="80%"
               data={cleanData}
+              cx={250}
+              cy={250}
             >
-              <PolarGrid />
+              <ColoredRadarBackground
+                cx={250}
+                cy={250}
+                outerRadius={200}
+                numSides={cleanData.length}
+                domain={[0, 100]}
+              />
+              <PolarGrid stroke="rgba(255,255,255,0.4)" />
               <PolarAngleAxis dataKey="name" />
-              <PolarRadiusAxis />
-              <Radar dataKey="x" stroke="grey" fill="grey" fillOpacity={0.5} />
+              <PolarRadiusAxis domain={[0, 100]} tick={{ fontSize: 12 }} />
+              <Radar dataKey="x" stroke="rgba(63,81,181,0.8)" fill="rgba(63,81,181,0.5)" fillOpacity={0.6} />
             </RadarChart>
           </div>
         </div>
