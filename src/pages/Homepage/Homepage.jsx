@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Homepage.css";
 import physicalSurveys from "../../data/physical-surveys.json";
 import physiologySurveys from "../../data/physiology-surveys.json";
@@ -6,6 +6,17 @@ import psychologySurveys from "../../data/psychology-surveys.json";
 import SurveyCards from "../../components/SurveyCards/SurveyCards";
 
 function Homepage() {
+  useEffect(() => {
+    const apiBases = [
+      process.env.REACT_APP_API_ADDRESS,
+      process.env.REACT_APP_DASS_MULTICLASS_API_ADDRESS,
+    ].filter(Boolean);
+
+    [...new Set(apiBases)].forEach((apiBase) => {
+      fetch(`${apiBase}/wakeup`).catch(() => {});
+    });
+  }, []);
+
   return (
     <div className="homepage-container">
       <div className="description-container">
